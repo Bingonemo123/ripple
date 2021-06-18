@@ -26,3 +26,5 @@ def volatility ():
     #%%
     name_spans = [x.attrs.get('name')[:6] for x in ordered_spans]# -*- coding: utf-8 -*-
     return name_spans
+
+

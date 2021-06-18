@@ -1,16 +1,17 @@
 from iqoptionapi.stable_api import IQ_Option
-import Internet_protocols
-import logging.handlers
-import commision
-import datetime
-import pathlib
-import logging
+import myfxbook_scraper
+from tradingview_scraper import speedometer
 import time
-import sys
 import os
+import sys
+import pathlib
+import datetime
+import logging
+import logging.handlers
+import Internet_protocols
 connector =IQ_Option("ww.bingonemo@gmail.com","JF*#3C5va&_NDqy")
 connector.connect()
-       
+
 '''----------------------------------------------------------------------------------------------'''
 
 if os.name == 'posix':
@@ -46,7 +47,7 @@ logger.addHandler(rotatingfile_handler)
 
 #----------------------------------------------------------------------------#
 connector.change_balance("PRACTICE")
-instrument_type="cfd"
+instrument_type="forex"
 side="buy"
 type="market"
 limit_price=None 
@@ -58,75 +59,65 @@ take_profit_value=3
 use_trail_stop=False 
 auto_margin_call=True 
 use_token_for_commission=False 
+last_buy = None
+
 #----------------------------------------------------------------------------#
 def run():
     try:
-        global stock_buy
-        logger.info('while #1')
+        global last_buy
+
         while True:
             if connector.check_connect() == False:
                 check,reason=connector.connect()
 
-            if connector.get_positions(instrument_type)[1].get('total') >= 20:
-                logger.info('sleep #1')
+            if connector.get_positions(instrument_type)[1].get('total') > 20:
                 time.sleep(60*3)
-                logger.info('wake #1')
             else:
-                stock_buy = [x.get('instrument_id') for x in connector.get_positions(instrument_type)[1].get('positions')]
-                logger.info(["Open stocks:", stock_buy])
                 break
-        logger.info('unwhile #1')
+
         balance = connector.get_balance()
         logger.info(str(balance)+'$')
 
+        #----------------------------------------------------------------------------#
+        #Get most volatile forex
+        volatility_markets = myfxbook_scraper.volatility()
+    
         ALL_Asset=connector.get_all_open_time()
-
-        volatility_stocks = commision.stocks_mm(connector)
-
-        addstock=[]
-        for stock in range(20-len(stock_buy)):
-            for x in volatility_stocks:
-                # logger.info('while #2')
-                while True:
-                    if connector.check_connect() == False:
-                        check,reason=connector.connect()
-                    else:
-                        break
-                # logger.info('unwhile #2')
-                if x in stock_buy or x in addstock:
-                    continue
-                if ALL_Asset[instrument_type].get(x, {"open": False})["open"]:
-                    if commision.past_history(connector, x):
-                        addstock.append(x)
-                        break
-            if len(addstock) > 1 and stock ==  20-len(stock_buy) -1:
-                break
+        for x in volatility_markets:
+            if last_buy == x:
+                continue
+            if ALL_Asset["forex"].get(x, {"open": False})["open"]:
+                if speedometer(x):
+                    instrument_id = x
+                    break
         else:
-            logger.info('No useful stocks')
-            logger.info('sleep #2')
-            time.sleep(60*3)    
-            logger.info('wake #2') 
+            logger.info('No useful pairs')
+            time.sleep(60*3)
+        #----------------------------------------------------------------------------#
+        
 
-        logger.info('while #3')
+
+                
         while True:
             if connector.check_connect() == False:
                  check,reason=connector.connect()
             else:
                 break
-        logger.info('unwhile #3')
 
-        for stk in addstock:
-          leverage=max(connector.get_available_leverages(instrument_type,stk)[1].get('leverages')[0].get('regulated'))
-          amount = ((balance/20)*0.95) /leverage if ((balance/20)*0.95) /leverage < 20000 else 20000
-          check,id=connector.buy_order(instrument_type= instrument_type, instrument_id=stk,
-                    side=side, amount=amount,leverage=leverage,
-                    type=type,limit_price=limit_price, stop_price=stop_price,
-                    stop_lose_value=stop_lose_value, stop_lose_kind=stop_lose_kind,
-                    take_profit_value=take_profit_value, take_profit_kind=take_profit_kind,
-                    use_trail_stop=use_trail_stop, auto_margin_call=auto_margin_call,
-                    use_token_for_commission=use_token_for_commission)
+        leverage=max(connector.get_available_leverages(instrument_type,instrument_id)[1].get('leverages')[0].get('regulated'))
+        amount = ((balance/20)*0.95) /leverage if ((balance/20)*0.95) /leverage < 20000 else 20000
 
-        logger.info(['Added stocks', addstock])
+        # check,id=connector.buy_order(instrument_type=instrument_type, instrument_id=instrument_id,
+        #             side=side, amount=amount,leverage=leverage,
+        #             type=type,limit_price=limit_price, stop_price=stop_price,
+        #             stop_lose_value=stop_lose_value, stop_lose_kind=stop_lose_kind,
+        #             take_profit_value=take_profit_value, take_profit_kind=take_profit_kind,
+        #             use_trail_stop=use_trail_stop, auto_margin_call=auto_margin_call,
+        #             use_token_for_commission=use_token_for_commission)
+
+        last_buy = instrument_id
+        logger.info('Buy: ' + instrument_id + ' ' + str(amount) + '$')
+
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]

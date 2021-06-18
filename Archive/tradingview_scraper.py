@@ -6,7 +6,8 @@ Created on Wed May 19 00:07:36 2021
 """
 
 from tradingview_ta import TA_Handler, Interval, Exchange
-
+import requests
+from bs4 import BeautifulSoup
 
 def speedometer(market):
     handler = TA_Handler(

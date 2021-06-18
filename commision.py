@@ -1,23 +1,44 @@
+import operator
 import time
-from iqoptionapi.stable_api import IQ_Option
-I_want_money=IQ_Option("ww.bingonemo@gmail.com","JF*#3C5va&_NDqy")
-I_want_money.connect()#connect to iqoption
-#instrument_type: "binary-option"/"turbo-option"/"digital-option"/"crypto"/"forex"/"cfd"
-instrument_type=["binary-option","turbo-option","digital-option","crypto","forex","cfd"]
-instrument_type=["forex"]
-for ins in instrument_type:
-    I_want_money.subscribe_commission_changed(ins)
-print("Start stream please wait profit change...")
-while True:
-    for ins in instrument_type:
-        commissio_data=I_want_money.get_commission_change(ins)
-        if commissio_data!={}:
-            for active_name in commissio_data:
-                if commissio_data[active_name]!={}:
-                    the_min_timestamp=min(commissio_data[active_name].keys())
-                    commissio=commissio_data[active_name][the_min_timestamp]
-                    profit=(100-commissio)/100
-                    print("instrument_type: "+str(ins)+" active_name: "+str(active_name)+" profit change to: "+str(profit))
-                    #Data have been update so need del
-                    del I_want_money.get_commission_change(ins)[active_name][the_min_timestamp]
-    time.sleep(1)
+def stocks_mm(conn):
+    conn.update_ACTIVES_OPCODE()
+    opcode_data=conn.get_all_ACTIVES_OPCODE()
+
+    instrument_type='cfd'
+    conn.subscribe_top_assets_updated(instrument_type)
+
+
+    def opcode_to_name(opcode_data,opcode):
+        return list(opcode_data.keys())[list(opcode_data.values()).index(opcode)]            
+
+    while True:
+        if conn.get_top_assets_updated(instrument_type)!=None:
+            break
+
+    top_assets=conn.get_top_assets_updated(instrument_type)
+
+
+    diff_trading_day={}
+    for asset in top_assets:
+        opcode=asset["active_id"]
+        diff_trading_day_value=asset["diff_trading_day"]["value"]
+        try:
+            name=opcode_to_name(opcode_data,opcode)
+            diff_trading_day[name]=diff_trading_day_value
+        except:
+            pass
+    
+    sorted_diff_trading_day= sorted(diff_trading_day.items(), key=operator.itemgetter(1))
+
+    return ([x[0] for x in reversed(sorted_diff_trading_day)])
+
+def past_history(conn, ticker):
+    end_from_time=time.time()
+
+    data=conn.get_candles(ticker, 86400, 31, end_from_time)
+
+    for candle in data:
+        if candle.get('max') > data[-1].get('max'):
+            return True
+    else:
+        return False 
