@@ -36,7 +36,8 @@ def past_history(conn, ticker):
     end_from_time=time.time()
 
     data=conn.get_candles(ticker, 86400, 31, end_from_time)
-
+    print(data)
+    input()
     for candle in data:
         if candle.get('max') > data[-1].get('max'):
             return True

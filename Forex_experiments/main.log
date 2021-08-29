@@ -3654,3 +3654,25 @@ NameError: name 'conn' is not defined
 2021-06-17 20:28:36,348 - IQmanager - INFO - sleep #1
 2021-06-17 20:31:36,359 - IQmanager - INFO - wake #1
 2021-06-17 20:31:36,814 - IQmanager - INFO - sleep #1
+2021-06-23 22:22:44,816 - __main__ - INFO - Main Entry 56
+2021-06-23 22:22:46,763 - Internet_protocols - INFO - Mail sent Raspberry Event
+2021-06-23 22:22:47,549 - IQmanager - INFO - while #1
+2021-06-23 22:22:47,975 - IQmanager - INFO - sleep #1
+2021-06-23 22:27:54,964 - __main__ - INFO - Main Entry 57
+2021-06-23 22:27:56,672 - Internet_protocols - INFO - Mail sent Raspberry Event
+2021-06-23 22:27:57,379 - IQmanager - INFO - while #1
+2021-06-23 22:28:08,998 - __main__ - INFO - Main Entry 58
+2021-06-23 22:28:10,439 - Internet_protocols - INFO - Mail sent Raspberry Event
+2021-06-23 22:28:11,179 - IQmanager - INFO - while #1
+2021-06-23 22:28:51,939 - __main__ - INFO - Main Entry 59
+2021-06-23 22:28:53,571 - Internet_protocols - INFO - Mail sent Raspberry Event
+2021-06-23 22:28:54,373 - IQmanager - INFO - while #1
+2021-06-23 22:29:58,312 - __main__ - INFO - Main Entry 60
+2021-06-23 22:29:59,744 - Internet_protocols - INFO - Mail sent Raspberry Event
+2021-06-23 22:30:00,467 - IQmanager - INFO - while #1
+2021-06-23 22:30:10,988 - __main__ - INFO - Main Entry 61
+2021-06-23 22:30:12,343 - Internet_protocols - INFO - Mail sent Raspberry Event
+2021-06-23 22:30:13,045 - IQmanager - INFO - while #1
+2021-06-23 22:30:13,808 - IQmanager - INFO - ['Open stocks:', ['DVN:US', 'AA:US', 'XME', 'MU:US', 'COIN', 'UBER', 'FCX:US', 'LYFT', 'TESLA', 'MRWL-CHIX', 'EMN:US', 'AMC', 'TSCOL-CHIX', 'ENELM-CHIX', 'DTED-CHIX', 'ULVRL-CHIX', 'VODL-CHIX', 'TMUS', 'GME']]
+2021-06-23 22:30:13,810 - IQmanager - INFO - unwhile #1
+2021-06-23 22:30:13,944 - IQmanager - INFO - 595309.6$

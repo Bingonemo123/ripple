@@ -66,7 +66,7 @@ def run():
         while True:
             if connector.check_connect() == False:
                 check,reason=connector.connect()
-
+            
             if connector.get_positions(instrument_type)[1].get('total') >= 20:
                 logger.info('sleep #1')
                 time.sleep(60*3)
@@ -114,7 +114,7 @@ def run():
             else:
                 break
         logger.info('unwhile #3')
-
+        """
         for stk in addstock:
           leverage=max(connector.get_available_leverages(instrument_type,stk)[1].get('leverages')[0].get('regulated'))
           amount = ((balance/20)*0.95) /leverage if ((balance/20)*0.95) /leverage < 20000 else 20000
@@ -125,7 +125,7 @@ def run():
                     take_profit_value=take_profit_value, take_profit_kind=take_profit_kind,
                     use_trail_stop=use_trail_stop, auto_margin_call=auto_margin_call,
                     use_token_for_commission=use_token_for_commission)
-
+        """
         logger.info(['Added stocks', addstock])
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
