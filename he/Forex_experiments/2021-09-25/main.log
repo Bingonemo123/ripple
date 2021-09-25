@@ -1,0 +1,517 @@
+2021-09-25 01:44:40,929 - __main__ - INFO - exp_#6  99
+2021-09-25 01:44:40,930 - __main__ - ERROR - [Errno 2] No such file or directory: 'physical_currency_list.csv'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open('physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:44:40,932 - __main__ - ERROR - [<class 'FileNotFoundError'>, 'exp_#6.py', 62]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open('physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:46:18,245 - __main__ - INFO - exp_#6  100
+2021-09-25 01:46:18,246 - __main__ - ERROR - [Errno 2] No such file or directory: 'physical_currency_list.csv'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open('physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:46:18,248 - __main__ - ERROR - [<class 'FileNotFoundError'>, 'exp_#6.py', 62]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open('physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:47:57,572 - __main__ - INFO - exp_#6  101
+2021-09-25 01:47:57,573 - __main__ - ERROR - [Errno 2] No such file or directory: 'physical_currency_list.csv'
+Traceback (most recent call last):
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open('physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:47:57,574 - __main__ - ERROR - [<class 'FileNotFoundError'>, 'exp_#6.py', 62]
+Traceback (most recent call last):
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open('physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:49:18,257 - __main__ - ERROR - [Errno 2] No such file or directory: 'physical_currency_list.csv'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open('physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:49:18,259 - __main__ - ERROR - [<class 'FileNotFoundError'>, 'exp_#6.py', 62]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open('physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:50:41,109 - __main__ - INFO - exp_#6  102
+2021-09-25 01:50:41,109 - __main__ - ERROR - [Errno 2] No such file or directory: 'C:\\Users\\HP\\Documents\\repos\\Ripple_3.0\\he\\exp_#6.py\\physical_currency_list.csv'
+Traceback (most recent call last):
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open(file_path / 'physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\HP\\Documents\\repos\\Ripple_3.0\\he\\exp_#6.py\\physical_currency_list.csv'
+2021-09-25 01:50:41,111 - __main__ - ERROR - [<class 'FileNotFoundError'>, 'exp_#6.py', 62]
+Traceback (most recent call last):
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open(file_path / 'physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\HP\\Documents\\repos\\Ripple_3.0\\he\\exp_#6.py\\physical_currency_list.csv'
+2021-09-25 01:51:33,120 - __main__ - INFO - exp_#6  103
+2021-09-25 01:51:33,129 - __main__ - ERROR - 'DictReader' object is not subscriptable
+Traceback (most recent call last):
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 64, in <module>
+    print(reader['currency code'])
+TypeError: 'DictReader' object is not subscriptable
+2021-09-25 01:51:33,130 - __main__ - ERROR - [<class 'TypeError'>, 'exp_#6.py', 64]
+Traceback (most recent call last):
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 64, in <module>
+    print(reader['currency code'])
+TypeError: 'DictReader' object is not subscriptable
+2021-09-25 01:52:18,273 - __main__ - ERROR - [Errno 2] No such file or directory: 'physical_currency_list.csv'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open(file_path.parent / 'physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:52:18,278 - __main__ - ERROR - [<class 'FileNotFoundError'>, 'exp_#6.py', 62]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open(file_path.parent / 'physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:52:38,174 - __main__ - INFO - exp_#6  104
+2021-09-25 01:53:02,413 - __main__ - INFO - exp_#6  105
+2021-09-25 01:53:02,414 - __main__ - ERROR - [Errno 2] No such file or directory: 'physical_currency_list.csv'
+Traceback (most recent call last):
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open( 'physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:53:02,415 - __main__ - ERROR - [<class 'FileNotFoundError'>, 'exp_#6.py', 62]
+Traceback (most recent call last):
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open( 'physical_currency_list.csv') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:53:28,676 - __main__ - INFO - exp_#6  106
+2021-09-25 01:53:28,676 - __main__ - ERROR - [Errno 2] No such file or directory: 'physical_currency_list.csv'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open( 'physical_currency_list.csv', 'r') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:53:28,678 - __main__ - ERROR - [<class 'FileNotFoundError'>, 'exp_#6.py', 62]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open( 'physical_currency_list.csv', 'r') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:56:43,609 - __main__ - INFO - exp_#6  107
+2021-09-25 01:56:43,610 - __main__ - ERROR - [Errno 2] No such file or directory: 'physical_currency_list.csv'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open( 'physical_currency_list.csv', 'r') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:56:43,611 - __main__ - ERROR - [<class 'FileNotFoundError'>, 'exp_#6.py', 62]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open( 'physical_currency_list.csv', 'r') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:57:20,311 - __main__ - INFO - exp_#6  108
+2021-09-25 01:57:20,312 - __main__ - ERROR - [Errno 2] No such file or directory: 'physical_currency_list.csv'
+Traceback (most recent call last):
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open( 'physical_currency_list.csv', 'r') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 01:57:20,312 - __main__ - ERROR - [<class 'FileNotFoundError'>, 'exp_#6.py', 62]
+Traceback (most recent call last):
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 62, in <module>
+    with open( 'physical_currency_list.csv', 'r') as csvfile:
+FileNotFoundError: [Errno 2] No such file or directory: 'physical_currency_list.csv'
+2021-09-25 02:06:51,370 - __main__ - INFO - exp_#6  109
+2021-09-25 02:06:52,859 - __main__ - ERROR - 'Time Series FX (Daily)'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 79, in <module>
+    print(len(data['Time Series FX (Daily)']))
+KeyError: 'Time Series FX (Daily)'
+2021-09-25 02:06:52,864 - __main__ - ERROR - [<class 'KeyError'>, 'exp_#6.py', 79]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 79, in <module>
+    print(len(data['Time Series FX (Daily)']))
+KeyError: 'Time Series FX (Daily)'
+2021-09-25 02:07:23,186 - __main__ - INFO - exp_#6  110
+2021-09-25 02:07:40,373 - __main__ - INFO - exp_#6  111
+2021-09-25 02:07:41,348 - __main__ - ERROR - 'Time Series FX (Daily)'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 77, in <module>
+    data = r.json()['Time Series FX (Daily)']
+KeyError: 'Time Series FX (Daily)'
+2021-09-25 02:07:41,350 - __main__ - ERROR - [<class 'KeyError'>, 'exp_#6.py', 77]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 77, in <module>
+    data = r.json()['Time Series FX (Daily)']
+KeyError: 'Time Series FX (Daily)'
+2021-09-25 02:08:23,627 - __main__ - INFO - exp_#6  112
+2021-09-25 02:11:43,373 - __main__ - INFO - exp_#6  113
+2021-09-25 02:11:47,219 - __main__ - INFO - exp_#6  114
+2021-09-25 02:12:04,620 - __main__ - INFO - exp_#6  115
+2021-09-25 02:12:06,921 - __main__ - ERROR - 'dict_values' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 79, in <module>
+    print(data.values()[0])
+TypeError: 'dict_values' object is not subscriptable
+2021-09-25 02:12:06,924 - __main__ - ERROR - [<class 'TypeError'>, 'exp_#6.py', 79]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 79, in <module>
+    print(data.values()[0])
+TypeError: 'dict_values' object is not subscriptable
+2021-09-25 02:13:53,322 - __main__ - INFO - exp_#6  116
+2021-09-25 02:14:37,347 - __main__ - INFO - exp_#6  117
+2021-09-25 02:16:34,817 - __main__ - INFO - exp_#6  118
+2021-09-25 02:17:27,563 - __main__ - INFO - exp_#6  119
+2021-09-25 02:17:30,319 - __main__ - ERROR - can't convert type 'str' to numerator/denominator
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 77, in <module>
+    print(statistics.mean(close_data))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\statistics.py", line 316, in mean
+    T, total, count = _sum(data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\statistics.py", line 166, in _sum
+    for n, d in map(_exact_ratio, values):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\statistics.py", line 248, in _exact_ratio
+    raise TypeError(msg.format(type(x).__name__))
+TypeError: can't convert type 'str' to numerator/denominator
+2021-09-25 02:17:30,323 - __main__ - ERROR - [<class 'TypeError'>, 'exp_#6.py', 77]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 77, in <module>
+    print(statistics.mean(close_data))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\statistics.py", line 316, in mean
+    T, total, count = _sum(data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\statistics.py", line 166, in _sum
+    for n, d in map(_exact_ratio, values):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\statistics.py", line 248, in _exact_ratio
+    raise TypeError(msg.format(type(x).__name__))
+TypeError: can't convert type 'str' to numerator/denominator
+2021-09-25 02:17:47,879 - __main__ - INFO - exp_#6  120
+2021-09-25 02:19:41,061 - __main__ - INFO - exp_#6  121
+2021-09-25 02:19:41,064 - __main__ - ERROR - 'module' object is not callable
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 71, in <module>
+    for f in tqdm(comb):
+TypeError: 'module' object is not callable
+2021-09-25 02:19:41,066 - __main__ - ERROR - [<class 'TypeError'>, 'exp_#6.py', 71]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 71, in <module>
+    for f in tqdm(comb):
+TypeError: 'module' object is not callable
+2021-09-25 02:20:03,546 - __main__ - INFO - exp_#6  122
+2021-09-25 02:20:24,775 - __main__ - ERROR - list index out of range
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 76, in <module>
+    close_data = [float(x['4. close']) for x in list(data.values())[1].values()]
+IndexError: list index out of range
+2021-09-25 02:20:24,782 - __main__ - ERROR - [<class 'IndexError'>, 'exp_#6.py', 76]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 76, in <module>
+    close_data = [float(x['4. close']) for x in list(data.values())[1].values()]
+IndexError: list index out of range
+2021-09-25 02:21:41,627 - __main__ - INFO - exp_#6  123
+2021-09-25 02:22:06,030 - __main__ - ERROR - list index out of range
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 76, in <module>
+    close_data = [float(x['4. close']) for x in list(data.values())[1].values()]
+IndexError: list index out of range
+2021-09-25 02:22:06,033 - __main__ - ERROR - [<class 'IndexError'>, 'exp_#6.py', 76]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 76, in <module>
+    close_data = [float(x['4. close']) for x in list(data.values())[1].values()]
+IndexError: list index out of range
+2021-09-25 02:23:04,365 - __main__ - INFO - exp_#6  124
+2021-09-25 02:26:41,171 - __main__ - INFO - exp_#6  125
+2021-09-25 17:10:13,541 - __main__ - INFO - exp_#6  126
+2021-09-25 17:17:06,767 - __main__ - INFO - exp_#6  127
+2021-09-25 17:20:35,455 - __main__ - INFO - exp_#6  128
+2021-09-25 17:22:30,633 - __main__ - INFO - exp_#6  129
+2021-09-25 17:23:28,509 - __main__ - INFO - exp_#6  130
+2021-09-25 17:25:10,052 - __main__ - INFO - exp_#6  131
+2021-09-25 17:27:34,491 - __main__ - INFO - exp_#6  132
+2021-09-25 17:29:38,155 - __main__ - INFO - exp_#6  133
+2021-09-25 17:33:19,475 - __main__ - INFO - exp_#6  134
+2021-09-25 17:34:55,110 - __main__ - INFO - exp_#6  135
+2021-09-25 18:04:36,799 - __main__ - ERROR - Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 77, in <module>
+    data = r.json()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\models.py", line 900, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2021-09-25 18:04:36,856 - __main__ - ERROR - [<class 'json.decoder.JSONDecodeError'>, 'exp_#6.py', 77]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 77, in <module>
+    data = r.json()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\models.py", line 900, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2021-09-25 18:38:11,319 - __main__ - ERROR - Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 77, in <module>
+    data = r.json()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\models.py", line 900, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2021-09-25 18:38:11,344 - __main__ - ERROR - [<class 'json.decoder.JSONDecodeError'>, 'exp_#6.py', 77]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 77, in <module>
+    data = r.json()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\models.py", line 900, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2021-09-25 18:46:12,209 - __main__ - INFO - exp_#6  136
+2021-09-25 18:50:18,155 - __main__ - ERROR - Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 79, in <module>
+    data = r.json()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\models.py", line 900, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2021-09-25 18:50:18,205 - __main__ - ERROR - [<class 'json.decoder.JSONDecodeError'>, 'exp_#6.py', 79]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#6.py", line 79, in <module>
+    data = r.json()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\models.py", line 900, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2021-09-25 18:52:35,356 - __main__ - INFO - exp_#6  137
+2021-09-25 19:22:13,285 - __main__ - INFO - exp_#7  138
+2021-09-25 19:22:13,288 - __main__ - INFO - w1
+2021-09-25 19:22:13,289 - __main__ - INFO - uw1
+2021-09-25 19:22:16,546 - __main__ - INFO - []
+2021-09-25 19:22:16,546 - __main__ - INFO - []
+2021-09-25 19:22:16,546 - __main__ - INFO - []
+2021-09-25 19:22:16,547 - __main__ - INFO - []
+2021-09-25 19:22:16,547 - __main__ - INFO - []
+2021-09-25 19:22:16,548 - __main__ - INFO - 0
+2021-09-25 19:22:16,558 - __main__ - INFO - w1
+2021-09-25 19:22:16,559 - __main__ - INFO - uw1
+2021-09-25 19:22:20,092 - __main__ - INFO - []
+2021-09-25 19:22:20,094 - __main__ - INFO - []
+2021-09-25 19:22:20,094 - __main__ - INFO - []
+2021-09-25 19:22:20,096 - __main__ - INFO - []
+2021-09-25 19:22:20,096 - __main__ - INFO - []
+2021-09-25 19:22:20,097 - __main__ - INFO - 0
+2021-09-25 19:22:20,099 - __main__ - INFO - w1
+2021-09-25 19:22:20,101 - __main__ - INFO - uw1
+2021-09-25 19:22:23,403 - __main__ - INFO - []
+2021-09-25 19:22:23,403 - __main__ - INFO - []
+2021-09-25 19:22:23,404 - __main__ - INFO - []
+2021-09-25 19:22:23,404 - __main__ - INFO - []
+2021-09-25 19:22:23,404 - __main__ - INFO - []
+2021-09-25 19:22:23,405 - __main__ - INFO - 0
+2021-09-25 19:22:23,407 - __main__ - INFO - w1
+2021-09-25 19:22:23,407 - __main__ - INFO - uw1
+2021-09-25 19:22:26,588 - __main__ - INFO - []
+2021-09-25 19:22:26,589 - __main__ - INFO - []
+2021-09-25 19:22:26,589 - __main__ - INFO - []
+2021-09-25 19:22:26,589 - __main__ - INFO - []
+2021-09-25 19:22:26,589 - __main__ - INFO - []
+2021-09-25 19:22:26,590 - __main__ - INFO - 0
+2021-09-25 19:22:26,592 - __main__ - INFO - w1
+2021-09-25 19:22:26,592 - __main__ - INFO - uw1
+2021-09-25 19:22:29,680 - __main__ - INFO - []
+2021-09-25 19:22:29,680 - __main__ - INFO - []
+2021-09-25 19:22:29,680 - __main__ - INFO - []
+2021-09-25 19:22:29,681 - __main__ - INFO - []
+2021-09-25 19:22:29,681 - __main__ - INFO - []
+2021-09-25 19:22:29,682 - __main__ - INFO - 0
+2021-09-25 19:22:29,684 - __main__ - INFO - w1
+2021-09-25 19:22:29,685 - __main__ - INFO - uw1
+2021-09-25 19:22:32,828 - __main__ - INFO - []
+2021-09-25 19:22:32,829 - __main__ - INFO - []
+2021-09-25 19:22:32,829 - __main__ - INFO - []
+2021-09-25 19:22:32,830 - __main__ - INFO - []
+2021-09-25 19:22:32,830 - __main__ - INFO - []
+2021-09-25 19:22:32,831 - __main__ - INFO - 0
+2021-09-25 19:22:32,833 - __main__ - INFO - w1
+2021-09-25 19:22:32,833 - __main__ - INFO - uw1
+2021-09-25 19:22:36,043 - __main__ - INFO - []
+2021-09-25 19:22:36,045 - __main__ - INFO - []
+2021-09-25 19:22:36,048 - __main__ - INFO - []
+2021-09-25 19:22:36,049 - __main__ - INFO - []
+2021-09-25 19:22:36,050 - __main__ - INFO - []
+2021-09-25 19:22:36,053 - __main__ - INFO - 0
+2021-09-25 19:22:36,055 - __main__ - INFO - w1
+2021-09-25 19:22:36,056 - __main__ - INFO - uw1
+2021-09-25 19:22:39,158 - __main__ - INFO - []
+2021-09-25 19:22:39,158 - __main__ - INFO - []
+2021-09-25 19:22:39,159 - __main__ - INFO - []
+2021-09-25 19:22:39,159 - __main__ - INFO - []
+2021-09-25 19:22:39,160 - __main__ - INFO - []
+2021-09-25 19:22:39,161 - __main__ - INFO - 0
+2021-09-25 19:22:39,163 - __main__ - INFO - w1
+2021-09-25 19:22:39,163 - __main__ - INFO - uw1
+2021-09-25 19:22:42,246 - __main__ - INFO - []
+2021-09-25 19:22:42,247 - __main__ - INFO - []
+2021-09-25 19:22:42,247 - __main__ - INFO - []
+2021-09-25 19:22:42,248 - __main__ - INFO - []
+2021-09-25 19:22:42,248 - __main__ - INFO - []
+2021-09-25 19:22:42,249 - __main__ - INFO - 0
+2021-09-25 19:22:42,251 - __main__ - INFO - w1
+2021-09-25 19:22:42,251 - __main__ - INFO - uw1
+2021-09-25 19:22:45,465 - __main__ - INFO - []
+2021-09-25 19:22:45,466 - __main__ - INFO - []
+2021-09-25 19:22:45,466 - __main__ - INFO - []
+2021-09-25 19:22:45,467 - __main__ - INFO - []
+2021-09-25 19:22:45,467 - __main__ - INFO - []
+2021-09-25 19:22:45,469 - __main__ - INFO - 0
+2021-09-25 19:22:45,471 - __main__ - INFO - w1
+2021-09-25 19:22:45,472 - __main__ - INFO - uw1
+2021-09-25 19:22:48,678 - __main__ - INFO - []
+2021-09-25 19:22:48,679 - __main__ - INFO - []
+2021-09-25 19:22:48,679 - __main__ - INFO - []
+2021-09-25 19:22:48,680 - __main__ - INFO - []
+2021-09-25 19:22:48,680 - __main__ - INFO - []
+2021-09-25 19:22:48,681 - __main__ - INFO - 0
+2021-09-25 19:22:48,683 - __main__ - INFO - w1
+2021-09-25 19:22:48,683 - __main__ - INFO - uw1
+2021-09-25 19:22:51,737 - __main__ - INFO - []
+2021-09-25 19:22:51,738 - __main__ - INFO - []
+2021-09-25 19:22:51,738 - __main__ - INFO - []
+2021-09-25 19:22:51,738 - __main__ - INFO - []
+2021-09-25 19:22:51,739 - __main__ - INFO - []
+2021-09-25 19:22:51,740 - __main__ - INFO - 0
+2021-09-25 19:22:51,742 - __main__ - INFO - w1
+2021-09-25 19:22:51,742 - __main__ - INFO - uw1
+2021-09-25 19:22:54,828 - __main__ - INFO - []
+2021-09-25 19:22:54,828 - __main__ - INFO - []
+2021-09-25 19:22:54,829 - __main__ - INFO - []
+2021-09-25 19:22:54,829 - __main__ - INFO - []
+2021-09-25 19:22:54,830 - __main__ - INFO - []
+2021-09-25 19:22:54,831 - __main__ - INFO - 0
+2021-09-25 19:22:54,832 - __main__ - INFO - w1
+2021-09-25 19:22:54,833 - __main__ - INFO - uw1
+2021-09-25 19:22:58,101 - __main__ - INFO - []
+2021-09-25 19:22:58,102 - __main__ - INFO - []
+2021-09-25 19:22:58,102 - __main__ - INFO - []
+2021-09-25 19:22:58,103 - __main__ - INFO - []
+2021-09-25 19:22:58,103 - __main__ - INFO - []
+2021-09-25 19:22:58,104 - __main__ - INFO - 0
+2021-09-25 19:22:58,106 - __main__ - INFO - w1
+2021-09-25 19:22:58,107 - __main__ - INFO - uw1
+2021-09-25 19:23:01,207 - __main__ - INFO - []
+2021-09-25 19:23:01,208 - __main__ - INFO - []
+2021-09-25 19:23:01,208 - __main__ - INFO - []
+2021-09-25 19:23:01,209 - __main__ - INFO - []
+2021-09-25 19:23:01,209 - __main__ - INFO - []
+2021-09-25 19:23:01,210 - __main__ - INFO - 0
+2021-09-25 19:23:01,212 - __main__ - INFO - w1
+2021-09-25 19:23:01,213 - __main__ - INFO - uw1
+2021-09-25 19:26:08,506 - __main__ - INFO - exp_#7  139
+2021-09-25 19:26:12,095 - __main__ - ERROR - get_positions() missing 1 required positional argument: 'instrument_type'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#7.py", line 130, in <module>
+    logger.debug(connector.get_positions())
+TypeError: get_positions() missing 1 required positional argument: 'instrument_type'
+2021-09-25 19:26:12,096 - __main__ - ERROR - [<class 'TypeError'>, 'exp_#7.py', 130]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#7.py", line 130, in <module>
+    logger.debug(connector.get_positions())
+TypeError: get_positions() missing 1 required positional argument: 'instrument_type'
+2021-09-25 19:27:58,237 - __main__ - INFO - exp_#7  140
+2021-09-25 20:03:22,031 - __main__ - INFO - exp_#7  141
+2021-09-25 20:03:25,646 - __main__ - ERROR - invalid literal for int() with base 10: 'forex'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#7.py", line 141, in <module>
+    logger.debug(connector.get_position(instrument_type))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1245, in get_position
+    check, order_data = self.get_order(buy_order_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1214, in get_order
+    self.api.get_order(buy_order_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\get_order.py", line 12, in __call__
+    "order_id":int(order_id)
+ValueError: invalid literal for int() with base 10: 'forex'
+2021-09-25 20:03:25,655 - __main__ - ERROR - [<class 'ValueError'>, 'exp_#7.py', 141]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#7.py", line 141, in <module>
+    logger.debug(connector.get_position(instrument_type))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1245, in get_position
+    check, order_data = self.get_order(buy_order_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1214, in get_order
+    self.api.get_order(buy_order_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\get_order.py", line 12, in __call__
+    "order_id":int(order_id)
+ValueError: invalid literal for int() with base 10: 'forex'
+2021-09-25 20:03:44,545 - __main__ - INFO - exp_#7  142
+2021-09-25 20:03:48,531 - __main__ - ERROR - 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#7.py", line 141, in <module>
+    logger.debug(connector.get_position(1203199686))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1246, in get_position
+    position_id = order_data["position_id"]
+TypeError: 'NoneType' object is not subscriptable
+2021-09-25 20:03:48,533 - __main__ - ERROR - [<class 'TypeError'>, 'exp_#7.py', 141]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#7.py", line 141, in <module>
+    logger.debug(connector.get_position(1203199686))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1246, in get_position
+    position_id = order_data["position_id"]
+TypeError: 'NoneType' object is not subscriptable
+2021-09-25 20:05:03,932 - __main__ - INFO - exp_#7  143
+2021-09-25 20:05:07,621 - __main__ - ERROR - 'NoneType' object is not subscriptable
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#7.py", line 141, in <module>
+    logger.debug(connector.get_position('1203199686'))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1246, in get_position
+    position_id = order_data["position_id"]
+TypeError: 'NoneType' object is not subscriptable
+2021-09-25 20:05:07,624 - __main__ - ERROR - [<class 'TypeError'>, 'exp_#7.py', 141]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#7.py", line 141, in <module>
+    logger.debug(connector.get_position('1203199686'))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1246, in get_position
+    position_id = order_data["position_id"]
+TypeError: 'NoneType' object is not subscriptable
+2021-09-25 20:11:11,334 - __main__ - INFO - exp_#7  144
+2021-09-25 20:33:04,762 - __main__ - INFO - exp_#7  145
+2021-09-25 20:33:14,173 - __main__ - INFO - exp_#7  146
+2021-09-25 20:34:03,161 - __main__ - INFO - exp_#7  147
+2021-09-25 20:39:49,387 - __main__ - INFO - exp_#7  148
+2021-09-25 20:39:53,620 - __main__ - ERROR - dumps() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#7.py", line 143, in <module>
+    json.dumps(connector.get_position_history(instrument_type), jsonfile)
+TypeError: dumps() takes 1 positional argument but 2 were given
+2021-09-25 20:39:53,621 - __main__ - ERROR - [<class 'TypeError'>, 'exp_#7.py', 143]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\he\exp_#7.py", line 143, in <module>
+    json.dumps(connector.get_position_history(instrument_type), jsonfile)
+TypeError: dumps() takes 1 positional argument but 2 were given
+2021-09-25 20:41:29,210 - __main__ - INFO - exp_#7  149
+2021-09-25 20:47:07,194 - __main__ - INFO - exp_#7  150
+2021-09-25 20:48:13,722 - __main__ - INFO - exp_#7  151
+2021-09-25 20:51:49,448 - __main__ - INFO - exp_#7  152
+2021-09-25 21:41:13,923 - __main__ - INFO - exp_#6  153
