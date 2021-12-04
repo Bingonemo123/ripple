@@ -819,3 +819,15 @@ Traceback (most recent call last):
 AttributeError: 'builtin_function_or_method' object has no attribute 'time'
 2021-12-04 23:14:04,161 - __main__ - INFO - SE3 [Error hold]
 2021-12-04 23:14:19,916 - __main__ - INFO - SE1 [winter sleep]
+2021-12-05 00:13:13,031 - __main__ - INFO - SE1 [winter sleep]
+2021-12-05 00:14:23,654 - __main__ - ERROR - 
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 58, in <module>
+    raise KeyError
+KeyError
+2021-12-05 00:14:23,657 - __main__ - ERROR - [<class 'KeyError'>, 'main.py', 58]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 58, in <module>
+    raise KeyError
+KeyError
+2021-12-05 00:14:24,764 - __main__ - INFO - SE3 [Error hold]

@@ -51,7 +51,7 @@ use_token_for_commission=False
 
 #----------------------------------------------------------------------------#
 client = Client("ud1pmkki74te12d3bicw24r99kb38z", api_token="aq7rx1r3o55k6rtobcq8xwv66u8jgw")
-client.send_message(os.getswd(), title="M1 I0")
+client.send_message(os.getcwd(), title="M1 I0")
 #----------------------------------------------------------------------------#
 while True:
     try:
