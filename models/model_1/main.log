@@ -818,3 +818,4 @@ Traceback (most recent call last):
     while connector.api.balances_raw == None and time.time() - stt < timeout:
 AttributeError: 'builtin_function_or_method' object has no attribute 'time'
 2021-12-04 23:14:04,161 - __main__ - INFO - SE3 [Error hold]
+2021-12-04 23:14:19,916 - __main__ - INFO - SE1 [winter sleep]
