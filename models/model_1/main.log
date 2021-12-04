@@ -1,0 +1,820 @@
+2021-12-03 13:52:25,911 - __main__ - INFO - w1
+2021-12-03 13:52:25,911 - __main__ - INFO - uw1
+2021-12-03 13:52:29,582 - __main__ - INFO - w1
+2021-12-03 13:52:29,583 - __main__ - INFO - uw1
+2021-12-03 13:52:33,108 - __main__ - INFO - w1
+2021-12-03 13:52:33,108 - __main__ - INFO - uw1
+2021-12-03 13:52:36,434 - __main__ - INFO - w1
+2021-12-03 13:52:36,435 - __main__ - INFO - uw1
+2021-12-03 13:52:39,712 - __main__ - INFO - w1
+2021-12-03 13:52:39,713 - __main__ - INFO - uw1
+2021-12-03 13:52:42,833 - __main__ - INFO - w1
+2021-12-03 13:52:42,833 - __main__ - INFO - uw1
+2021-12-03 13:52:45,932 - __main__ - INFO - w1
+2021-12-03 13:52:45,933 - __main__ - INFO - uw1
+2021-12-03 13:52:48,980 - __main__ - INFO - w1
+2021-12-03 13:52:48,981 - __main__ - INFO - uw1
+2021-12-03 13:52:52,157 - __main__ - INFO - w1
+2021-12-03 13:52:52,158 - __main__ - INFO - uw1
+2021-12-03 13:52:55,504 - __main__ - INFO - w1
+2021-12-03 13:52:55,505 - __main__ - INFO - uw1
+2021-12-03 13:52:58,875 - __main__ - INFO - w1
+2021-12-03 13:52:58,876 - __main__ - INFO - uw1
+2021-12-03 13:53:02,078 - __main__ - INFO - w1
+2021-12-03 13:53:02,079 - __main__ - INFO - uw1
+2021-12-03 13:53:44,574 - __main__ - INFO - w1
+2021-12-03 13:53:44,575 - __main__ - INFO - uw1
+2021-12-03 13:53:47,928 - __main__ - INFO - w1
+2021-12-03 13:53:47,929 - __main__ - INFO - uw1
+2021-12-03 13:53:51,575 - __main__ - INFO - w1
+2021-12-03 13:53:51,576 - __main__ - INFO - uw1
+2021-12-03 13:53:55,067 - __main__ - INFO - w1
+2021-12-03 13:53:55,068 - __main__ - INFO - uw1
+2021-12-03 13:53:58,260 - __main__ - INFO - w1
+2021-12-03 13:53:58,260 - __main__ - INFO - uw1
+2021-12-03 13:54:01,591 - __main__ - INFO - w1
+2021-12-03 13:54:01,592 - __main__ - INFO - uw1
+2021-12-03 13:54:07,754 - __main__ - INFO - w1
+2021-12-03 13:54:07,755 - __main__ - INFO - uw1
+2021-12-03 13:54:11,339 - __main__ - INFO - w1
+2021-12-03 13:54:11,340 - __main__ - INFO - uw1
+2021-12-03 13:54:14,758 - __main__ - INFO - w1
+2021-12-03 13:54:14,759 - __main__ - INFO - uw1
+2021-12-03 13:54:17,968 - __main__ - INFO - w1
+2021-12-03 13:54:17,968 - __main__ - INFO - uw1
+2021-12-03 13:54:35,395 - __main__ - INFO - w1
+2021-12-03 13:54:35,397 - __main__ - INFO - uw1
+2021-12-03 13:54:38,871 - __main__ - INFO - w1
+2021-12-03 13:54:38,871 - __main__ - INFO - uw1
+2021-12-03 13:54:42,211 - __main__ - INFO - w1
+2021-12-03 13:54:42,211 - __main__ - INFO - uw1
+2021-12-03 13:54:45,639 - __main__ - INFO - w1
+2021-12-03 13:54:45,639 - __main__ - INFO - uw1
+2021-12-03 13:54:48,973 - __main__ - INFO - w1
+2021-12-03 13:54:48,974 - __main__ - INFO - uw1
+2021-12-03 13:54:52,146 - __main__ - INFO - w1
+2021-12-03 13:54:52,147 - __main__ - INFO - uw1
+2021-12-03 13:54:55,386 - __main__ - INFO - w1
+2021-12-03 13:54:55,387 - __main__ - INFO - uw1
+2021-12-03 13:54:58,508 - __main__ - INFO - w1
+2021-12-03 13:54:58,509 - __main__ - INFO - uw1
+2021-12-03 13:56:01,146 - __main__ - INFO - w1
+2021-12-03 13:56:01,147 - __main__ - INFO - uw1
+2021-12-03 13:56:04,531 - __main__ - INFO - w1
+2021-12-03 13:56:04,532 - __main__ - INFO - uw1
+2021-12-03 13:56:08,255 - __main__ - INFO - w1
+2021-12-03 13:56:08,256 - __main__ - INFO - uw1
+2021-12-03 13:56:11,625 - __main__ - INFO - w1
+2021-12-03 13:56:11,626 - __main__ - INFO - uw1
+2021-12-03 13:56:14,976 - __main__ - INFO - w1
+2021-12-03 13:56:14,977 - __main__ - INFO - uw1
+2021-12-03 13:56:18,157 - __main__ - INFO - w1
+2021-12-03 13:56:18,158 - __main__ - INFO - uw1
+2021-12-03 13:56:21,474 - __main__ - INFO - w1
+2021-12-03 13:56:21,475 - __main__ - INFO - uw1
+2021-12-03 13:56:24,647 - __main__ - INFO - w1
+2021-12-03 13:56:24,648 - __main__ - INFO - uw1
+2021-12-03 13:56:27,930 - __main__ - INFO - w1
+2021-12-03 13:56:27,930 - __main__ - INFO - uw1
+2021-12-03 13:56:32,592 - __main__ - INFO - w1
+2021-12-03 13:56:32,593 - __main__ - INFO - uw1
+2021-12-03 13:56:35,973 - __main__ - INFO - w1
+2021-12-03 13:56:35,973 - __main__ - INFO - uw1
+2021-12-03 13:56:39,286 - __main__ - INFO - w1
+2021-12-03 13:56:39,287 - __main__ - INFO - uw1
+2021-12-03 13:56:42,659 - __main__ - INFO - w1
+2021-12-03 13:56:42,660 - __main__ - INFO - uw1
+2021-12-03 13:56:45,880 - __main__ - INFO - w1
+2021-12-03 13:56:45,881 - __main__ - INFO - uw1
+2021-12-03 13:56:49,065 - __main__ - INFO - w1
+2021-12-03 13:56:49,066 - __main__ - INFO - uw1
+2021-12-03 13:56:52,126 - __main__ - INFO - w1
+2021-12-03 13:56:52,127 - __main__ - INFO - uw1
+2021-12-03 13:56:55,251 - __main__ - INFO - w1
+2021-12-03 13:56:55,252 - __main__ - INFO - uw1
+2021-12-03 13:56:58,268 - __main__ - INFO - w1
+2021-12-03 13:56:58,269 - __main__ - INFO - uw1
+2021-12-03 13:57:01,418 - __main__ - INFO - w1
+2021-12-03 13:57:01,419 - __main__ - INFO - uw1
+2021-12-03 13:57:04,677 - __main__ - INFO - w1
+2021-12-03 13:57:04,677 - __main__ - INFO - uw1
+2021-12-03 13:57:07,642 - __main__ - INFO - w1
+2021-12-03 13:57:07,642 - __main__ - INFO - uw1
+2021-12-03 13:57:10,732 - __main__ - INFO - w1
+2021-12-03 13:57:10,733 - __main__ - INFO - uw1
+2021-12-03 13:57:13,868 - __main__ - INFO - w1
+2021-12-03 13:57:13,869 - __main__ - INFO - uw1
+2021-12-03 13:57:16,810 - __main__ - INFO - w1
+2021-12-03 13:57:16,811 - __main__ - INFO - uw1
+2021-12-03 13:57:19,921 - __main__ - INFO - w1
+2021-12-03 13:57:19,921 - __main__ - INFO - uw1
+2021-12-03 13:57:22,992 - __main__ - INFO - w1
+2021-12-03 13:57:22,992 - __main__ - INFO - uw1
+2021-12-03 13:57:26,131 - __main__ - INFO - w1
+2021-12-03 13:57:26,131 - __main__ - INFO - uw1
+2021-12-03 13:57:29,296 - __main__ - INFO - w1
+2021-12-03 13:57:29,296 - __main__ - INFO - uw1
+2021-12-03 13:57:32,527 - __main__ - INFO - w1
+2021-12-03 13:57:32,527 - __main__ - INFO - uw1
+2021-12-03 13:57:35,565 - __main__ - INFO - w1
+2021-12-03 13:57:35,566 - __main__ - INFO - uw1
+2021-12-03 13:57:38,603 - __main__ - INFO - w1
+2021-12-03 13:57:38,603 - __main__ - INFO - uw1
+2021-12-03 13:57:43,203 - __main__ - INFO - w1
+2021-12-03 13:57:43,204 - __main__ - INFO - uw1
+2021-12-03 13:57:48,067 - __main__ - INFO - w1
+2021-12-03 13:57:48,068 - __main__ - INFO - uw1
+2021-12-03 13:57:51,573 - __main__ - INFO - w1
+2021-12-03 13:57:51,574 - __main__ - INFO - uw1
+2021-12-03 14:01:32,674 - __main__ - ERROR - [Errno 2] No such file or directory: 'c:\\Users\\HP\\Documents\\repos\\Ripple_3.0\\models\\model_1\\data.json'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 49, in <module>
+    data = json.load(open(path/'data.json', 'r'))
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\Users\\HP\\Documents\\repos\\Ripple_3.0\\models\\model_1\\data.json'
+2021-12-03 14:01:32,677 - __main__ - ERROR - [<class 'FileNotFoundError'>, 'main.py', 49]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 49, in <module>
+    data = json.load(open(path/'data.json', 'r'))
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\Users\\HP\\Documents\\repos\\Ripple_3.0\\models\\model_1\\data.json'
+2021-12-03 14:27:34,404 - __main__ - INFO - w1
+2021-12-03 14:27:34,404 - __main__ - INFO - uw1
+2021-12-03 14:27:37,964 - __main__ - INFO - w1
+2021-12-03 14:27:37,965 - __main__ - INFO - uw1
+2021-12-03 14:27:43,581 - __main__ - INFO - w1
+2021-12-03 14:27:43,583 - __main__ - INFO - uw1
+2021-12-03 14:27:46,908 - __main__ - INFO - w1
+2021-12-03 14:27:46,908 - __main__ - INFO - uw1
+2021-12-03 14:32:55,334 - __main__ - INFO - w1
+2021-12-03 14:32:55,335 - __main__ - INFO - uw1
+2021-12-03 14:32:58,835 - __main__ - INFO - w1
+2021-12-03 14:32:58,836 - __main__ - INFO - uw1
+2021-12-03 14:33:02,346 - __main__ - INFO - w1
+2021-12-03 14:33:02,346 - __main__ - INFO - uw1
+2021-12-03 14:34:35,480 - __main__ - INFO - w1
+2021-12-03 14:34:35,481 - __main__ - INFO - uw1
+2021-12-03 14:34:39,060 - __main__ - INFO - w1
+2021-12-03 14:34:39,060 - __main__ - INFO - uw1
+2021-12-03 14:34:42,492 - __main__ - INFO - w1
+2021-12-03 14:34:42,493 - __main__ - INFO - uw1
+2021-12-03 14:34:45,851 - __main__ - INFO - w1
+2021-12-03 14:34:45,851 - __main__ - INFO - uw1
+2021-12-03 14:34:57,557 - __main__ - INFO - w1
+2021-12-03 14:34:57,558 - __main__ - INFO - uw1
+2021-12-03 14:36:23,099 - __main__ - INFO - w1
+2021-12-03 14:36:23,100 - __main__ - INFO - uw1
+2021-12-03 14:36:33,126 - __main__ - ERROR - function [custom_all_asets] timeout [10 seconds] exceeded!
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 76, in <module>
+    ALL_Asset=custom_all_asets()
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_all_asets] timeout [10 seconds] exceeded!
+2021-12-03 14:36:33,394 - __main__ - ERROR - [<class 'Exception'>, 'main.py', 76]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 76, in <module>
+    ALL_Asset=custom_all_asets()
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_all_asets] timeout [10 seconds] exceeded!
+2021-12-03 14:52:47,670 - __main__ - INFO - w1
+2021-12-03 14:52:47,671 - __main__ - INFO - uw1
+2021-12-03 14:53:44,691 - __main__ - INFO - w1
+2021-12-03 14:53:44,691 - __main__ - INFO - uw1
+2021-12-03 14:54:02,724 - __main__ - ERROR - function [custom_realtime_cdf] timeout [10 seconds] exceeded!
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 90, in <module>
+    print(custom_realtime_cdf(f))
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_realtime_cdf] timeout [10 seconds] exceeded!
+2021-12-03 14:54:02,736 - __main__ - ERROR - [<class 'Exception'>, 'main.py', 90]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 90, in <module>
+    print(custom_realtime_cdf(f))
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_realtime_cdf] timeout [10 seconds] exceeded!
+2021-12-03 14:55:40,779 - __main__ - ERROR - function [custom_realtime_cdf] timeout [10 seconds] exceeded!
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 91, in <module>
+    print(custom_realtime_cdf(f))
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_realtime_cdf] timeout [10 seconds] exceeded!
+2021-12-03 14:55:40,791 - __main__ - ERROR - [<class 'Exception'>, 'main.py', 91]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 91, in <module>
+    print(custom_realtime_cdf(f))
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_realtime_cdf] timeout [10 seconds] exceeded!
+2021-12-03 14:56:46,668 - __main__ - ERROR - function [custom_realtime_cdf] timeout [10 seconds] exceeded!
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 91, in <module>
+    print(f, custom_realtime_cdf(f))
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_realtime_cdf] timeout [10 seconds] exceeded!
+2021-12-03 14:56:46,678 - __main__ - ERROR - [<class 'Exception'>, 'main.py', 91]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 91, in <module>
+    print(f, custom_realtime_cdf(f))
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_realtime_cdf] timeout [10 seconds] exceeded!
+2021-12-03 14:58:36,796 - __main__ - ERROR - function [custom_realtime_cdf] timeout [2 seconds] exceeded!
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 91, in <module>
+    print(f, custom_realtime_cdf(f))
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_realtime_cdf] timeout [2 seconds] exceeded!
+2021-12-03 14:58:36,800 - __main__ - ERROR - [<class 'Exception'>, 'main.py', 91]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 91, in <module>
+    print(f, custom_realtime_cdf(f))
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_realtime_cdf] timeout [2 seconds] exceeded!
+2021-12-03 15:00:36,002 - __main__ - ERROR - function [custom_realtime_cdf] timeout [3 seconds] exceeded!
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 89, in <module>
+    print(f, custom_realtime_cdf(f))
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_realtime_cdf] timeout [3 seconds] exceeded!
+2021-12-03 15:00:36,348 - __main__ - ERROR - [<class 'Exception'>, 'main.py', 89]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 89, in <module>
+    print(f, custom_realtime_cdf(f))
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_realtime_cdf] timeout [3 seconds] exceeded!
+2021-12-03 15:03:19,783 - __main__ - ERROR - function [custom_cdf] timeout [3 seconds] exceeded!
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 88, in <module>
+    print(f, custom_cdf(f))
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_cdf] timeout [3 seconds] exceeded!
+2021-12-03 15:03:20,002 - __main__ - ERROR - [<class 'Exception'>, 'main.py', 88]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 88, in <module>
+    print(f, custom_cdf(f))
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 23, in wrapper
+    raise ret
+Exception: function [custom_cdf] timeout [3 seconds] exceeded!
+2021-12-03 15:08:49,431 - __main__ - ERROR - Connection is already closed.
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 90, in <module>
+    custom_reconnect()
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 24, in wrapper
+    raise ret
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 11, in newFunc
+    res[0] = func(*args, **kwargs)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 56, in custom_reconnect
+    check,reason=connector.connect()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 89, in connect
+    check, reason = self.api.connect()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 777, in connect
+    check_ssid=self.send_ssid()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 753, in send_ssid
+    self.ssid(global_value.SSID)  # pylint: disable=not-callable
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\ssid.py", line 17, in __call__
+    self.send_websocket_request(self.name, ssid)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\base.py", line 23, in send_websocket_request
+    return self.api.send_websocket_request(name, msg,request_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 267, in send_websocket_request
+    self.websocket.send(data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\websocket_client-0.56.0-py3.9.egg\websocket\_app.py", line 154, in send
+    raise WebSocketConnectionClosedException(
+websocket._exceptions.WebSocketConnectionClosedException: Connection is already closed.
+2021-12-03 15:08:52,546 - __main__ - ERROR - [<class 'websocket._exceptions.WebSocketConnectionClosedException'>, 'main.py', 90]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 90, in <module>
+    custom_reconnect()
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 24, in wrapper
+    raise ret
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 11, in newFunc
+    res[0] = func(*args, **kwargs)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 56, in custom_reconnect
+    check,reason=connector.connect()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 89, in connect
+    check, reason = self.api.connect()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 777, in connect
+    check_ssid=self.send_ssid()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 753, in send_ssid
+    self.ssid(global_value.SSID)  # pylint: disable=not-callable
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\ssid.py", line 17, in __call__
+    self.send_websocket_request(self.name, ssid)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\base.py", line 23, in send_websocket_request
+    return self.api.send_websocket_request(name, msg,request_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 267, in send_websocket_request
+    self.websocket.send(data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\websocket_client-0.56.0-py3.9.egg\websocket\_app.py", line 154, in send
+    raise WebSocketConnectionClosedException(
+websocket._exceptions.WebSocketConnectionClosedException: Connection is already closed.
+2021-12-03 15:15:57,698 - __main__ - ERROR - function [custom_reconnect] timeout [120 seconds] exceeded!
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 91, in <module>
+    custom_reconnect()
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 24, in wrapper
+    raise ret
+Exception: function [custom_reconnect] timeout [120 seconds] exceeded!
+2021-12-03 15:16:00,531 - __main__ - ERROR - [<class 'Exception'>, 'main.py', 91]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 91, in <module>
+    custom_reconnect()
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 24, in wrapper
+    raise ret
+Exception: function [custom_reconnect] timeout [120 seconds] exceeded!
+2021-12-04 20:42:25,091 - __main__ - ERROR - 'list' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 107, in <module>
+    mathf.EZAquariiB(checklist, pricelist, means_data)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 126, in EZAquariiB
+    mu = means.get(enlistedname)
+AttributeError: 'list' object has no attribute 'get'
+2021-12-04 20:42:25,094 - __main__ - ERROR - [<class 'AttributeError'>, 'main.py', 107]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 107, in <module>
+    mathf.EZAquariiB(checklist, pricelist, means_data)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 126, in EZAquariiB
+    mu = means.get(enlistedname)
+AttributeError: 'list' object has no attribute 'get'
+2021-12-04 20:45:28,515 - __main__ - ERROR - 'list' object has no attribute 'get'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 107, in <module>
+    mathf.EZAquariiB(checklist, pricelist, means_data)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 126, in EZAquariiB
+    mu = means.get(enlistedname)
+AttributeError: 'list' object has no attribute 'get'
+2021-12-04 20:45:28,518 - __main__ - ERROR - [<class 'AttributeError'>, 'main.py', 107]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 107, in <module>
+    mathf.EZAquariiB(checklist, pricelist, means_data)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 126, in EZAquariiB
+    mu = means.get(enlistedname)
+AttributeError: 'list' object has no attribute 'get'
+2021-12-04 21:07:29,185 - __main__ - ERROR - not enough values to unpack (expected 3, got 1)
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 123, in EZAquariiB
+    for name, price, leverage in names, prices, leverages:
+ValueError: not enough values to unpack (expected 3, got 1)
+2021-12-04 21:07:29,187 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 123, in EZAquariiB
+    for name, price, leverage in names, prices, leverages:
+ValueError: not enough values to unpack (expected 3, got 1)
+2021-12-04 21:28:14,085 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:28:14,088 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:39:16,388 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:39:16,390 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:42:20,280 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:42:20,283 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:45:23,837 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:45:23,840 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:48:27,330 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:48:27,333 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:51:31,061 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:51:31,067 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:56:30,516 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:56:30,518 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:59:34,290 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 21:59:34,293 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:02:38,074 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:02:38,078 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:05:41,533 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:05:41,536 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:08:44,882 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:08:44,885 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:11:48,219 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:11:48,223 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:14:52,067 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:14:52,070 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:17:55,363 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:17:55,365 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:20:58,837 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:20:58,840 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:24:02,393 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:24:02,395 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:27:05,869 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:27:05,871 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:30:09,471 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:30:09,475 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:33:13,088 - __main__ - ERROR - zero-size array to reduction operation maximum which has no identity
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 22:33:13,091 - __main__ - ERROR - [<class 'ValueError'>, 'main.py', 121]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 121, in <module>
+    print(mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance))
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 134, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 115, in nmfinder
+    maxcoordinates = tuple(zip(*np.where(indexcube == indexcube.max())))[0]
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\numpy\core\_methods.py", line 39, in _amax
+    return umr_maximum(a, axis, None, out, keepdims, initial, where)
+ValueError: zero-size array to reduction operation maximum which has no identity
+2021-12-04 23:13:10,045 - __main__ - ERROR - 'builtin_function_or_method' object has no attribute 'time'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 81, in <module>
+    balance = timeout.get_custom_balance(connector)
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 80, in get_custom_balance
+    stt = time.time()
+AttributeError: 'builtin_function_or_method' object has no attribute 'time'
+2021-12-04 23:13:10,047 - __main__ - ERROR - [<class 'AttributeError'>, 'main.py', 81]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 81, in <module>
+    balance = timeout.get_custom_balance(connector)
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 80, in get_custom_balance
+    stt = time.time()
+AttributeError: 'builtin_function_or_method' object has no attribute 'time'
+2021-12-04 23:13:10,047 - __main__ - INFO - SE3 [Error hold]
+2021-12-04 23:14:04,158 - __main__ - ERROR - 'builtin_function_or_method' object has no attribute 'time'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 81, in <module>
+    balance = timeout.get_custom_balance(connector)
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 81, in get_custom_balance
+    while connector.api.balances_raw == None and time.time() - stt < timeout:
+AttributeError: 'builtin_function_or_method' object has no attribute 'time'
+2021-12-04 23:14:04,160 - __main__ - ERROR - [<class 'AttributeError'>, 'main.py', 81]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 81, in <module>
+    balance = timeout.get_custom_balance(connector)
+  File "C:\Users\HP\Documents\repos\Ripple_3.0\./models\timeout.py", line 81, in get_custom_balance
+    while connector.api.balances_raw == None and time.time() - stt < timeout:
+AttributeError: 'builtin_function_or_method' object has no attribute 'time'
+2021-12-04 23:14:04,161 - __main__ - INFO - SE3 [Error hold]
