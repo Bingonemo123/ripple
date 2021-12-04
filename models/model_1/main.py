@@ -7,6 +7,7 @@ import os
 import pathlib
 import json
 import mathf
+from pushover import Client
 
 sys.path.append('./models')
 import timeout
@@ -48,6 +49,9 @@ use_trail_stop=False
 auto_margin_call=True 
 use_token_for_commission=False 
 
+#----------------------------------------------------------------------------#
+client = Client("ud1pmkki74te12d3bicw24r99kb38z", api_token="aq7rx1r3o55k6rtobcq8xwv66u8jgw")
+client.send_message(os.getswd(), title="M1 I0")
 #----------------------------------------------------------------------------#
 while True:
     try:
@@ -126,5 +130,6 @@ while True:
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         logger.exception(str(e))
         logger.exception([exc_type, fname, exc_tb.tb_lineno])
+        client.send_message(exc_type, title='M1E')
         logger.info('SE3 [Error hold]')
         time.sleep(60*3)
