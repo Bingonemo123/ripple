@@ -831,3 +831,15 @@ Traceback (most recent call last):
     raise KeyError
 KeyError
 2021-12-05 00:14:24,764 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 00:44:25,457 - __main__ - INFO - SE1 [winter sleep]
+2021-12-05 00:50:46,580 - __main__ - ERROR - can't multiply sequence by non-int of type 'numpy.float64'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 95, in <module>
+    if balance/(leverages * n) < 1:
+TypeError: can't multiply sequence by non-int of type 'numpy.float64'
+2021-12-05 00:50:46,581 - __main__ - ERROR - [<class 'TypeError'>, 'main.py', 95]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 95, in <module>
+    if balance/(leverages * n) < 1:
+TypeError: can't multiply sequence by non-int of type 'numpy.float64'
+2021-12-05 00:50:47,666 - __main__ - INFO - SE3 [Error hold]

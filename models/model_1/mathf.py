@@ -1,7 +1,12 @@
 from scipy import special
 import numpy as np
-import time
-import numba
+import platform
+
+if platform.system() == 'Windows':
+    import numba
+
+
+
 
 def CNcdf(x, mu):
     delta = 10000   
@@ -96,7 +101,10 @@ def nmfinder (current_price, leverage, mu, balance):
     pcube = np.zeros(shape=(np.size(mv), np.size(nv)))
     for x in range(len(mv)):
         for y in range(len(nv)):
-            performance = nbrute(mv[x], Pc(current_price, leverage, mu, mv[x]), balance, nv[y])
+            if platform.system() == 'Windows':
+                performance = nbrute(mv[x], Pc(current_price, leverage, mu, mv[x]), balance, nv[y])
+            else:
+                performance = brute(mv[x], Pc(current_price, leverage, mu, mv[x]), balance, nv[y])
             wincube[x][y] = performance[0]
             meancube[x][y] = performance[2]
             pcube[x][y] = Pc(current_price, leverage, mu, mv[x])

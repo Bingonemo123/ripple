@@ -72,9 +72,9 @@ while True:
 
         #Get real time prices 
         
-        checklist = []
-        pricelist = []
-        leverages = []
+        checklist = ['USDAUD']
+        pricelist = [0.03]
+        leverages = [1000]
         for f in open_forex:
             price = timeout.custom_forex(connector, f)
             checklist.append(f)
@@ -92,14 +92,14 @@ while True:
         
         name, m, n, leverage = foundmark[1]
 
-        if balance/(leverages * n) < 1:
+        if balance/(leverage * n) < 1:
             logger.info('SE2 [balance shortage]')
             time.sleep(60*3)
             continue
-        elif balance/(leverages * n) > 20000:
+        elif balance/(leverage * n) > 20000:
             amount = 20000
         else:
-            amount = balance/(leverages * n)
+            amount = balance/(leverage * n)
 
         take_profit_value = int( 100 * m )
 
