@@ -843,3 +843,570 @@ Traceback (most recent call last):
     if balance/(leverages * n) < 1:
 TypeError: can't multiply sequence by non-int of type 'numpy.float64'
 2021-12-05 00:50:47,666 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 01:21:19,205 - __main__ - ERROR - Object of type type is not JSON serializable
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 106, in <module>
+    check,id=connector.buy_order(instrument_type= instrument_type, instrument_id=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1134, in buy_order
+    self.api.buy_order(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\buy_place_order_temp.py", line 50, in __call__
+    self.send_websocket_request(self.name, data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\base.py", line 23, in send_websocket_request
+    return self.api.send_websocket_request(name, msg,request_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 260, in send_websocket_request
+    data = json.dumps(dict(name=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type type is not JSON serializable
+2021-12-05 01:21:19,231 - __main__ - ERROR - [<class 'TypeError'>, 'main.py', 106]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 106, in <module>
+    check,id=connector.buy_order(instrument_type= instrument_type, instrument_id=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1134, in buy_order
+    self.api.buy_order(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\buy_place_order_temp.py", line 50, in __call__
+    self.send_websocket_request(self.name, data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\base.py", line 23, in send_websocket_request
+    return self.api.send_websocket_request(name, msg,request_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 260, in send_websocket_request
+    data = json.dumps(dict(name=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type type is not JSON serializable
+2021-12-05 01:21:19,846 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 01:41:33,838 - __main__ - ERROR - Object of type type is not JSON serializable
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 106, in <module>
+    check,id=connector.buy_order(instrument_type= instrument_type, instrument_id=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1134, in buy_order
+    self.api.buy_order(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\buy_place_order_temp.py", line 50, in __call__
+    self.send_websocket_request(self.name, data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\base.py", line 23, in send_websocket_request
+    return self.api.send_websocket_request(name, msg,request_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 260, in send_websocket_request
+    data = json.dumps(dict(name=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type type is not JSON serializable
+2021-12-05 01:41:33,841 - __main__ - ERROR - [<class 'TypeError'>, 'main.py', 106]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 106, in <module>
+    check,id=connector.buy_order(instrument_type= instrument_type, instrument_id=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1134, in buy_order
+    self.api.buy_order(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\buy_place_order_temp.py", line 50, in __call__
+    self.send_websocket_request(self.name, data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\base.py", line 23, in send_websocket_request
+    return self.api.send_websocket_request(name, msg,request_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 260, in send_websocket_request
+    data = json.dumps(dict(name=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type type is not JSON serializable
+2021-12-05 01:41:34,903 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 01:57:32,914 - __main__ - ERROR - Object of type type is not JSON serializable
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 106, in <module>
+    check,id=connector.buy_order(instrument_type= instrument_type, instrument_id=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1134, in buy_order
+    self.api.buy_order(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\buy_place_order_temp.py", line 50, in __call__
+    self.send_websocket_request(self.name, data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\base.py", line 23, in send_websocket_request
+    return self.api.send_websocket_request(name, msg,request_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 260, in send_websocket_request
+    data = json.dumps(dict(name=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type type is not JSON serializable
+2021-12-05 01:57:32,918 - __main__ - ERROR - [<class 'TypeError'>, 'main.py', 106]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 106, in <module>
+    check,id=connector.buy_order(instrument_type= instrument_type, instrument_id=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1134, in buy_order
+    self.api.buy_order(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\buy_place_order_temp.py", line 50, in __call__
+    self.send_websocket_request(self.name, data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\base.py", line 23, in send_websocket_request
+    return self.api.send_websocket_request(name, msg,request_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 260, in send_websocket_request
+    data = json.dumps(dict(name=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type type is not JSON serializable
+2021-12-05 01:57:33,997 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 18:19:09,959 - __main__ - ERROR - module 'cf' has no attribute 'brute'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 87, in <module>
+    foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 86, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 48, in nmfinder
+    performance = cf.brute(mv[x], Pc(current_price, leverage, mu, mv[x]), balance, nv[y])
+AttributeError: module 'cf' has no attribute 'brute'
+2021-12-05 18:19:09,960 - __main__ - ERROR - [<class 'AttributeError'>, 'main.py', 87]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 87, in <module>
+    foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 86, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 48, in nmfinder
+    performance = cf.brute(mv[x], Pc(current_price, leverage, mu, mv[x]), balance, nv[y])
+AttributeError: module 'cf' has no attribute 'brute'
+2021-12-05 18:19:10,542 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 18:20:04,144 - __main__ - ERROR - Object of type type is not JSON serializable
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 107, in <module>
+    check,id=connector.buy_order(instrument_type= instrument_type, instrument_id=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1134, in buy_order
+    self.api.buy_order(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\buy_place_order_temp.py", line 50, in __call__
+    self.send_websocket_request(self.name, data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\base.py", line 23, in send_websocket_request
+    return self.api.send_websocket_request(name, msg,request_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 260, in send_websocket_request
+    data = json.dumps(dict(name=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type type is not JSON serializable
+2021-12-05 18:20:04,201 - __main__ - ERROR - [<class 'TypeError'>, 'main.py', 107]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 107, in <module>
+    check,id=connector.buy_order(instrument_type= instrument_type, instrument_id=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1134, in buy_order
+    self.api.buy_order(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\buy_place_order_temp.py", line 50, in __call__
+    self.send_websocket_request(self.name, data)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\ws\chanels\base.py", line 23, in send_websocket_request
+    return self.api.send_websocket_request(name, msg,request_id)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\api.py", line 260, in send_websocket_request
+    data = json.dumps(dict(name=name,
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type type is not JSON serializable
+2021-12-05 18:20:05,288 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 18:27:29,940 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:28:12,064 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:28:54,724 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:29:36,885 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:30:19,080 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:31:01,745 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:31:44,561 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:32:26,571 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:33:08,267 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:33:49,926 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:34:32,172 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:35:13,759 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:35:55,643 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:36:37,561 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:37:19,874 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:38:01,546 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:38:43,326 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:39:25,532 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:40:07,192 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:40:51,063 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:41:33,548 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:42:16,176 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:42:58,279 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:43:40,423 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:44:23,041 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:45:05,233 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:45:47,748 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:46:31,190 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:47:14,333 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:47:55,942 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:48:33,310 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:49:31,750 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:50:04,177 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:50:40,949 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:51:13,609 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:51:46,272 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:52:18,277 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:52:50,068 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:53:21,970 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:53:53,619 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:54:25,269 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:54:57,404 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:55:29,101 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:56:01,217 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:56:32,838 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:57:04,897 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:57:36,661 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:58:08,255 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:58:39,817 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:59:11,549 - __main__ - INFO - Total elements in data: 0
+2021-12-05 18:59:43,490 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:00:16,664 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:00:50,982 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:01:23,736 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:01:55,892 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:02:29,083 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:03:01,101 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:03:34,127 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:04:06,396 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:04:38,640 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:05:11,237 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:05:43,497 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:06:15,880 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:06:48,745 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:07:21,113 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:07:53,344 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:08:25,839 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:08:58,102 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:09:30,953 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:10:04,168 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:10:37,719 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:11:09,991 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:11:42,822 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:12:15,157 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:13:02,325 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:13:34,379 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:14:06,788 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:14:38,937 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:15:10,893 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:15:42,757 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:16:14,987 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:16:46,920 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:17:18,682 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:17:50,548 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:18:22,363 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:18:54,154 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:19:25,974 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:19:57,547 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:20:31,422 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:21:04,074 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:21:36,688 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:22:08,925 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:22:41,177 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:23:13,644 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:23:47,034 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:24:20,118 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:24:52,585 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:25:24,800 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:25:59,013 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:26:31,463 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:27:05,646 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:27:38,003 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:28:10,566 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:28:44,491 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:29:17,081 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:29:50,265 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:30:22,547 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:30:55,408 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:31:27,603 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:31:59,985 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:32:32,484 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:33:05,335 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:33:43,735 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:34:17,082 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:34:50,029 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:35:22,458 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:35:55,707 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:36:27,681 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:37:00,212 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:37:32,873 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:38:12,422 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:38:47,281 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:39:27,078 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:40:05,597 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:40:40,486 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:41:14,829 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:41:49,922 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:42:25,924 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:42:58,502 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:43:33,602 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:44:09,860 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:44:43,424 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:45:15,876 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:45:49,268 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:46:21,792 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:46:58,735 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:47:33,391 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:48:07,346 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:48:40,532 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:49:13,421 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:49:48,677 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:50:25,268 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:51:01,093 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:51:34,898 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:52:09,439 - __main__ - INFO - Total elements in data: 0
+2021-12-05 19:52:42,875 - __main__ - INFO - Total elements in data: 0
+2021-12-05 20:06:18,970 - __main__ - INFO - Total elements in data: 0
+2021-12-05 20:07:01,749 - __main__ - INFO - Total elements in data: 0
+2021-12-05 20:07:38,027 - __main__ - INFO - Total elements in data: 0
+2021-12-05 21:29:07,001 - __main__ - INFO - Total elements in data: 0
+2021-12-05 21:29:40,340 - __main__ - INFO - Total elements in data: 0
+2021-12-05 21:30:15,396 - __main__ - INFO - Total elements in data: 0
+2021-12-05 21:31:34,187 - __main__ - INFO - Total elements in data: 0
+2021-12-05 21:32:12,861 - __main__ - INFO - Total elements in data: 0
+2021-12-05 21:32:53,065 - __main__ - INFO - Total elements in data: 0
+2021-12-05 21:33:32,087 - __main__ - INFO - Total elements in data: 0
+2021-12-05 21:34:12,571 - __main__ - INFO - Total elements in data: 0
+2021-12-05 21:34:48,566 - __main__ - INFO - Total elements in data: 0
+2021-12-05 21:35:26,723 - __main__ - ERROR - 'USDAUD'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 97, in <module>
+    leverages.append(max(connector.get_available_leverages('forex', f)[1].get('leverages')[0].get('regulated')))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1304, in get_available_leverages
+    instrument_type, OP_code.ACTIVES[actives])
+KeyError: 'USDAUD'
+2021-12-05 21:35:26,729 - __main__ - ERROR - [<class 'KeyError'>, 'main.py', 97]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 97, in <module>
+    leverages.append(max(connector.get_available_leverages('forex', f)[1].get('leverages')[0].get('regulated')))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1304, in get_available_leverages
+    instrument_type, OP_code.ACTIVES[actives])
+KeyError: 'USDAUD'
+2021-12-05 21:35:27,452 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 21:38:35,667 - __main__ - ERROR - 'USDAUD'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 97, in <module>
+    leverages.append(max(connector.get_available_leverages('forex', f)[1].get('leverages')[0].get('regulated')))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1304, in get_available_leverages
+    instrument_type, OP_code.ACTIVES[actives])
+KeyError: 'USDAUD'
+2021-12-05 21:38:35,669 - __main__ - ERROR - [<class 'KeyError'>, 'main.py', 97]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 97, in <module>
+    leverages.append(max(connector.get_available_leverages('forex', f)[1].get('leverages')[0].get('regulated')))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1304, in get_available_leverages
+    instrument_type, OP_code.ACTIVES[actives])
+KeyError: 'USDAUD'
+2021-12-05 21:38:36,568 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 21:40:01,438 - __main__ - ERROR - 'USDAUD'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 97, in <module>
+    print(connector.get_available_leverages('forex', f))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1304, in get_available_leverages
+    instrument_type, OP_code.ACTIVES[actives])
+KeyError: 'USDAUD'
+2021-12-05 21:40:01,448 - __main__ - ERROR - [<class 'KeyError'>, 'main.py', 97]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 97, in <module>
+    print(connector.get_available_leverages('forex', f))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1304, in get_available_leverages
+    instrument_type, OP_code.ACTIVES[actives])
+KeyError: 'USDAUD'
+2021-12-05 21:40:02,316 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 21:40:28,644 - __main__ - ERROR - 'USDAUD'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 97, in <module>
+    print(connector.get_available_leverages('forex', f))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1304, in get_available_leverages
+    instrument_type, OP_code.ACTIVES[actives])
+KeyError: 'USDAUD'
+2021-12-05 21:40:28,646 - __main__ - ERROR - [<class 'KeyError'>, 'main.py', 97]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 97, in <module>
+    print(connector.get_available_leverages('forex', f))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\iqoptionapi-6.8.9.1-py3.9.egg\iqoptionapi\stable_api.py", line 1304, in get_available_leverages
+    instrument_type, OP_code.ACTIVES[actives])
+KeyError: 'USDAUD'
+2021-12-05 21:40:29,498 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 21:43:03,281 - __main__ - ERROR - can't multiply sequence by non-int of type 'numpy.float64'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 103, in <module>
+    foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 86, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in nmfinder
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in <listcomp>
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 24, in EVc
+    pro = Pc(price, leverage, mu, m)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 20, in Pc
+    cbetta = price*((m/leverage)+ 1)
+TypeError: can't multiply sequence by non-int of type 'numpy.float64'
+2021-12-05 21:43:03,283 - __main__ - ERROR - [<class 'TypeError'>, 'main.py', 103]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 103, in <module>
+    foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 86, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in nmfinder
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in <listcomp>
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 24, in EVc
+    pro = Pc(price, leverage, mu, m)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 20, in Pc
+    cbetta = price*((m/leverage)+ 1)
+TypeError: can't multiply sequence by non-int of type 'numpy.float64'
+2021-12-05 21:43:04,358 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 21:46:46,731 - __main__ - ERROR - can't multiply sequence by non-int of type 'numpy.float64'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 103, in <module>
+    leverages.append(fleverage)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 86, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in nmfinder
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in <listcomp>
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 24, in EVc
+    pro = Pc(price, leverage, mu, m)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 20, in Pc
+    cbetta = price*((m/leverage)+ 1)
+TypeError: can't multiply sequence by non-int of type 'numpy.float64'
+2021-12-05 21:46:46,742 - __main__ - ERROR - [<class 'TypeError'>, 'main.py', 103]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 103, in <module>
+    leverages.append(fleverage)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 86, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in nmfinder
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in <listcomp>
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 24, in EVc
+    pro = Pc(price, leverage, mu, m)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 20, in Pc
+    cbetta = price*((m/leverage)+ 1)
+TypeError: can't multiply sequence by non-int of type 'numpy.float64'
+2021-12-05 21:46:47,916 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 21:48:05,017 - __main__ - INFO - Total elements in data: 0
+2021-12-05 21:48:43,937 - __main__ - INFO - Total elements in data: 0
+2021-12-05 21:49:42,028 - __main__ - ERROR - unsupported operand type(s) for *: 'AttributeError' and 'float'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 108, in <module>
+    foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 86, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in nmfinder
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in <listcomp>
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 24, in EVc
+    pro = Pc(price, leverage, mu, m)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 20, in Pc
+    cbetta = price*((m/leverage)+ 1)
+TypeError: unsupported operand type(s) for *: 'AttributeError' and 'float'
+2021-12-05 21:49:42,030 - __main__ - ERROR - [<class 'TypeError'>, 'main.py', 108]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 108, in <module>
+    foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 86, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in nmfinder
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in <listcomp>
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 24, in EVc
+    pro = Pc(price, leverage, mu, m)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 20, in Pc
+    cbetta = price*((m/leverage)+ 1)
+TypeError: unsupported operand type(s) for *: 'AttributeError' and 'float'
+2021-12-05 21:52:47,316 - __main__ - ERROR - unsupported operand type(s) for *: 'AttributeError' and 'float'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 108, in <module>
+    foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 86, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in nmfinder
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in <listcomp>
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 24, in EVc
+    pro = Pc(price, leverage, mu, m)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 20, in Pc
+    cbetta = price*((m/leverage)+ 1)
+TypeError: unsupported operand type(s) for *: 'AttributeError' and 'float'
+2021-12-05 21:52:47,318 - __main__ - ERROR - [<class 'TypeError'>, 'main.py', 108]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 108, in <module>
+    foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 86, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in nmfinder
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in <listcomp>
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 24, in EVc
+    pro = Pc(price, leverage, mu, m)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 20, in Pc
+    cbetta = price*((m/leverage)+ 1)
+TypeError: unsupported operand type(s) for *: 'AttributeError' and 'float'
+2021-12-05 21:52:47,922 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 21:55:24,478 - __main__ - ERROR - unsupported operand type(s) for *: 'AttributeError' and 'float'
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 108, in <module>
+    foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 86, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in nmfinder
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in <listcomp>
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 24, in EVc
+    pro = Pc(price, leverage, mu, m)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 20, in Pc
+    cbetta = price*((m/leverage)+ 1)
+TypeError: unsupported operand type(s) for *: 'AttributeError' and 'float'
+2021-12-05 21:55:24,480 - __main__ - ERROR - [<class 'TypeError'>, 'main.py', 108]
+Traceback (most recent call last):
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\main.py", line 108, in <module>
+    foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 86, in EZAquariiB
+    m, n, x = nmfinder(price, leverage, mu, balance)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in nmfinder
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 32, in <listcomp>
+    Evv = np.array([EVc(current_price, leverage, mu, z) for z in mv])
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 24, in EVc
+    pro = Pc(price, leverage, mu, m)
+  File "c:\Users\HP\Documents\repos\Ripple_3.0\models\model_1\mathf.py", line 20, in Pc
+    cbetta = price*((m/leverage)+ 1)
+TypeError: unsupported operand type(s) for *: 'AttributeError' and 'float'
+2021-12-05 21:55:25,558 - __main__ - INFO - SE3 [Error hold]
+2021-12-05 22:03:16,972 - __main__ - INFO - Total elements in data: 0
+2021-12-05 22:04:40,961 - __main__ - INFO - SE1 [winter sleep]

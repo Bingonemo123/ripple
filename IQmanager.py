@@ -48,7 +48,7 @@ logger.addHandler(rotatingfile_handler)
 connector.change_balance("PRACTICE")
 instrument_type="cfd"
 side="buy"
-type="market"
+type_market="market"
 limit_price=None 
 stop_price=None 
 stop_lose_kind=None 
@@ -120,7 +120,7 @@ def run():
           amount = ((balance/20)*0.95) /leverage if ((balance/20)*0.95) /leverage < 20000 else 20000
           check,id=connector.buy_order(instrument_type= instrument_type, instrument_id=stk,
                     side=side, amount=amount,leverage=leverage,
-                    type=type,limit_price=limit_price, stop_price=stop_price,
+                    type=type_market,limit_price=limit_price, stop_price=stop_price,
                     stop_lose_value=stop_lose_value, stop_lose_kind=stop_lose_kind,
                     take_profit_value=take_profit_value, take_profit_kind=take_profit_kind,
                     use_trail_stop=use_trail_stop, auto_margin_call=auto_margin_call,

@@ -1,6 +1,7 @@
 import functools
 from threading import Thread
-from time import time
+import time
+
 def timeout(timeout):
     def deco(func):
         @functools.wraps(func)
@@ -74,14 +75,20 @@ def custom_forex(connector, f):
     candles = connector.get_candles(f[:6], 5, 1, time.time())
     return candles[-1]['close']
 
+@softtimeout(5)
+def custom_forex_leverage(connector, f):
+    return max(connector.get_available_leverages('forex', f)[1].get('leverages')[0].get('regulated'))
+
 def get_custom_balance(connector, timeout = 60):
     connector.api.balances_raw = None
     connector.api.get_balances()
-    stt = time()
-    while connector.api.balances_raw == None and time() - stt < timeout:
+    stt = time.time()
+    while connector.api.balances_raw == None and time.time() - stt < timeout:
         pass
     if connector.api.balances_raw == None:
         return None
     for balance in connector.api.balances_raw["msg"]:
             if balance["id"] == connector.get_balance_id():
                 return balance["amount"]
+
+

@@ -36,7 +36,7 @@ rotatingfile_handler.setFormatter(formatter)
 logger.addHandler(rotatingfile_handler)
 #----------------------------------------------------------------------------#
 connector.change_balance("PRACTICE")
-instrument_type=""
+instrument_type="forex"
 side="buy"
 type_market="market"
 limit_price=None 
@@ -70,16 +70,38 @@ while True:
         open_cdf = [x for x in ALL_Asset['cfd'] if ALL_Asset['cfd'][x].get('open')]
         open_forex = [x for x in ALL_Asset['forex'] if ALL_Asset['forex'][x].get('open')]
 
+
+        #Filter new positions
+        delay = 8
+        FilterForex = []
+        for f in open_forex:
+            for d in data[::-1]:
+                if d.Name == f:
+                    if (time.time() - d.Buying_time) > delay * 3600:
+                        FilterForex.append(f)
+                    break
+            else:
+                FilterForex.append(f)
+
+        open_forex = FilterForex
         #Get real time prices 
         
-        checklist = ['USDAUD']
-        pricelist = [0.03]
-        leverages = [1000]
+        checklist = []
+        pricelist = []
+        leverages = []
         for f in open_forex:
             price = timeout.custom_forex(connector, f)
+            if not isinstance(price, (float, int)):
+                logger.info(f'M1Sk1 Reason: {price}')
+                continue
+            fleverage = timeout.custom_forex_leverage(connector, f)
+            if not isinstance(fleverage, (float, int)):
+                logger.info(f'M1Sk2 Reason: {fleverage}')
+                continue
+
             checklist.append(f)
             pricelist.append(price)
-            leverages.append(max(connector.get_available_leverages('forex', f)[1].get('leverages')[0].get('regulated')))
+            leverages.append(fleverage)
             timeout.custom_reconnect(connector)
 
         balance = timeout.get_custom_balance(connector)
@@ -105,7 +127,7 @@ while True:
 
         check,id=connector.buy_order(instrument_type= instrument_type, instrument_id=name,
                     side=side, amount=amount,leverage=leverage,
-                    type=type,limit_price=limit_price, stop_price=stop_price,
+                    type=type_market,limit_price=limit_price, stop_price=stop_price,
                     stop_lose_value=stop_lose_value, stop_lose_kind=stop_lose_kind,
                     take_profit_value=take_profit_value, take_profit_kind=take_profit_kind,
                     use_trail_stop=use_trail_stop, auto_margin_call=auto_margin_call,
@@ -130,6 +152,6 @@ while True:
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         logger.exception(str(e))
         logger.exception([exc_type, fname, exc_tb.tb_lineno])
-        client.send_message(exc_type, title='M1E')
+        client.send_message(exc_type, title=f'M1E {os.getcwd()}')
         logger.info('SE3 [Error hold]')
         time.sleep(60*3)

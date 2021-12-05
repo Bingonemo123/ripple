@@ -1,6 +1,7 @@
 from scipy import special
 import numpy as np
 import platform
+import cf
 
 if platform.system() == 'Windows':
     import numba
@@ -24,63 +25,6 @@ def EVc (price, leverage, mu, m):
     return m * pro - (1- pro)
 
 
-def brute(m, p, Bs, n):
-    shape = 1000
-    win = 0
-    lose = 0
-    avgstep = np.zeros(shape, dtype=np.int)
-    for x in range(shape):
-        B = Bs
-        for y in range(91):
-            if B/n <= 1:
-                lose += 1
-                avgstep[x] = y
-                break
-            if B >= 2*Bs:
-                win +=1
-                avgstep[x] = y
-                break
-            if np.random.choice([True, False], p=[p, (1 - p)]):
-                B += (B/n) * m
-            else:
-                B -= (B/n)
-        else:
-            lose += 1
-            avgstep[x] = y 
-    return win, lose, np.mean(avgstep)
-
-
-def nbrute(m, p, Bs, n):
-    shape = 1000
-    zerosarg = np.zeros(shape, dtype=np.int)
-    randomlib = np.random.choice([True, False],size=(91, shape), p=[p, (1 - p)])
-
-    @numba.jit(nopython=True)
-    def pic(m, Bs, n, zerosarg, randomlib):
-        win = 0
-        lose = 0
-        for x in range(shape):
-            B = Bs
-            for y in range(91):
-                if B/n <= 1:
-                    lose += 1
-                    zerosarg[x] = y
-                    break
-                if B >= 2*Bs:
-                    win +=1
-                    zerosarg[x] = y
-                    break
-                if randomlib[y][x]:
-                    B += (B/n) * m
-                else:
-                    B -= (B/n)
-            else:
-                lose += 1
-                zerosarg[x] = y 
-        return win, lose
-    return *pic(m, Bs, n, zerosarg, randomlib), np.mean(zerosarg)
-
-
 def nmfinder (current_price, leverage, mu, balance):
     mv = np.linspace(0.01, 1, num= 100)
     nv = np.linspace(1, 20, 10) 
@@ -101,10 +45,7 @@ def nmfinder (current_price, leverage, mu, balance):
     pcube = np.zeros(shape=(np.size(mv), np.size(nv)))
     for x in range(len(mv)):
         for y in range(len(nv)):
-            if platform.system() == 'Windows':
-                performance = nbrute(mv[x], Pc(current_price, leverage, mu, mv[x]), balance, nv[y])
-            else:
-                performance = brute(mv[x], Pc(current_price, leverage, mu, mv[x]), balance, nv[y])
+            performance = cf.cbrute(mv[x], Pc(current_price, leverage, mu, mv[x]), balance, nv[y])
             wincube[x][y] = performance[0]
             meancube[x][y] = performance[2]
             pcube[x][y] = Pc(current_price, leverage, mu, mv[x])
