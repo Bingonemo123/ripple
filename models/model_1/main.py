@@ -8,8 +8,6 @@ import pathlib
 import json
 import mathf
 from pushover import Client
-
-sys.path.append('./models')
 import timeout
 
 connector =IQ_Option("ww.bingonemo@gmail.com","JF*#3C5va&_NDqy")
