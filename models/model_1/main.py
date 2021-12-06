@@ -74,8 +74,8 @@ while True:
         FilterForex = []
         for f in open_forex:
             for d in data[::-1]:
-                if d.Name == f:
-                    if (time.time() - d.Buying_time) > delay * 3600:
+                if d.get('Name') == f:
+                    if (time.time() - d.get('Buying_time')) > delay * 3600:
                         FilterForex.append(f)
                     break
             else:
