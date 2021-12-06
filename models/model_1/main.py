@@ -132,7 +132,7 @@ while True:
                     use_token_for_commission=use_token_for_commission)
 
         if check == True:
-            position_id = connector.get_digital_position(id).get('msg').get('position').get('id')
+            position_id = connector.get_position(id)[1].get('position').get('id')
             data.append({'Name' : name,
                             'Id' : id,
                             'Buying_time': time.time(),
