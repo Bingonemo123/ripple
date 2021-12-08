@@ -1422,3 +1422,6 @@ Traceback (most recent call last):
 AttributeError: 'tuple' object has no attribute 'get'
 2021-12-06 13:27:59,096 - __main__ - INFO - SE3 [Error hold]
 2021-12-06 14:22:46,203 - __main__ - INFO - Total elements in data: 1
+2021-12-09 00:54:24,715 - __main__ - INFO - Total elements in data: 2
+2021-12-09 01:01:22,803 - __main__ - INFO - Total elements in data: 2
+2021-12-09 01:08:36,765 - __main__ - INFO - Total elements in data: 2

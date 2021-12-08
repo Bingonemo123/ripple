@@ -62,14 +62,48 @@ while True:
         means_data = json.load(open(path/'market_mean.json', 'r'))
 
         timeout.custom_reconnect(connector)
-        
+
+        ### Cut Out
+        cutout = 4
+        for d in data[::-1]:
+            if d.get("Name") == 'Cut Out':
+                sttime = d.get("Time")
+                if time.time() - sttime >= cutout * 3600:
+                    total_profit, total_margin, msg = timeout.custom_profit(connector)
+                    if total_profit > 0:
+                        data.append({'Name' : 'Cut Out',
+                                'Id' : d.get('Id') + 1,
+                                'Time': time.time(),
+                                'Profit': total_profit,
+                                'Investment': total_margin,
+                                'Total Positions': len(msg),
+                                'Time Delta': round((time.time() - sttime)/3600, 3)
+                            })
+                        for position in msg:
+                            timeout.custom_close(connector, position)
+                        logger.info(str(data[-1]))
+                        client.send_message(str(data[-1]), title=f"M1 {os.getcwd()}")
+                        break
+        else:
+            data.append({'Name' : 'Cut Out',
+                                'Id' : 1,
+                                'Time': time.time(),
+                                'Profit': None,
+                                'Investment': None,
+                                'Total Positions': None,
+                                'Time Delta': None
+                            })
+            client.send_message(data[-1], title=f"M1 {os.getcwd()}")
+
+        ### Open Assets 
+
         ALL_Asset=timeout.custom_all_asets(connector)
 
         open_cdf = [x for x in ALL_Asset['cfd'] if ALL_Asset['cfd'][x].get('open')]
         open_forex = [x for x in ALL_Asset['forex'] if ALL_Asset['forex'][x].get('open')]
 
 
-        #Filter new positions
+        ### Filter new positions
         delay = 8
         FilterForex = []
         for f in open_forex:
