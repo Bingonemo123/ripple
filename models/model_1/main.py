@@ -93,7 +93,7 @@ while True:
                                 'Total Positions': None,
                                 'Time Delta': None
                             })
-            client.send_message(data[-1], title=f"M1 {os.getcwd()}")
+            client.send_message(str(data[-1]), title=f"M1 {os.getcwd()}")
 
         ### Open Assets 
 
@@ -177,7 +177,7 @@ while True:
                             'Position_Id': position_id
                         }) # add exam
 
-        json.dump(data, open('data.json', 'w'))
+        json.dump(data, open(path/'data.json', 'w'))
         logger.info(f'Total elements in data: {len(data)}')
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
