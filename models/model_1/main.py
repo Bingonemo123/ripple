@@ -83,7 +83,7 @@ while True:
                             timeout.custom_close(connector, position)
                         logger.info(str(data[-1]))
                         client.send_message(str(data[-1]), title=f"M1 {os.getcwd()}")
-                        break
+                break
         else:
             data.append({'Name' : 'Cut Out',
                                 'Id' : 1,
