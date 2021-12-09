@@ -51,16 +51,16 @@ use_token_for_commission=False
 client = Client("ud1pmkki74te12d3bicw24r99kb38z", api_token="aq7rx1r3o55k6rtobcq8xwv66u8jgw")
 client.send_message(os.getcwd(), title="M1 I0")
 #----------------------------------------------------------------------------#
+try:
+    data = json.load(open(path/'data.json', 'r'))
+except FileNotFoundError:
+    data = []
+    json.dump(data, open(path/'data.json', 'w'))
+
+means_data = json.load(open(path/'market_mean.json', 'r'))
+#----------------------------------------------------------------------------#
 while True:
     try:
-        try:
-            data = json.load(open(path/'data.json', 'r'))
-        except FileNotFoundError:
-            data = []
-            json.dump(data, open(path/'data.json', 'w'))
-
-        means_data = json.load(open(path/'market_mean.json', 'r'))
-
         timeout.custom_reconnect(connector)
 
         ### Cut Out
@@ -68,7 +68,7 @@ while True:
         for d in data[::-1]:
             if d.get("Name") == 'Cut Out':
                 sttime = d.get("Time")
-                if time.time() - sttime >= cutout * 3600:
+                if (time.time() - sttime) >= (cutout * 3600 ):
                     total_profit, total_margin, msg = timeout.custom_profit(connector)
                     if total_profit > 0:
                         data.append({'Name' : 'Cut Out',
@@ -79,6 +79,7 @@ while True:
                                 'Total Positions': len(msg),
                                 'Time Delta': round((time.time() - sttime)/3600, 3)
                             })
+                        json.dump(data, open(path/'data.json', 'w'))
                         for position in msg:
                             timeout.custom_close(connector, position)
                         logger.info(str(data[-1]))
@@ -93,7 +94,8 @@ while True:
                                 'Total Positions': None,
                                 'Time Delta': None
                             })
-            client.send_message(str(data[-1]), title=f"M1 {os.getcwd()}")
+            json.dump(data, open(path/'data.json', 'w'))
+            logger.info(str(data[-1]))
 
         ### Open Assets 
 
