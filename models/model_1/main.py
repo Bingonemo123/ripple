@@ -57,7 +57,7 @@ except FileNotFoundError:
     data = []
     json.dump(data, open(path/'data.json', 'w'))
 
-means_data = json.load(open(path/'market_mean.json', 'r'))
+means_data = json.load(open(path/'month_means.json', 'r'))
 #----------------------------------------------------------------------------#
 while True:
     try:
