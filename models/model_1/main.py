@@ -33,7 +33,7 @@ rotatingfile_handler.setLevel(logging.DEBUG)
 rotatingfile_handler.setFormatter(formatter)
 logger.addHandler(rotatingfile_handler)
 #----------------------------------------------------------------------------#
-connector.change_balance("PRACTICE")
+connector.change_balance("REAL")
 instrument_type="forex"
 side="buy"
 type_market="market"
