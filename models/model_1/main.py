@@ -10,7 +10,7 @@ import mathf
 from pushover import Client
 import timeout
 
-connector =IQ_Option("ww.bingonemo@gmail.com","JF*#3C5va&_NDqy")
+connector =IQ_Option("levanmikeladze123@gmail.com","591449588")
 connector.connect()
 
 '''----------------------------------------------------------------------------------------------'''
@@ -33,7 +33,7 @@ rotatingfile_handler.setLevel(logging.DEBUG)
 rotatingfile_handler.setFormatter(formatter)
 logger.addHandler(rotatingfile_handler)
 #----------------------------------------------------------------------------#
-connector.change_balance("REAL")
+connector.change_balance("PRACTICE")
 instrument_type="forex"
 side="buy"
 type_market="market"
