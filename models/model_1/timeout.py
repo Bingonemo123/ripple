@@ -104,8 +104,11 @@ def custom_profit(connector):
     return total_profit, total_margin, data[1].get('positions')
 
 @softtimeout(5)
-def custom_forex_leverage(connector, f):
-    return min(connector.get_available_leverages('forex', f)[1].get('leverages')[0].get('regulated'))
+def custom_forex_leverage(connector, f, prc):
+    if prc:
+        return max(connector.get_available_leverages('forex', f)[1].get('leverages')[0].get('regulated'))
+    else:
+        return min(connector.get_available_leverages('forex', f)[1].get('leverages')[0].get('regulated'))
 
 @softtimeout(5)
 def custom_close(connector, position):

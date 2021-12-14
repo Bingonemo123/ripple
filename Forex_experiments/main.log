@@ -3676,3 +3676,10 @@ NameError: name 'conn' is not defined
 2021-06-23 22:30:13,808 - IQmanager - INFO - ['Open stocks:', ['DVN:US', 'AA:US', 'XME', 'MU:US', 'COIN', 'UBER', 'FCX:US', 'LYFT', 'TESLA', 'MRWL-CHIX', 'EMN:US', 'AMC', 'TSCOL-CHIX', 'ENELM-CHIX', 'DTED-CHIX', 'ULVRL-CHIX', 'VODL-CHIX', 'TMUS', 'GME']]
 2021-06-23 22:30:13,810 - IQmanager - INFO - unwhile #1
 2021-06-23 22:30:13,944 - IQmanager - INFO - 595309.6$
+2021-12-14 19:53:31,424 - __main__ - INFO - Main Entry 62
+2021-12-14 19:53:32,544 - Internet_protocols - WARNING - Email went wrong...
+2021-12-14 19:53:32,544 - Internet_protocols - WARNING - (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials w8sm199638wrk.112 - gsmtp')
+2021-12-14 19:53:34,631 - IQmanager - INFO - while #1
+2021-12-14 19:53:34,949 - IQmanager - INFO - ['Open stocks:', []]
+2021-12-14 19:53:34,949 - IQmanager - INFO - unwhile #1
+2021-12-14 19:53:35,059 - IQmanager - INFO - 484559.79$
