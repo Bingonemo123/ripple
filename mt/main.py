@@ -1,7 +1,7 @@
 import MetaTrader5 as mt5
  
 # connect to MetaTrader 5
-if not mt5.initialize():
+if not mt5.initialize(portable=True):
     print("initialize() failed")
     mt5.shutdown() 
 
