@@ -1,11 +1,6 @@
 from scipy import special
 import numpy as np
-import platform
 import cf
-
-if platform.system() == 'Windows':
-    import numba
-
 
 
 

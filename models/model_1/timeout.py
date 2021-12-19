@@ -94,7 +94,7 @@ def custom_profit(connector):
         buy_price = position.get('open_underlying_price')
         margin = position.get('margin')
         if inst_id not in price_ref:
-            cprice = custom_forex(connector, inst_id)
+            cprice = custom_forex_bid(connector, inst_id)
             price_ref[inst_id] = cprice
         
         profit = (price_ref[inst_id] - buy_price )*leverage*margin/buy_price
