@@ -80,8 +80,10 @@ while True:
                 if (time.time() - sttime) >= (cutout * 3600 ):
                     try:
                         total_profit, total_margin, msg = timeout.custom_profit_forex(connector)
+                        logger.info(total_profit)
                     except ValueError:
                         logger.exception(str(timeout.custom_profit_forex(connector)))
+                        
                     if total_profit > 0:
                         data.append({'Name' : 'Cut Out',
                                 'Id' : d.get('Id') + 1,
