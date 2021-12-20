@@ -151,7 +151,6 @@ while True:
         typelibr = {}
         for inst in open_s:
             for f in open_s[inst]:
-                print(f)
                 price = timeout.custom_price(connector, f)
                 if not isinstance(price, (float, int)):
                     logger.info(f'M1Sk1 Reason: {price}')
