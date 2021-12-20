@@ -82,7 +82,7 @@ def custom_forex_bid(connector, f):
     bid = [candles[x].get("bid") for x in candles]
     return bid[0]
 
-@softtimeout(10)
+@softtimeout(120)
 def custom_profit_forex(connector):
     data = connector.get_positions('forex')
     price_ref = {}
