@@ -141,7 +141,7 @@ def custom_crypto_bid(connector, f):
     bid = [candles[x].get("bid") for x in candles]
     return bid[0]
 
-@softtimeout(10)
+@softtimeout(120)
 def custom_profit_crypto(connector):
     data = connector.get_positions('crypto')
     price_ref = {}
