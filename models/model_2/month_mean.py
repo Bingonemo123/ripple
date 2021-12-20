@@ -21,7 +21,11 @@ def cades (f):
 
 result = []
 for f in tqdm.tqdm(crpt):
+    if f not in connector.get_all_ACTIVES_OPCODE():
+        continue
+    print(f)
     ANS = cades(f)
+    print('zzz', ANS)
     if isinstance(ANS, str):
         continue
     ANSmean = statistics.mean([x.get('close') for x in ANS])

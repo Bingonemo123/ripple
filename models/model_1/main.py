@@ -82,7 +82,6 @@ while True:
                         total_profit, total_margin, msg = timeout.custom_profit_forex(connector)
                     except ValueError:
                         logger.exception(str(timeout.custom_profit_forex(connector)))
-                        raise Exception
                     if total_profit > 0:
                         data.append({'Name' : 'Cut Out',
                                 'Id' : d.get('Id') + 1,
