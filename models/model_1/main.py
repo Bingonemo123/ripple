@@ -155,6 +155,7 @@ while True:
         balance = timeout.get_custom_balance(connector)
         
         foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
+        logger.info(foundmark)
         if foundmark == None:
             logger.info('SE1 [winter sleep]')
             time.sleep(60*3)

@@ -11,6 +11,8 @@ from pushover import Client
 import timeout
 
 prc = 'pract' in sys.argv
+crpt = 'crypto' in sys.argv
+forx = 'forex' in sys.argv
 
 if prc:
     connector =IQ_Option("levanmikeladze123@gmail.com" ,"591449588")
@@ -42,7 +44,13 @@ if prc:
     connector.change_balance("PRACTICE")
 else:
     connector.change_balance("REAL")
-instrument_type="forex"
+if crpt and forx:
+    instrument_types= ["crypto", "forex"]
+elif forx:
+    instrument_types= ["forex",]
+else: 
+    instrument_types= ["crypto",]
+
 side="buy"
 type_market="market"
 limit_price=None 
@@ -78,11 +86,12 @@ while True:
             if d.get("Name") == 'Cut Out':
                 sttime = d.get("Time")
                 if (time.time() - sttime) >= (cutout * 3600 ):
-                    try:
-                        total_profit, total_margin, msg = timeout.custom_profit_crypto(connector)
-                    except ValueError:
-                        logger.exception(str(timeout.custom_profit_crypto(connector)))
-                        raise Exception
+                    pmm = timeout.custom_profit(connector, instrument_types)
+                    if not isinstance(pmm, (float, int)):
+                        break
+  
+                    total_profit, total_margin, msg = pmm
+                    logger.info(total_profit)
                     if total_profit > 0:
                         data.append({'Name' : 'Cut Out',
                                 'Id' : d.get('Id') + 1,
@@ -113,48 +122,55 @@ while True:
         ### Open Assets 
 
         ALL_Asset=timeout.custom_all_asets(connector)
+        ActiveOpc=timeout.custom_opc(connector)
 
        
-        open_s = [x for x in ALL_Asset[instrument_type] if ALL_Asset[instrument_type][x].get('open')]
-
+        open_s = {}
+        for inst in instrument_types:
+            open_s[inst] = [x for x in ALL_Asset[inst] if ALL_Asset[inst][x].get('open') and x in ActiveOpc]
 
         ### Filter new positions
         delay = 8
-        FilterForex = []
-        for f in open_s:
-            for d in data[::-1]:
-                if d.get('Name') == f:
-                    if (time.time() - d.get('Buying_time')) > delay * 3600:
-                        FilterForex.append(f)
-                    break
-            else:
-                FilterForex.append(f)
+        Filter = {}
+        for inst in open_s:
+            for f in open_s[inst]:
+                for d in data[::-1]:
+                    if d.get('Name') == f:
+                        if (time.time() - d.get('Buying_time')) > delay * 3600:
+                            Filter.setdefault(inst, []).append(f)
+                        break
+                else:
+                    Filter.setdefault(inst, []).append(f)
 
-        open_s = FilterForex
+        open_s = Filter
         #Get real time prices 
         
         checklist = []
         pricelist = []
         leverages = []
-        for f in open_s:
-            price = timeout.custom_crypto(connector, f)
-            if not isinstance(price, (float, int)):
-                logger.info(f'M1Sk1 Reason: {price}')
-                continue
-            fleverage = timeout.custom_crypto_leverage(connector, f, 'pract' in sys.argv)
-            if not isinstance(fleverage, (float, int)):
-                logger.info(f'M1Sk2 Reason: {fleverage}')
-                continue
+        typelibr = {}
+        for inst in open_s:
+            for f in open_s[inst]:
+                print(f)
+                price = timeout.custom_price(connector, f)
+                if not isinstance(price, (float, int)):
+                    logger.info(f'M1Sk1 Reason: {price}')
+                    continue
+                fleverage = timeout.custom_leverage(connector, f, inst, prc)
+                if not isinstance(fleverage, (float, int)):
+                    logger.info(f'M1Sk2 Reason: {fleverage}')
+                    continue
 
-            checklist.append(f)
-            pricelist.append(price)
-            leverages.append(fleverage)
-            timeout.custom_reconnect(connector)
+                checklist.append(f)
+                pricelist.append(price)
+                leverages.append(fleverage)
+                typelibr[f] = inst
+                timeout.custom_reconnect(connector)
 
         balance = timeout.get_custom_balance(connector)
         
         foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
-        print('eef', foundmark)
+        logger.info(foundmark)
         if foundmark == None:
             logger.info('SE1 [winter sleep]')
             time.sleep(60*3)
@@ -173,7 +189,7 @@ while True:
 
         take_profit_value = int( 100 * m )
 
-        check,id=connector.buy_order(instrument_type= instrument_type, instrument_id=name,
+        check,id=connector.buy_order(instrument_type= typelibr[name], instrument_id=name,
                     side=side, amount=amount,leverage=leverage,
                     type=type_market,limit_price=limit_price, stop_price=stop_price,
                     stop_lose_value=stop_lose_value, stop_lose_kind=stop_lose_kind,

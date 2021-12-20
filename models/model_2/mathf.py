@@ -1,4 +1,4 @@
-import scipy
+import scipy.stats
 import numpy as np
 
 def Wolf424B(m, p, Bs, n):
@@ -119,9 +119,7 @@ def EZAquariiB (names, prices, means_data, leverages, balance):
     scoreboard = [np.NINF]
 
     for name, price, leverage in zip(names, prices, leverages):
-        if len(name) != 6:
-            name = name[:6]
-        enlistedname = [name[:3], name[3:]]
+        enlistedname = [name[0:3], name[3:6]]
 
         for data in means_data:
             if data[0] == enlistedname or data[0] == enlistedname[::-1]:
