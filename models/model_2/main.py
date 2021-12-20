@@ -57,7 +57,7 @@ use_token_for_commission=False
 
 #----------------------------------------------------------------------------#
 client = Client("ud1pmkki74te12d3bicw24r99kb38z", api_token="aq7rx1r3o55k6rtobcq8xwv66u8jgw")
-client.send_message(os.getcwd(), title=f"M{prc * 'P'}1 I0")
+client.send_message(os.getcwd(), title=f"M{prc * 'P'}2 I0")
 #----------------------------------------------------------------------------#
 datapath = path/f'data{prc * "_prc"}.json'
 try:
@@ -79,9 +79,9 @@ while True:
                 sttime = d.get("Time")
                 if (time.time() - sttime) >= (cutout * 3600 ):
                     try:
-                        total_profit, total_margin, msg = timeout.custom_profit_forex(connector)
+                        total_profit, total_margin, msg = timeout.custom_profit_crypto(connector)
                     except ValueError:
-                        logger.exception(str(timeout.custom_profit_forex(connector)))
+                        logger.exception(str(timeout.custom_profit_crypto(connector)))
                         raise Exception
                     if total_profit > 0:
                         data.append({'Name' : 'Cut Out',
@@ -96,7 +96,7 @@ while True:
                         for position in msg:
                             timeout.custom_close(connector, position)
                         logger.info(str(data[-1]))
-                        client.send_message(str(data[-1]), title=f"M{prc * 'P'}1 {os.getcwd()}")
+                        client.send_message(str(data[-1]), title=f"M{prc * 'P'}2 {os.getcwd()}")
                 break
         else:
             data.append({'Name' : 'Cut Out',
@@ -114,14 +114,14 @@ while True:
 
         ALL_Asset=timeout.custom_all_asets(connector)
 
-        open_cdf = [x for x in ALL_Asset['cfd'] if ALL_Asset['cfd'][x].get('open')]
-        open_forex = [x for x in ALL_Asset['forex'] if ALL_Asset['forex'][x].get('open')]
+       
+        open_s = [x for x in ALL_Asset[instrument_type] if ALL_Asset[instrument_type][x].get('open')]
 
 
         ### Filter new positions
         delay = 8
         FilterForex = []
-        for f in open_forex:
+        for f in open_s:
             for d in data[::-1]:
                 if d.get('Name') == f:
                     if (time.time() - d.get('Buying_time')) > delay * 3600:
@@ -130,18 +130,18 @@ while True:
             else:
                 FilterForex.append(f)
 
-        open_forex = FilterForex
+        open_s = FilterForex
         #Get real time prices 
         
         checklist = []
         pricelist = []
         leverages = []
-        for f in open_forex:
-            price = timeout.custom_forex(connector, f)
+        for f in open_s:
+            price = timeout.custom_crypto(connector, f)
             if not isinstance(price, (float, int)):
                 logger.info(f'M1Sk1 Reason: {price}')
                 continue
-            fleverage = timeout.custom_forex_leverage(connector, f, 'pract' in sys.argv)
+            fleverage = timeout.custom_crypto_leverage(connector, f, 'pract' in sys.argv)
             if not isinstance(fleverage, (float, int)):
                 logger.info(f'M1Sk2 Reason: {fleverage}')
                 continue
@@ -154,6 +154,7 @@ while True:
         balance = timeout.get_custom_balance(connector)
         
         foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
+        print('eef', foundmark)
         if foundmark == None:
             logger.info('SE1 [winter sleep]')
             time.sleep(60*3)
@@ -199,6 +200,6 @@ while True:
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         logger.exception(str(e))
         logger.exception([exc_type, fname, exc_tb.tb_lineno])
-        client.send_message(exc_type, title=f'M{prc * "P"}1E {os.getcwd()}')
+        client.send_message(exc_type, title=f'M{prc * "P"}2E {os.getcwd()}')
         logger.info('SE3 [Error hold]')
         time.sleep(60*3)
