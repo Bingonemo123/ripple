@@ -14,6 +14,8 @@ prc = 'pract' in sys.argv
 crpt = 'crypto' in sys.argv
 forx = 'forex' in sys.argv
 
+modeln = 2
+
 if prc:
     connector =IQ_Option("levanmikeladze123@gmail.com" ,"591449588")
 else:
@@ -65,7 +67,7 @@ use_token_for_commission=False
 
 #----------------------------------------------------------------------------#
 client = Client("ud1pmkki74te12d3bicw24r99kb38z", api_token="aq7rx1r3o55k6rtobcq8xwv66u8jgw")
-client.send_message(os.getcwd(), title=f"M{prc * 'P'}2 I0")
+client.send_message(os.getcwd(), title=f"M{prc * 'P'}{modeln} I0")
 #----------------------------------------------------------------------------#
 datapath = path/f'data{prc * "_prc"}.json'
 try:
@@ -105,7 +107,7 @@ while True:
                         for position in msg:
                             timeout.custom_close(connector, position)
                         logger.info(str(data[-1]))
-                        client.send_message(str(data[-1]), title=f"M{prc * 'P'}2 {os.getcwd()}")
+                        client.send_message(str(data[-1]), title=f"M{prc * 'P'}{modeln} {os.getcwd()}")
                 break
         else:
             data.append({'Name' : 'Cut Out',
@@ -122,6 +124,9 @@ while True:
         ### Open Assets 
 
         ALL_Asset=timeout.custom_all_asets(connector)
+        if isinstance(ALL_Asset, str):
+            logger.info(f'M{modeln}Sk3 Reason: {ALL_Asset}')
+            continue
         ActiveOpc=timeout.custom_opc(connector)
 
        
@@ -153,11 +158,11 @@ while True:
             for f in open_s[inst]:
                 price = timeout.custom_price(connector, f)
                 if not isinstance(price, (float, int)):
-                    logger.info(f'M1Sk1 Reason: {price}')
+                    logger.info(f'M{modeln}Sk1 Reason: {price}')
                     continue
                 fleverage = timeout.custom_leverage(connector, f, inst, prc)
                 if not isinstance(fleverage, (float, int)):
-                    logger.info(f'M1Sk2 Reason: {fleverage}')
+                    logger.info(f'M{modeln}Sk2 Reason: {fleverage}')
                     continue
 
                 checklist.append(f)
@@ -171,14 +176,14 @@ while True:
         foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
         logger.info(foundmark)
         if foundmark == None:
-            logger.info('SE1 [winter sleep]')
+            logger.info(f'M{modeln} SE1 [winter sleep]')
             time.sleep(60*3)
             continue
         
         name, m, n, leverage = foundmark[1]
 
         if balance/(leverage * n) < 1:
-            logger.info('SE2 [balance shortage]')
+            logger.info(f'M{modeln} SE2 [balance shortage]')
             time.sleep(60*3)
             continue
         elif balance/(leverage * n) > 20000:
@@ -215,6 +220,6 @@ while True:
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         logger.exception(str(e))
         logger.exception([exc_type, fname, exc_tb.tb_lineno])
-        client.send_message(exc_type, title=f'M{prc * "P"}2E {os.getcwd()}')
-        logger.info('SE3 [Error hold]')
+        client.send_message(exc_type, title=f'M{prc * "P"}{modeln}E {os.getcwd()}')
+        logger.info(f'M{modeln} SE3 [Error hold]')
         time.sleep(60*3)

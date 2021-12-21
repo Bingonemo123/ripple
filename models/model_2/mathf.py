@@ -128,8 +128,9 @@ def EZAquariiB (names, prices, means_data, leverages, balance):
                 delta_price_std = data[3]
                 s_1 = data[4]
                 mu = (ANSmean, delta_price_mean, delta_price_std, s_1)
-            else:
-                continue
+                break
+        else:
+            continue
 
         m, n, x = EpsilonIndiBb(price, leverage, mu, balance)
 

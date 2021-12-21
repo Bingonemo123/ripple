@@ -64,17 +64,17 @@ def custom_reconnect(connector):
 def custom_opc(connector):
     return connector.get_all_ACTIVES_OPCODE()
 
-@timeout(120)
+@softtimeout(120)
 def custom_all_asets(connector):
     ALL_Asset=connector.get_all_open_time() # loop warning
     return ALL_Asset
 
-@softtimeout(5)
+@softtimeout(10)
 def custom_price(connector, f):
     candles = connector.get_candles(f, 5, 1, time.time())
     return candles[-1]['close']
 
-@softtimeout(5)
+@softtimeout(10)
 def custom_bid(connector, f):
     connector.start_candles_stream(f[:6], 1, 1)
     candles = connector.get_realtime_candles(f[:6], 1)
@@ -105,14 +105,14 @@ def custom_profit(connector, instruments):
 
     return total_profit, total_margin, msg
 
-@softtimeout(5)
+@softtimeout(10)
 def custom_leverage(connector, f, inst, prc):
     if prc:
         return max(connector.get_available_leverages(inst, f)[1].get('leverages')[0].get('regulated'))
     else:
         return min(connector.get_available_leverages(inst, f)[1].get('leverages')[0].get('regulated'))
 
-@softtimeout(5)
+@softtimeout(10)
 def custom_close(connector, position):
     posid = position.get('order_ids')[0]
     connector.close_position(posid)
