@@ -53,6 +53,8 @@ elif forx:
 else: 
     instrument_types= ["crypto",]
 
+logger.info(instrument_types)
+
 side="buy"
 type_market="market"
 limit_price=None 
@@ -81,6 +83,7 @@ means_data = json.load(open(path/'month_means.json', 'r'))
 while True:
     try:
         timeout.custom_reconnect(connector)
+
 
         ### Cut Out
         cutout = 4
@@ -125,7 +128,7 @@ while True:
 
         ALL_Asset=timeout.custom_all_asets(connector)
         if isinstance(ALL_Asset, (str, Exception)):
-            logger.info(f'M{modeln}Sk3 Reason: {ALL_Asset}')
+            logger.info(f'M{modeln}Sk1 Reason: {ALL_Asset}')
             continue
         ActiveOpc=timeout.custom_opc(connector)
 
@@ -156,29 +159,29 @@ while True:
         typelibr = {}
         for inst in open_s:
             for f in open_s[inst]:
+                timeout.custom_reconnect(connector)
                 price = timeout.custom_price(connector, f)
                 if not isinstance(price, (float, int)):
-                    logger.info(f'M{modeln}Sk1 Reason: {price}')
+                    logger.info(f'M{modeln}Sk2 Reason: {price}')
                     continue
                 fleverage = timeout.custom_leverage(connector, f, inst, prc)
                 if not isinstance(fleverage, (float, int)):
-                    logger.info(f'M{modeln}Sk2 Reason: {fleverage}')
+                    logger.info(f'M{modeln}Sk3 Reason: {fleverage}')
                     continue
 
                 checklist.append(f)
                 pricelist.append(price)
                 leverages.append(fleverage)
                 typelibr[f] = inst
-                timeout.custom_reconnect(connector)
 
         balance = timeout.get_custom_balance(connector)
         
         foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
-        logger.info(foundmark)
         if foundmark == None:
             logger.info(f'M{modeln} SE1 [winter sleep]')
             time.sleep(60*3)
             continue
+        logger.info(foundmark)
         
         name, m, n, leverage = foundmark[1]
 

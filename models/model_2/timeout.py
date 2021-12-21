@@ -6,7 +6,7 @@ def timeout(timeout):
     def deco(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            res = [Exception('function [%s] timeout [%s seconds] exceeded!' % (func.__name__, timeout))]
+            res = [Exception(f'function [%s] timeout [%s seconds] exceeded! Arguments {args, kwargs}' % (func.__name__, timeout))]
             def newFunc():
                 try:
                     res[0] = func(*args, **kwargs)
@@ -31,7 +31,7 @@ def softtimeout(timeout):
     def deco(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            res = ['function [%s] timeout [%s seconds] exceeded!' % (func.__name__, timeout)]
+            res = [f'function [%s] timeout [%s seconds] exceeded! Arguments {args, kwargs}' % (func.__name__, timeout)]
             def newFunc():
                 try:
                     res[0] = func(*args, **kwargs)
@@ -76,9 +76,10 @@ def custom_price(connector, f):
 
 @softtimeout(10)
 def custom_bid(connector, f):
-    connector.start_candles_stream(f[:6], 1, 1)
-    candles = connector.get_realtime_candles(f[:6], 1)
+    connector.start_candles_stream(f, 1, 1)
+    candles = connector.get_realtime_candles(f, 1)
     bid = [candles[x].get("bid") for x in candles]
+    connector.stop_candles_stream(f, 1)
     return bid[0]
 
 @softtimeout(10)
