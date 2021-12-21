@@ -1,3 +1,4 @@
+from collections import defaultdict
 from iqoptionapi.stable_api import IQ_Option
 import logging.handlers
 import logging
@@ -124,7 +125,7 @@ while True:
         ### Open Assets 
 
         ALL_Asset=timeout.custom_all_asets(connector)
-        if isinstance(ALL_Asset, str):
+        if isinstance(ALL_Asset, (str, Exception)):
             logger.info(f'M{modeln}Sk3 Reason: {ALL_Asset}')
             continue
         ActiveOpc=timeout.custom_opc(connector)
