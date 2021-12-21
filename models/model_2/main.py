@@ -1,4 +1,3 @@
-from collections import defaultdict
 from iqoptionapi.stable_api import IQ_Option
 import logging.handlers
 import logging
