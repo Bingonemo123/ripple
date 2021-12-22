@@ -1,6 +1,8 @@
 import functools
 from threading import Thread
 import time
+import traceback
+
 
 def timeout(timeout):
     def deco(func):
@@ -36,7 +38,7 @@ def softtimeout(timeout):
                 try:
                     res[0] = func(*args, **kwargs)
                 except Exception as e:
-                    res[0] = e
+                    res[0] = f'{e}::{ "".join(traceback.format_tb(e.__traceback__)) }'
             t = Thread(target=newFunc)
             t.daemon = True
             try:
@@ -74,7 +76,7 @@ def custom_price(connector, f):
     candles = connector.get_candles(f, 5, 1, time.time())
     return candles[-1]['close']
 
-@softtimeout(10)
+@softtimeout(120)
 def custom_bid(connector, f):
     connector.start_candles_stream(f, 1, 1)
     candles = connector.get_realtime_candles(f, 1)
@@ -82,7 +84,7 @@ def custom_bid(connector, f):
     connector.stop_candles_stream(f, 1)
     return bid[0]
 
-@softtimeout(10)
+@softtimeout(1200)
 def custom_profit(connector, instruments):
     price_ref = {}
     total_profit = 0
@@ -98,6 +100,7 @@ def custom_profit(connector, instruments):
             if inst_id not in price_ref:
                 cprice = custom_bid(connector, inst_id)
                 price_ref[inst_id] = cprice
+
             
             profit = (price_ref[inst_id] - buy_price )*leverage*margin/buy_price
             total_profit += profit

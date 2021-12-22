@@ -93,6 +93,7 @@ while True:
                 if (time.time() - sttime) >= (cutout * 3600 ):
                     pmm = timeout.custom_profit(connector, instrument_types)
                     if not isinstance(pmm, (float, int)):
+                        logger.info(f'M{modeln}Sk1 Reason: {pmm}')
                         break
   
                     total_profit, total_margin, msg = pmm
@@ -128,9 +129,12 @@ while True:
 
         ALL_Asset=timeout.custom_all_asets(connector)
         if isinstance(ALL_Asset, (str, Exception)):
-            logger.info(f'M{modeln}Sk1 Reason: {ALL_Asset}')
+            logger.info(f'M{modeln}Sk2 Reason: {ALL_Asset}')
             continue
         ActiveOpc=timeout.custom_opc(connector)
+        if isinstance(ALL_Asset, (str, Exception)):
+            logger.info(f'M{modeln}Sk3 Reason: {ActiveOpc}')
+            continue
 
        
         open_s = {}
@@ -162,11 +166,11 @@ while True:
                 timeout.custom_reconnect(connector)
                 price = timeout.custom_price(connector, f)
                 if not isinstance(price, (float, int)):
-                    logger.info(f'M{modeln}Sk2 Reason: {price}')
+                    logger.info(f'M{modeln}Sk4 Reason: {price}')
                     continue
                 fleverage = timeout.custom_leverage(connector, f, inst, prc)
                 if not isinstance(fleverage, (float, int)):
-                    logger.info(f'M{modeln}Sk3 Reason: {fleverage}')
+                    logger.info(f'M{modeln}Sk5 Reason: {fleverage}')
                     continue
 
                 checklist.append(f)
@@ -175,6 +179,9 @@ while True:
                 typelibr[f] = inst
 
         balance = timeout.get_custom_balance(connector)
+        if not isinstance(balance, (float, int)):
+            logger.info(f'M{modeln}Sk6 Reason: {balance}')
+            continue
         
         foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
         if foundmark == None:
