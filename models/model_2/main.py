@@ -92,7 +92,7 @@ while True:
                 sttime = d.get("Time")
                 if (time.time() - sttime) >= (cutout * 3600 ):
                     pmm = timeout.custom_profit(connector, instrument_types)
-                    if not isinstance(pmm, (float, int)):
+                    if isinstance(pmm, (str, Exception)):
                         logger.info(f'M{modeln}Sk1 Reason: {pmm}')
                         break
   
