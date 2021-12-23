@@ -3,7 +3,6 @@ from threading import Thread
 import time
 import traceback
 
-
 def timeout(timeout):
     def deco(func):
         @functools.wraps(func)
@@ -38,7 +37,7 @@ def softtimeout(timeout):
                 try:
                     res[0] = func(*args, **kwargs)
                 except Exception as e:
-                    res[0] = f'{e}::{ "".join(traceback.format_tb(e.__traceback__)) }'
+                    res[0] = f'{e}::{ "".join(traceback.format_tb(e.__traceback__)) } :: {args, kwargs}'
             t = Thread(target=newFunc)
             t.daemon = True
             try:

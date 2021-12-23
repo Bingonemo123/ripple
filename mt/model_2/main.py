@@ -230,9 +230,9 @@ while True:
             continue
 
         else:
-            position_id = connector.get_position(id)[1].get('position').get('id')
+            position_id = check.order
             data.append({'Name' : name,
-                            'Id' : id,
+                            'Id' : position_id,
                             'Buying_time': time.time(),
                             'Amount': amount,
                             'Balance': balance,
@@ -240,7 +240,6 @@ while True:
                             'TakeProfitValue': take_profit_value,
                             'Position_Id': position_id
                         }) # add exam
-
         json.dump(data, open(datapath, 'w'))
         logger.info(f'Total elements in data: {len(data)}')
     except Exception as e:

@@ -1,8 +1,7 @@
 import functools
 from threading import Thread
-import time
+import datetime
 import traceback
-
 
 def timeout(timeout):
     def deco(func):
@@ -38,7 +37,7 @@ def softtimeout(timeout):
                 try:
                     res[0] = func(*args, **kwargs)
                 except Exception as e:
-                    res[0] = f'{e}::{ "".join(traceback.format_tb(e.__traceback__)) }'
+                    res[0] = f'{e}::{ "".join(traceback.format_tb(e.__traceback__)) } :: {args, kwargs}'
             t = Thread(target=newFunc)
             t.daemon = True
             try:
@@ -67,6 +66,12 @@ def custom_safty(connector, f):
     if not symbol_info.visible:
         if not connector.symbol_select(f, True):
             return False
+
+    tz = datetime.timezone(datetime.timedelta(hours=+2))
+    symbol_time = datetime.datetime.fromtimestamp(symbol_info.time, tz=tz).replace(tzinfo=None)
+    if (datetime.datetime.now() - symbol_time).total_seconds() > 3600:
+        return False
+    
 
     return True
 

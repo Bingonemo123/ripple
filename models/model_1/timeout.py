@@ -1,12 +1,13 @@
 import functools
 from threading import Thread
 import time
+import traceback
 
 def timeout(timeout):
     def deco(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            res = [Exception('function [%s] timeout [%s seconds] exceeded!' % (func.__name__, timeout))]
+            res = [Exception(f'function [%s] timeout [%s seconds] exceeded! Arguments {args, kwargs}' % (func.__name__, timeout))]
             def newFunc():
                 try:
                     res[0] = func(*args, **kwargs)
@@ -31,12 +32,12 @@ def softtimeout(timeout):
     def deco(func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            res = ['function [%s] timeout [%s seconds] exceeded!' % (func.__name__, timeout)]
+            res = [f'function [%s] timeout [%s seconds] exceeded! Arguments {args, kwargs}' % (func.__name__, timeout)]
             def newFunc():
                 try:
                     res[0] = func(*args, **kwargs)
                 except Exception as e:
-                    res[0] = e
+                    res[0] = f'{e}::{ "".join(traceback.format_tb(e.__traceback__)) } :: {args, kwargs}'
             t = Thread(target=newFunc)
             t.daemon = True
             try:
@@ -61,56 +62,60 @@ def custom_reconnect(connector):
             break
 
 @timeout(120)
+def custom_opc(connector):
+    return connector.get_all_ACTIVES_OPCODE()
+
+@softtimeout(120)
 def custom_all_asets(connector):
     ALL_Asset=connector.get_all_open_time() # loop warning
     return ALL_Asset
 
-@softtimeout(5)
-def custom_cdf(connector, f):
+@softtimeout(10)
+def custom_price(connector, f):
     candles = connector.get_candles(f, 5, 1, time.time())
     return candles[-1]['close']
 
-@softtimeout(5)
-def custom_forex(connector, f):
-    candles = connector.get_candles(f[:6], 5, 1, time.time())
-    return candles[-1]['close']
-
-@softtimeout(5)
-def custom_forex_bid(connector, f):
-    connector.start_candles_stream(f[:6], 1, 1)
-    candles = connector.get_realtime_candles(f[:6], 1)
+@softtimeout(120)
+def custom_bid(connector, f):
+    connector.start_candles_stream(f, 1, 1)
+    candles = connector.get_realtime_candles(f, 1)
     bid = [candles[x].get("bid") for x in candles]
+    connector.stop_candles_stream(f, 1)
     return bid[0]
 
-@softtimeout(120)
-def custom_profit_forex(connector):
-    data = connector.get_positions('forex')
+@softtimeout(1200)
+def custom_profit(connector, instruments):
     price_ref = {}
     total_profit = 0
     total_margin = 0
-    for position in data[1].get('positions'):
-        inst_id = position.get('instrument_id')
-        leverage = position.get('leverage')
-        buy_price = position.get('open_underlying_price')
-        margin = position.get('margin')
-        if inst_id not in price_ref:
-            cprice = custom_forex_bid(connector, inst_id)
-            price_ref[inst_id] = cprice
-        
-        profit = (price_ref[inst_id] - buy_price )*leverage*margin/buy_price
-        total_profit += profit
-        total_margin += margin
+    msg = []
+    for inst in instruments:
+        data = connector.get_positions(inst)
+        for position in data[1].get('positions'):
+            inst_id = position.get('instrument_id')
+            leverage = position.get('leverage')
+            buy_price = position.get('open_underlying_price')
+            margin = position.get('margin')
+            if inst_id not in price_ref:
+                cprice = custom_bid(connector, inst_id)
+                price_ref[inst_id] = cprice
 
-    return total_profit, total_margin, data[1].get('positions')
+            
+            profit = (price_ref[inst_id] - buy_price )*leverage*margin/buy_price
+            total_profit += profit
+            total_margin += margin
+            msg.append(position)
 
-@softtimeout(5)
-def custom_forex_leverage(connector, f, prc):
+    return total_profit, total_margin, msg
+
+@softtimeout(10)
+def custom_leverage(connector, f, inst, prc):
     if prc:
-        return max(connector.get_available_leverages('forex', f)[1].get('leverages')[0].get('regulated'))
+        return max(connector.get_available_leverages(inst, f)[1].get('leverages')[0].get('regulated'))
     else:
-        return min(connector.get_available_leverages('forex', f)[1].get('leverages')[0].get('regulated'))
+        return min(connector.get_available_leverages(inst, f)[1].get('leverages')[0].get('regulated'))
 
-@softtimeout(5)
+@softtimeout(10)
 def custom_close(connector, position):
     posid = position.get('order_ids')[0]
     connector.close_position(posid)
@@ -127,46 +132,3 @@ def get_custom_balance(connector, timeout = 60):
             if balance["id"] == connector.get_balance_id():
                 return balance["amount"]
 
-#-------------------------------Crypto---------------------------------------------#
- 
-@softtimeout(5)
-def custom_crypto(connector, f):
-    candles = connector.get_candles(f[:6], 5, 1, time.time())
-    return candles[-1]['close']
-
-@softtimeout(5)
-def custom_crypto_bid(connector, f):
-    connector.start_candles_stream(f[:6], 1, 1)
-    candles = connector.get_realtime_candles(f[:6], 1)
-    bid = [candles[x].get("bid") for x in candles]
-    return bid[0]
-
-@softtimeout(120)
-def custom_profit_crypto(connector):
-    data = connector.get_positions('crypto')
-    price_ref = {}
-    total_profit = 0
-    total_margin = 0
-    for position in data[1].get('positions'):
-        inst_id = position.get('instrument_id')
-        leverage = position.get('leverage')
-        buy_price = position.get('open_underlying_price')
-        margin = position.get('margin')
-        if inst_id not in price_ref:
-            cprice = custom_crypto_bid(connector, inst_id)
-            price_ref[inst_id] = cprice
-        
-        profit = (price_ref[inst_id] - buy_price )*leverage*margin/buy_price
-        total_profit += profit
-        total_margin += margin
-
-    return total_profit, total_margin, data[1].get('positions')
-
-@softtimeout(5)
-def custom_crypto_leverage(connector, f, prc):
-    if prc:
-        return max(connector.get_available_leverages('crypto', f)[1].get('leverages')[0].get('regulated'))
-    else:
-        return min(connector.get_available_leverages('crypto', f)[1].get('leverages')[0].get('regulated'))
-
-#-------------------------------Crypto---------------------------------------------#

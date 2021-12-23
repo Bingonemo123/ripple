@@ -97,7 +97,7 @@ while True:
                         break
   
                     total_profit, total_margin, msg = pmm
-                    logger.info(total_profit)
+                    logger.info(f'TP: {total_profit}')
                     if total_profit > 0:
                         data.append({'Name' : 'Cut Out',
                                 'Id' : d.get('Id') + 1,

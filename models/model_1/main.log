@@ -1428,3 +1428,22 @@ AttributeError: 'tuple' object has no attribute 'get'
 2021-12-09 02:08:54,597 - __main__ - INFO - Total elements in data: 2
 2021-12-09 02:16:37,031 - __main__ - INFO - Total elements in data: 2
 2021-12-09 04:10:24,551 - __main__ - INFO - Total elements in data: 2
+2021-12-23 21:43:02,885 - __main__ - INFO - ['crypto', 'forex']
+2021-12-23 21:43:04,502 - __main__ - INFO - TP: 0
+2021-12-23 22:00:21,516 - __main__ - INFO - [39983.10834966751, ('TRXUSD', 0.97, 20.0, 50)]
+2021-12-23 22:00:21,517 - __main__ - INFO - M2 SE2 [balance shortage]
+2021-12-23 22:03:23,033 - __main__ - INFO - TP: 0
+2021-12-23 22:10:21,899 - __main__ - INFO - ['forex']
+2021-12-23 22:10:23,187 - __main__ - INFO - TP: 0
+2021-12-23 22:21:15,603 - __main__ - INFO - [462.6403593072027, ('NZDCHF', 1.0, 1.0, 100)]
+2021-12-23 22:21:16,296 - __main__ - INFO - Total elements in data: 3
+2021-12-23 22:21:27,554 - __main__ - INFO - TP: -0.1126312435274491
+2021-12-23 22:33:13,879 - __main__ - INFO - [451.23146327985006, ('AUDCHF', 1.0, 1.0, 50)]
+2021-12-23 22:33:15,025 - __main__ - INFO - Total elements in data: 4
+2021-12-23 22:33:27,606 - __main__ - INFO - TP: -0.17120183520876156
+2021-12-23 22:41:27,566 - __main__ - INFO - [448.1763820687921, ('NZDUSD', 1.0, 1.0, 50)]
+2021-12-23 22:41:29,441 - __main__ - INFO - Total elements in data: 5
+2021-12-23 22:41:53,270 - __main__ - INFO - TP: -0.31291836533693485
+2021-12-23 22:49:06,116 - __main__ - INFO - [458.3997712340865, ('CADCHF', 1.0, 1.0, 50)]
+2021-12-23 22:49:07,079 - __main__ - INFO - Total elements in data: 6
+2021-12-23 22:49:32,162 - __main__ - INFO - TP: -0.2964679789953752

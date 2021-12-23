@@ -1,5 +1,6 @@
 import MetaTrader5 as mt5
-import timeout
+import datetime
+import calendar
 # connect to MetaTrader 5
 if not mt5.initialize():
     print("initialize() failed")
@@ -14,5 +15,9 @@ if not authorized:
 N = mt5.symbol_info('NARI.O')._asdict()
 E = mt5.symbol_info('EURUSD')._asdict()
 
-for n in N:
-    print(f'{n} :: {N[n]} :: { E[n]}')
+
+tz = datetime.timezone(datetime.timedelta(hours=+2))
+
+
+symbol_time = datetime.datetime.fromtimestamp(E['time'], tz=tz).replace(tzinfo=None)
+print((datetime.datetime.now() - symbol_time).total_seconds() )

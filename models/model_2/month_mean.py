@@ -1,10 +1,12 @@
-import tqdm
-from iqoptionapi.stable_api import IQ_Option
-import json 
+import json
 import statistics
 import time
-import timeout
+
 import numpy as np
+import tqdm
+from iqoptionapi.stable_api import IQ_Option
+
+import timeout
 
 connector =IQ_Option("ww.bingonemo@gmail.com","JF*#3C5va&_NDqy")
 connector.connect()
