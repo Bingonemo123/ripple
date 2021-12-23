@@ -16,8 +16,7 @@ seconds_in_year = 31_536_000
 candle_size = 3600 # 3600 is one hour
 quantity =  seconds_in_year / candle_size
 ALL_Asset=connector.get_all_open_time()
-crpt = [x for x in ALL_Asset['crypto'] if ALL_Asset['crypto'][x].get('open')]
-iqcomb = [("NZD", "SEK"),("NZD", "USD"),("CAD", "TRY"),("EUR", "CHF"),("USD", "THB"),("EUR", "TRY"),("GBP", "AUD"),("AUD", "USD"),("EUR", "MXN"),("USD", "CHF"),("NOK", "DKK"),("EUR", "NOK"),("SEK", "JPY"),("CAD", "NOK"),("NOK", "SEK"),("GBP", "HUF"),("GBP", "SGD"),("AUD", "NZD"),("GBP", "JPY"),("CHF", "SEK"),("AUD", "NOK"),("GBP", "NOK"),("AUD", "DKK"),("EUR", "AUD"),("AUD", "CHF"),("GBP", "CHF"),("AUD", "CAD"),("CHF", "DKK"),("AUD", "TRY"),("NZD", "CHF"),("USD", "SEK"),("GBP", "NZD"),("EUR", "DKK"),("NZD", "DKK"),("CAD", "SGD"),("EUR", "GBP"),("EUR", "CAD"),("USD", "CZK"),("AUD", "MXN"),("EUR", "NZD"),("GBP", "PLN"),("NZD", "NOK"),("AUD", "SGD"),("GBP", "SEK"),("NZD", "CAD"),("NZD", "MXN"),("NZD", "TRY"),("CHF", "SGD"),("USD", "MXN"),("EUR", "HUF"),("GBP", "CAD"),("USD", "TRY"),("USD", "JPY"),("EUR", "USD"),("AUD", "SEK"),("CHF", "NOK"),("USD", "PLN"),("USD", "HUF"),("CHF", "JPY"),("GBP", "ILS"),("NZD", "JPY"),("CHF", "TRY"),("CAD", "JPY"),("USD", "RUB"),("SGD", "JPY"),("GBP", "USD"),("CAD", "PLN"),("DKK", "SGD"),("NZD", "SGD"),("AUD", "JPY"),("NOK", "JPY"),("PLN", "SEK"),("USD", "SGD"),("GBP", "MXN"),("USD", "CAD"),("SEK", "DKK"),("DKK", "PLN"),("CAD", "MXN"),("GBP", "TRY"),("EUR", "SGD"),("NZD", "ZAR"),("EUR", "CZK"),("EUR", "JPY"),("CAD", "CHF"),("USD", "INR"),("USD", "BRL"),("USD", "NOK"),("USD", "DKK")]
+crpt = [x for x in ALL_Asset['forex'] if ALL_Asset['forex'][x].get('open')]
 
 @timeout.softtimeout(120)
 def cades (f):
@@ -28,8 +27,11 @@ def cades (f):
         ANS =data+ANS
         end_from_time=int(data[0]["from"])-1
     return ANS
+try:
+    result = json.load(open(r'C:\Users\HP\Documents\repos\Ripple_3.0\models\model_2\month_means.json', 'r'))
+except FileNotFoundError:
+    result = []
 
-result = []
 for f in tqdm.tqdm(crpt):
     if f not in connector.get_all_ACTIVES_OPCODE():
         continue
@@ -71,7 +73,7 @@ for f in tqdm.tqdm(crpt):
     result.append(((f[:3], f[3:6]), ANSmean, statistics.mean(fset), statistics.stdev(fset), s_1))
 
 
-json.dump(result, open('month_means.json', 'w'))
+json.dump(result, open(r'C:\Users\HP\Documents\repos\Ripple_3.0\models\model_2\month_means.json', 'w'))
 
 
 
