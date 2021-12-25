@@ -200,7 +200,6 @@ while True:
 
         closing_price =  ((m/leverage) + 1) * price
         closing_price = (closing_price // point ) * point
-        
         request = {
                 "action": connector.TRADE_ACTION_DEAL,
                 "symbol": name,
@@ -216,7 +215,22 @@ while True:
 
         check = connector.order_send(request)
 
-        if check.retcode != connector.TRADE_RETCODE_DONE:
+        if check.comment == 'Invalid stops':
+            del request['tp']
+            check = connector.order_send(request)
+
+        if check.comment == 'Market closed':
+            data.append({'Name' : name,
+                            'Id' : 'Market closed',
+                            'Buying_time': time.time(),
+                            'Amount': amount,
+                            'Balance': balance,
+                            'leverage': leverage,
+                            'TakeProfitValue': take_profit_value,
+                            'Position_Id': 'Market closed'
+                        }) # add exam
+
+        elif check.retcode != connector.TRADE_RETCODE_DONE:
             logger.warning("2. order_send failed, retcode={}".format(check.retcode))
             # request the result as a dictionary and display it element by element
             result_dict=check._asdict()
