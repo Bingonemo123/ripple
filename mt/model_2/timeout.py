@@ -108,13 +108,21 @@ def custom_leverage(connector):
 
 @softtimeout(10)
 def custom_close(connector, position):
+    symbol_info = connector.symbol_info(position.symbol)
+    volume_max = symbol_info.volume_max
+    if position.volume > volume_max:
+        volume = volume_max
+    else:
+        volume = position.volume
+
     close_request={
         "action": connector.TRADE_ACTION_DEAL,
         "symbol": position.symbol,
-        "volume": position.volume,
+        "volume": volume,
         "type": connector.ORDER_TYPE_SELL,
         "position": position.ticket,
         "price": connector.symbol_info_tick( position.symbol).bid,
+        "comment": "Close Position",
         "type_time": connector.ORDER_TIME_GTC, # good till cancelled
         "type_filling": connector.ORDER_FILLING_IOC,
     }
@@ -146,5 +154,6 @@ def custom_prebuy(connector, f):
     volume_step = symbol_info.volume_step
     price = connector.symbol_info_tick(f).ask
     margin = connector.order_calc_margin(connector.ORDER_TYPE_BUY, f, 1, price)
+    volume_max = symbol_info.volume_max
 
-    return point, volume_step, price, margin
+    return point, volume_step, price, margin, volume_max

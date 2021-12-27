@@ -194,8 +194,10 @@ while True:
         take_profit_value = int( 100 * m )
 
         #### ORDER ####
-        point, volume_step, price, margin = timeout.custom_prebuy(connector, name)
+        point, volume_step, price, margin, volume_max = timeout.custom_prebuy(connector, name)
         volume = amount / margin
+        if volume > volume_max:
+            volume = volume_max
         volume = (volume // volume_step) * volume_step
 
         closing_price =  ((m/leverage) + 1) * price

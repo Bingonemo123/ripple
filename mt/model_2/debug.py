@@ -12,12 +12,7 @@ if not authorized:
     print("failed to connect at account #{}, error code: {}".format(
         account, mt5.last_error()))
 
-N = mt5.symbol_info('NARI.O')._asdict()
+N = mt5.symbol_info('BCP.LS')._asdict()
 E = mt5.symbol_info('EURUSD')._asdict()
 
-
-tz = datetime.timezone(datetime.timedelta(hours=+2))
-
-
-symbol_time = datetime.datetime.fromtimestamp(E['time'], tz=tz).replace(tzinfo=None)
-print((datetime.datetime.now() - symbol_time).total_seconds() )
+print(mt5.positions_get()[0])
