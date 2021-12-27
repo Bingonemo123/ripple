@@ -1,6 +1,7 @@
 import MetaTrader5 as mt5
 import datetime
 import calendar
+import time
 # connect to MetaTrader 5
 if not mt5.initialize():
     print("initialize() failed")
@@ -15,4 +16,16 @@ if not authorized:
 N = mt5.symbol_info('BCP.LS')._asdict()
 E = mt5.symbol_info('EURUSD')._asdict()
 
-print(mt5.positions_get()[0])
+M = 'VVY.AS'
+
+if mt5.market_book_add(M):
+    while True:
+        items = mt5.market_book_get(M)
+        if items:
+            for it in items:
+                if it.type == 2:
+                # order content
+                    print(it.volume)
+        mt5.market_book_release(M)
+else:
+    print("mt5.market_book_add('EURUSD') failed, error code =",mt5.last_error())

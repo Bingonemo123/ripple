@@ -152,8 +152,24 @@ def custom_prebuy(connector, f):
     symbol_info = connector.symbol_info(f)
     point = symbol_info.point
     volume_step = symbol_info.volume_step
-    price = connector.symbol_info_tick(f).ask
+    price = connector.symbol_info_tick(f).bid
     margin = connector.order_calc_margin(connector.ORDER_TYPE_BUY, f, 1, price)
     volume_max = symbol_info.volume_max
 
     return point, volume_step, price, margin, volume_max
+
+
+@softtimeout(120)
+def custom_volmeter(connector, f):
+    if connector.market_book_add(f):
+        for i in range(10):
+
+            items = connector.market_book_get(f)
+            if items:
+                for it in items:
+                    if it.type == 2:
+                    # order content
+                        return it.volume
+            connector.market_book_release(f)
+    else:
+        return f"mt5.market_book_add('EURUSD') failed, error code = {connector.last_error()}"

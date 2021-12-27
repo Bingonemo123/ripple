@@ -194,7 +194,13 @@ while True:
         take_profit_value = int( 100 * m )
 
         #### ORDER ####
-        point, volume_step, price, margin, volume_max = timeout.custom_prebuy(connector, name)
+        cpbh =  timeout.custom_prebuy(connector, name)
+        if not isinstance(cpbh, tuple):
+            logger.info(f'M{modeln}Sk8 Reason: {cpbh}')
+            continue
+
+        point, volume_step, price, margin, volume_max = cpbh
+
         volume = amount / margin
         if volume > volume_max:
             volume = volume_max
@@ -217,6 +223,17 @@ while True:
 
         check = connector.order_send(request)
 
+        if check.comment == 'No prices':
+            avvol = timeout.custom_volmeter(connector, f)
+            if not isinstance(avvol, (float, int)):
+                logger.info(f'M{modeln}Sk9 Reason: {avvol}')
+                request['Name'] = name
+                request['Buying_time'] = time.time()
+                data.append(request)
+                continue
+            request['volume'] = avvol
+            check = connector.order_send(request)
+
         if check.comment == 'Invalid stops':
             del request['tp']
             check = connector.order_send(request)
@@ -231,6 +248,7 @@ while True:
                             'TakeProfitValue': take_profit_value,
                             'Position_Id': 'Market closed'
                         }) # add exam
+
 
         elif check.retcode != connector.TRADE_RETCODE_DONE:
             logger.warning("2. order_send failed, retcode={}".format(check.retcode))
