@@ -139,7 +139,7 @@ while True:
 
         pmm = timeout.custom_profit(connector)
         if isinstance(pmm, (str, Exception)):
-            logger.info(f'M{modeln}Sk1 Reason: {pmm}')
+            logger.info(f'M{modeln}Sk5 Reason: {pmm}')
             break
 
         total_profit, total_margin, msg = pmm
@@ -166,11 +166,11 @@ while True:
         for f in open_s:
             price = timeout.custom_price(connector, f)
             if not isinstance(price, (float, int)):
-                logger.info(f'M{modeln}Sk5 Reason: {price}')
+                logger.info(f'M{modeln}Sk6 Reason: {price}')
                 continue
             fleverage = timeout.custom_leverage(connector)
             if not isinstance(fleverage, (float, int)):
-                logger.info(f'M{modeln}Sk6 Reason: {fleverage}')
+                logger.info(f'M{modeln}Sk7 Reason: {fleverage}')
                 continue
 
             checklist.append(f)
@@ -179,7 +179,7 @@ while True:
 
         balance = timeout.get_custom_balance(connector)
         if not isinstance(balance, (float, int)):
-            logger.info(f'M{modeln}Sk7 Reason: {balance}')
+            logger.info(f'M{modeln}Sk8 Reason: {balance}')
             continue
         
 
@@ -206,7 +206,7 @@ while True:
         #### ORDER ####
         cpbh =  timeout.custom_prebuy(connector, name)
         if not isinstance(cpbh, tuple):
-            logger.info(f'M{modeln}Sk8 Reason: {cpbh}')
+            logger.info(f'M{modeln}Sk9 Reason: {cpbh}')
             continue
 
         point, volume_step, price, margin, volume_max = cpbh
@@ -236,7 +236,7 @@ while True:
         if check.comment == 'No prices':
             avvol = timeout.custom_volmeter(connector, f)
             if not isinstance(avvol, (float, int)):
-                logger.info(f'M{modeln}Sk9 Reason: {avvol}')
+                logger.info(f'M{modeln}Sk10 Reason: {avvol}')
                 request['Name'] = name
                 request['Buying_time'] = time.time()
                 data.append(request)
