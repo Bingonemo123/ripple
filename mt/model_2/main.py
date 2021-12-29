@@ -137,7 +137,17 @@ while True:
         delay = 8
         Filter = []
 
+        pmm = timeout.custom_profit(connector)
+        if isinstance(pmm, (str, Exception)):
+            logger.info(f'M{modeln}Sk1 Reason: {pmm}')
+            break
+
+        total_profit, total_margin, msg = pmm
+        poshold = [pos.symbol for pos in msg]
+
         for f in open_s:
+            if f in poshold:
+                continue
             for d in data[::-1]:
                 if d.get('Name') == f:
                     if (time.time() - d.get('Buying_time')) > delay * 3600:
