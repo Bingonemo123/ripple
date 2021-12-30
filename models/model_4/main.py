@@ -1,4 +1,4 @@
-import MetaTrader5 as connector
+from iqoptionapi.stable_api import IQ_Option
 import logging.handlers
 import logging
 import time
@@ -6,23 +6,22 @@ import sys
 import os
 import pathlib
 import json
-import mathfc as mathf
+import mathf
 from pushover import Client
 import timeout
 
-prc = 'pract' in sys.argv
+prc = ('pract' in sys.argv ) | ('prc' in sys.argv)
+crpt = 'crypto' in sys.argv
+forx = 'forex' in sys.argv
+accnum = int([x for x in sys.argv if x.isnumeric()][0])
 
-modeln = 3.1
+modeln = 4
 
-if not connector.initialize():
-    print("initialize() failed")
-    connector.shutdown()
-
-account = 5394724
-authorized = connector.login(account, password="m51djnLG", server="FxPro-MT5")
-if not authorized:
-    print("failed to connect at account #{}, error code: {}".format(
-        account, connector.last_error()))
+if accnum == 1:
+    connector =IQ_Option("ww.bingonemo@gmail.com","JF*#3C5va&_NDqy")
+elif accnum == 2:
+    connector =IQ_Option("levanmikeladze123@gmail.com" ,"591449588")
+connector.connect()
 
 '''----------------------------------------------------------------------------------------------'''
 if os.name == 'posix':
@@ -44,6 +43,20 @@ rotatingfile_handler.setLevel(logging.DEBUG)
 rotatingfile_handler.setFormatter(formatter)
 logger.addHandler(rotatingfile_handler)
 #----------------------------------------------------------------------------#
+if prc:
+    connector.change_balance("PRACTICE")
+    logger.info("PRACTICE")
+else:
+    connector.change_balance("REAL")
+    logger.info('REAL')
+if crpt and forx:
+    instrument_types= ["crypto", "forex"]
+elif forx:
+    instrument_types= ["forex",]
+else: 
+    instrument_types= ["crypto",]
+
+logger.info(instrument_types)
 
 side="buy"
 type_market="market"
@@ -72,13 +85,16 @@ means_data = json.load(open(path/'month_means.json', 'r'))
 #----------------------------------------------------------------------------#
 while True:
     try:
+        timeout.custom_reconnect(connector)
+
+
         ### Cut Out
         cutout = 4
         for d in data[::-1]:
             if d.get("Name") == 'Cut Out':
                 sttime = d.get("Time")
                 if (time.time() - sttime) >= (cutout * 3600 ):
-                    pmm = timeout.custom_profit(connector)
+                    pmm = timeout.custom_profit(connector, instrument_types)
                     if isinstance(pmm, (str, Exception)):
                         logger.info(f'M{modeln}Sk1 Reason: {pmm}')
                         break
@@ -96,9 +112,7 @@ while True:
                             })
                         json.dump(data, open(datapath, 'w'))
                         for position in msg:
-                            clres = timeout.custom_close(connector, position)
-                            if clres is not True:
-                                logger.info(f'M{modeln}Sk2 Reason: {clres}')
+                            timeout.custom_close(connector, position)
                         logger.info(str(data[-1]))
                         client.send_message(str(data[-1]), title=f"M{prc * 'P'}{modeln} {os.getcwd()}")
                 break
@@ -118,72 +132,63 @@ while True:
 
         ALL_Asset=timeout.custom_all_asets(connector)
         if isinstance(ALL_Asset, (str, Exception)):
-            logger.info(f'M{modeln}Sk3 Reason: {ALL_Asset}')
+            logger.info(f'M{modeln}Sk2 Reason: {ALL_Asset}')
+            continue
+        ActiveOpc=timeout.custom_opc(connector)
+        if isinstance(ALL_Asset, (str, Exception)):
+            logger.info(f'M{modeln}Sk3 Reason: {ActiveOpc}')
             continue
 
-    
-        open_s = []
-
-        for x in ALL_Asset:
-            sft = timeout.custom_safty(connector, x.name)
-            if not isinstance(sft, bool):
-                logger.info(f'M{modeln}Sk4 Reason: {sft}')
-                continue
-            if sft:
-                open_s.append(x.name)
-        
-
+       
+        open_s = {}
+        for inst in instrument_types:
+            open_s[inst] = [x for x in ALL_Asset[inst] if ALL_Asset[inst][x].get('open') and x in ActiveOpc]
+       
         ### Filter new positions
         delay = 8
-        Filter = []
-
-        pmm = timeout.custom_profit(connector)
-        if isinstance(pmm, (str, Exception)):
-            logger.info(f'M{modeln}Sk5 Reason: {pmm}')
-            break
-
-        total_profit, total_margin, msg = pmm
-        poshold = [pos.symbol for pos in msg]
-
-        for f in open_s:
-            if f in poshold:
-                continue
-            for d in data[::-1]:
-                if d.get('Name') == f:
-                    if (time.time() - d.get('Buying_time')) > delay * 3600:
-                        Filter.append(f)
-                    break
-            else:
-                Filter.append(f)
+        Filter = {}
+        for inst in open_s:
+            for f in open_s[inst]:
+                for d in data[::-1]:
+                    if d.get('Name') == f:
+                        if (time.time() - d.get('Buying_time')) > delay * 3600:
+                            Filter.setdefault(inst, []).append(f)
+                        break
+                else:
+                    Filter.setdefault(inst, []).append(f)
 
         open_s = Filter
+        
         #Get real time prices 
         
         checklist = []
         pricelist = []
         leverages = []
+        typelibr = {}
+        for inst in open_s:
+            for f in open_s[inst]:
+                timeout.custom_reconnect(connector)
+                price = timeout.custom_price(connector, f)
+                if not isinstance(price, (float, int)):
+                    logger.info(f'M{modeln}Sk4 Reason: {price}')
+                    continue
+                fleverage = timeout.custom_leverage(connector, f, inst, prc)
+                if not isinstance(fleverage, (float, int)):
+                    logger.info(f'M{modeln}Sk5 Reason: {fleverage}')
+                    continue
 
-        for f in open_s:
-            price = timeout.custom_price(connector, f)
-            if not isinstance(price, (float, int)):
-                logger.info(f'M{modeln}Sk6 Reason: {price}')
-                continue
-            fleverage = timeout.custom_leverage(connector)
-            if not isinstance(fleverage, (float, int)):
-                logger.info(f'M{modeln}Sk7 Reason: {fleverage}')
-                continue
-
-            checklist.append(f)
-            pricelist.append(price)
-            leverages.append(fleverage)
+                checklist.append(f)
+                pricelist.append(price)
+                leverages.append(fleverage)
+                typelibr[f] = inst
 
         balance = timeout.get_custom_balance(connector)
         if not isinstance(balance, (float, int)):
-            logger.info(f'M{modeln}Sk8 Reason: {balance}')
+            logger.info(f'M{modeln}Sk6 Reason: {balance}')
             continue
         
         logger.info(f'Balance: {balance}')
-        logger.info(f'Possible Symbols number: {len(open_s)}')
+        logger.info(f'Possible Symbols number: {sum([len(open_s[inst]) for inst in open_s])}')
         foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, balance)
         if foundmark == None:
             logger.info(f'M{modeln} SE1 [winter sleep]')
@@ -193,90 +198,28 @@ while True:
         
         name, m, n, leverage = foundmark[1]
 
-        if balance/ n < 1:
+        if balance/(leverage * n) < 1:
             logger.info(f'M{modeln} SE2 [balance shortage]')
             amount = 1
-        elif balance/ n > 20000:
+        elif balance/(leverage * n) > 20000:
             amount = 20000
         else:
-            amount = balance/ n
+            amount = balance/(leverage * n)
 
         take_profit_value = int( 100 * m )
 
-        #### ORDER ####
-        cpbh =  timeout.custom_prebuy(connector, name)
-        if not isinstance(cpbh, tuple):
-            logger.info(f'M{modeln}Sk9 Reason: {cpbh}')
-            continue
+        check,id=connector.buy_order(instrument_type= typelibr[name], instrument_id=name,
+                    side=side, amount=amount,leverage=leverage,
+                    type=type_market,limit_price=limit_price, stop_price=stop_price,
+                    stop_lose_value=stop_lose_value, stop_lose_kind=stop_lose_kind,
+                    take_profit_value=take_profit_value, take_profit_kind=take_profit_kind,
+                    use_trail_stop=use_trail_stop, auto_margin_call=auto_margin_call,
+                    use_token_for_commission=use_token_for_commission)
 
-        point, volume_step, price, margin, volume_max = cpbh
-
-        volume = amount / margin
-        if volume > volume_max:
-            volume = volume_max
-        volume = (volume // volume_step) * volume_step
-
-        closing_price =  ((m/leverage) + 1) * price
-        closing_price = (closing_price // point ) * point
-        request = {
-                "action": connector.TRADE_ACTION_DEAL,
-                "symbol": name,
-                "volume": volume,
-                "type": connector.ORDER_TYPE_BUY,
-                "price": price,
-                # "sl": 0,
-                "tp": closing_price,
-                "comment": f"Placed by model {modeln}",
-                "type_time": connector.ORDER_TIME_GTC,
-                "type_filling": connector.ORDER_FILLING_IOC,
-        }
-
-        check = connector.order_send(request)
-
-        if check.comment == 'No prices':
-            avvol = timeout.custom_volmeter(connector, f)
-            if not isinstance(avvol, (float, int)):
-                logger.info(f'M{modeln}Sk10 Reason: {avvol}')
-                request['Name'] = name
-                request['Buying_time'] = time.time()
-                data.append(request)
-                continue
-            request['volume'] = avvol
-            check = connector.order_send(request)
-
-        if check.comment == 'Invalid stops':
-            del request['tp']
-            check = connector.order_send(request)
-
-        if check.comment == 'Market closed':
+        if check == True:
+            position_id = connector.get_position(id)[1].get('position').get('id')
             data.append({'Name' : name,
-                            'Id' : 'Market closed',
-                            'Buying_time': time.time(),
-                            'Amount': amount,
-                            'Balance': balance,
-                            'leverage': leverage,
-                            'TakeProfitValue': take_profit_value,
-                            'Position_Id': 'Market closed'
-                        }) # add exam
-
-
-        elif check.retcode != connector.TRADE_RETCODE_DONE:
-            logger.warning("2. order_send failed, retcode={}".format(check.retcode))
-            # request the result as a dictionary and display it element by element
-            result_dict=check._asdict()
-            for field in result_dict.keys():
-                logger.warning("   {}={}".format(field,result_dict[field]))
-                # if this is a trading request structure, display it element by element as well
-                if field=="request":
-                    traderequest_dict=result_dict[field]._asdict()
-                    for tradereq_filed in traderequest_dict:
-                        logger.warning("       traderequest: {}={}".format(tradereq_filed,traderequest_dict[tradereq_filed]))
-            continue
-
-        else:
-            position_id = check.order
-            data.append({'Name' : name,
-                            'Id' : position_id,
+                            'Id' : id,
                             'Buying_time': time.time(),
                             'Amount': amount,
                             'Balance': balance,
@@ -284,6 +227,7 @@ while True:
                             'TakeProfitValue': take_profit_value,
                             'Position_Id': position_id
                         }) # add exam
+
         json.dump(data, open(datapath, 'w'))
         logger.info(f'Total elements in data: {len(data)}')
     except Exception as e:
