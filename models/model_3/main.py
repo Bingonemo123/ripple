@@ -10,16 +10,17 @@ import mathf
 from pushover import Client
 import timeout
 
-prc = 'pract' in sys.argv
+prc = ('pract' in sys.argv ) | ('prc' in sys.argv)
 crpt = 'crypto' in sys.argv
 forx = 'forex' in sys.argv
+accnum = int([x for x in sys.argv if x.isnumeric()][0])
 
 modeln = 3
 
-if prc:
-    connector =IQ_Option("levanmikeladze123@gmail.com" ,"591449588")
-else:
+if accnum == 1:
     connector =IQ_Option("ww.bingonemo@gmail.com","JF*#3C5va&_NDqy")
+elif accnum == 2:
+    connector =IQ_Option("levanmikeladze123@gmail.com" ,"591449588")
 connector.connect()
 
 '''----------------------------------------------------------------------------------------------'''
@@ -44,8 +45,10 @@ logger.addHandler(rotatingfile_handler)
 #----------------------------------------------------------------------------#
 if prc:
     connector.change_balance("PRACTICE")
+    logger.info("PRACTICE")
 else:
     connector.change_balance("REAL")
+    logger.info('REAL')
 if crpt and forx:
     instrument_types= ["crypto", "forex"]
 elif forx:
