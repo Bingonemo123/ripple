@@ -72,6 +72,9 @@ means_data = json.load(open(path/'month_means.json', 'r'))
 #----------------------------------------------------------------------------#
 while True:
     try:
+        ### Refresh Data
+        json.dump(data, open(datapath, 'w'))
+
         ### Cut Out
         cutout = 4
         for d in data[::-1]:
@@ -150,7 +153,7 @@ while True:
                 continue
             for d in data[::-1]:
                 if d.get('Name') == f:
-                    if (time.time() - d.get('Buying_time')) > delay * 3600:
+                    if (time.time() - d.get('Buying_time', 0)) > delay * 3600:
                         Filter.append(f)
                     break
             else:
@@ -271,9 +274,15 @@ while True:
                     traderequest_dict=result_dict[field]._asdict()
                     for tradereq_filed in traderequest_dict:
                         logger.warning("       traderequest: {}={}".format(tradereq_filed,traderequest_dict[tradereq_filed]))
+            
+            request['Name'] = name
+            request['Cause'] = check.comment
+            request['Buying_time'] = time.time()
+            data.append(request)
             continue
 
         else:
+            logger.info(check.comment)
             position_id = check.order
             data.append({'Name' : name,
                             'Id' : position_id,

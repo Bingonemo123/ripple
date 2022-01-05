@@ -3683,3 +3683,10 @@ NameError: name 'conn' is not defined
 2021-12-14 19:53:34,949 - IQmanager - INFO - ['Open stocks:', []]
 2021-12-14 19:53:34,949 - IQmanager - INFO - unwhile #1
 2021-12-14 19:53:35,059 - IQmanager - INFO - 484559.79$
+2022-01-03 15:06:53,962 - __main__ - INFO - Main Entry 63
+2022-01-03 15:06:55,018 - Internet_protocols - WARNING - Email went wrong...
+2022-01-03 15:06:55,019 - Internet_protocols - WARNING - (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials o14sm33677079wms.4 - gsmtp')
+2022-01-03 15:06:56,149 - IQmanager - INFO - while #1
+2022-01-03 15:06:56,432 - IQmanager - INFO - ['Open stocks:', []]
+2022-01-03 15:06:56,436 - IQmanager - INFO - unwhile #1
+2022-01-03 15:06:56,572 - IQmanager - INFO - 300864.55$
