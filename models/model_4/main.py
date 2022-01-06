@@ -206,7 +206,7 @@ while True:
         else:
             amount = balance/(leverage * n)
 
-        take_profit_value = int( 100 * m )
+        take_profit_value = None # int( 100 * m )
 
         check,id=connector.buy_order(instrument_type= typelibr[name], instrument_id=name,
                     side=side, amount=amount,leverage=leverage,

@@ -219,6 +219,9 @@ class Model():
 
                 closing_price =  ((m/leverage) + 1) * price
                 closing_price = (closing_price // point ) * point
+                if closing_price < price:
+                    closing_price = 0
+
                 request = {
                         "action": connector.TRADE_ACTION_DEAL,
                         "symbol": name,
