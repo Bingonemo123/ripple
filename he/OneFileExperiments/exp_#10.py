@@ -2,89 +2,77 @@
 import math
 import numpy as np
 import itertools as it
+import functools
+n = 8
 
-n = 3
-
-def recur(k):
-    if k == 2:
-        return n-1
-    else:
-        return (k + 1)*(recur(k - 1)) - k*(k-1)/2
-
-def brutlin( k):
-
-    testn = 0
-    for k in it.product([0, 1], repeat=n-1 + 2*(k - 1)):
-        cs = 0
-        for m in k:
-            if m == 0:
-                cs -= 1
-            else:
-                cs += 1
-            if cs < 0:
-                # print(k, 'Lose')
-                break
-            elif cs >= n:
-                # print(k, 'Early win')
-                break
-        
-        if cs == n -1:
-            testn += 1
-            # print(k, f'Candidate Number {testn}' )
-        else:
-            pass
-            # print(k, 'Low or high')
-    return testn
-
-
-def lin(k):
-    if k ==1:
-        return 1
-    elif k == 2:
-        return n - 1
-    lp = math.factorial(k + 1) * (n - 1) /6
-    rp = sum([math.factorial(k + 1)* ((i - 1)*(i)/2) / math.factorial(i + 1) for i in range(3, k + 1)])
-    return lp - rp
-
-
-# s = 0
-# k = 0
-# while True:
-#     onewayprob = (1/2)**(n + 2 * k)
-#     print(onewayprob)
-#     totalways = brutlin(k + 1)
-#     print(totalways)
-#     productprob = onewayprob * totalways
-#     print(productprob)
-#     s += productprob
-#     k += 1
-#     print(k, s)
-#     input()
-
-# total = 0
-# win = 0
-
-# while True:
-#     f = 0
-#     while True:
-        
-#         if np.random.choice([True, False]):
-#             f += 1
-#         else:
-#             f -= 1
-
-#         if f>= 3:
-#             win += 1
-#             break
+def real():
+    win = 0
+    total = 0
+    while True:
+        f = 0
+        while True:
             
-#         elif f < 0:
-#             break
-#     total += 1
+            if np.random.choice([True, False]):
+                f += 1
+            else:
+                f -= 1
 
-#     print(win, total, win/total)
+            if f>= n:
+                win += 1
+                break
+                
+            elif f < 0:
+                break
+        total += 1
 
-for n in range(3, 10):
-    print( n)
+        print(win, total, win/total)
 
-    for j in range(10):
-        print(brutlin(j), end= ':')
+
+def markov():
+    matric = [
+        [1, *[0 for _ in range(n-1)]],
+        *[[ *[0 for y in range(x)], 0.5, 0, 0.5, *[0 for y in range(n - 3 - x)]] for x in range(n-2)],
+        [*[0 for _ in range(n-1)], 1]
+    ]
+
+    initstate = [0, 1,  *[0 for _ in range(n-2)]]
+
+    for _ in range(100):
+        matric = np.matmul(matric, matric)
+
+
+        print(matric)
+
+def bruteforce():
+    # lower catalan numbers; predicted not complete
+
+    for steplimit in range(1, 40):
+        paths = 0
+        for walk in it.product([-1, 1], repeat=2*steplimit):
+            sium = 0
+            for step in walk:
+                sium += step
+                if sium < 0:
+                    break
+                elif sium >= n:
+                    break
+            if sium == n - 1:
+                paths += 1
+
+        print(paths)
+
+@functools.cache
+def recurrentlower(k, j):
+    if k == j:
+        return 1
+    elif k == n - 1:
+        return recurrentlower(k - 1, j - 1)
+    elif k == 0:
+        return recurrentlower(1, j-1)
+    else:
+        return recurrentlower(k + 1, j- 1) + recurrentlower(k - 1, j - 1)
+
+
+for k in range(0, 41):
+    print(recurrentlower(n - 1, n - 1 + 2*k))
+
