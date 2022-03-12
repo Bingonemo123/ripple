@@ -15,6 +15,8 @@ import pandas as pd
 import numpy as np
 import statistics
 import tqdm
+import curses
+import io
 
 prc = 'pract' in sys.argv
 
@@ -145,11 +147,12 @@ safe_balance = init_balance # curr_balance  - safe_margin - active_positions_los
 leveg = 3000 # leverage
 position_history = []
 
+
 def calc_balance():
     global curr_balance, margin_balance, free_balance, safe_balance
     free_balance = curr_balance - sum([i[4]*i[6]*((crp[i[1]]/i[2]) - 1) + i[4] for i in ap])  # v * l ( cp/op - 1) + v
     margin_balance = curr_balance - sum([i[4]*i[6]*((crp[i[1]]/i[2]) - 1) + i[4] for i in ap if crp[i[1]] < i[2]])  # v * l ( cp/op - 1) + v
-    safe_balance = curr_balance - sum([i[4]*(1 - i[6]) for i in ap])  # loan = pm - v | pm = v * l = a * op
+    safe_balance = curr_balance - sum([i[4]*(i[6] - 1) for i in ap])  # loan = pm - v | pm = v * l = a * op
 
 
 def current_profit(ap):
@@ -198,15 +201,34 @@ for f in trdesk:
 
 currd += timedelta(minutes=1)
 #----------------------------------------------------------------------------#
-pbar = tqdm.tqdm(total=int((datetime.utcnow().replace(tzinfo=timezone) - strd).total_seconds()/60))
+fake_file = io.StringIO()
+stdscr = curses.initscr()
+progressbarwin = curses.newwin(3, curses.COLS, 0, 0)
+progressbarwin.box()
+pbar = tqdm.tqdm(total=int((datetime.utcnow().replace(tzinfo=timezone) - strd).total_seconds()/60), file=fake_file, ncols = curses.COLS-2)
+pbar.set_description('│')
+infowin = curses.newwin(23, curses.COLS//2, 3, 0)
+statuswin = curses.newwin(3, curses.COLS, curses.LINES-3, 0)
 
-
+def refresh_status(text):
+    statuswin.clear()
+    statuswin.box()
+    statuswin.addstr(1, 1, text)
+    statuswin.refresh()
+#----------------------------------------------------------------------------#
+maximum_var = [curr_balance, safe_balance, margin_balance, free_balance, len(ap)]
+minimum_var = [curr_balance, safe_balance, margin_balance, free_balance]
+autoclosed = 0
+marginclosed = 0
+cutoutclosed = 0
+cutoutindx = 0
 #----------------------------------------------------------------------------#
 while True:
     try:
         ### Refresh Data
         # json.dump(data, open(datapath, 'w'))
         ### 1. Get data
+        refresh_status('Getting data...')
         actdesk = [] # active desk: list of market which is active a.k.a. changed a.k.a. maybe not closed
         for f in trdesk:
             rates = timeout.datamine(connector, f=trdesk[0], frame=connector.TIMEFRAME_M1, t=currd, count=1)
@@ -220,18 +242,22 @@ while True:
         ### 1.1. Calculate balances
         calc_balance()
         ### 2. Check if position is outoff margin or autoclose is activated close position.
+        refresh_status('Checking positions...')
         for pos in ap:
             if pos[1] in actdesk:
                 ### check if autoclose activated
                 if pos[5] >= crp[pos[1]]:
                     close_pos(pos[0])
+                    autoclosed += 1
                 ### check if position is outoff margin
                 if margin_balance <= 0:
+                    marginclosed += len(ap)
                     close_positions(ap)
 
         ### 2.1 Calculate balances
         calc_balance()
         ### 3. Cutout
+        refresh_status('Cutout...')
         cutout = 4
         if currd - lct >= timedelta(hours=cutout):
             total_profit = sum([i[4]*i[6]*((crp[i[1]]/i[2]) - 1) for i in ap])
@@ -244,12 +270,15 @@ while True:
                 #                 'Theoretical Time': str(currd),
                 #             })
                 # json.dump(data, open(datapath, 'w'))
+                cutoutclosed += len(ap)
+                cutoutindx += 1
                 close_positions(ap)
            
         ### Open Assets 3.1 Check if market was open   
         # open if in actdesk   
 
         ### Filter new positions
+        refresh_status('Filtering new positions...')
         '''If already bought, continue (not buy same market, while already one is active)
         else, if last time from buy is more than delay, consider buying. '''
         delay = 8
@@ -269,6 +298,7 @@ while True:
         open_s = Filter
         logger.debug(f'Possible Symbols number: {len(open_s)}')
         # 5. Get ready means, leverage, current prices and balance
+        refresh_status('Getting ready...')
         
         checklist = []
         pricelist = []
@@ -321,6 +351,7 @@ while True:
         logger.debug(f'Means: {means_data}')
 
         ### 6. Run strategy: EZAquariiB
+        refresh_status('Running strategy...')
         if safe_balance > 0: # buy if only safe_balance is available
 
             foundmark = mathf.EZAquariiB(checklist, pricelist, means_data, leverages, safe_balance)
@@ -343,6 +374,7 @@ while True:
                 take_profit_value = int( 100 * m )
 
                 ### 8. Make theoretical buy and put info in active_positions
+                refresh_status('Making theoretical buy...')
                 if amount <= safe_balance:
                     id_index += 1
                     curr_balance -= amount
@@ -366,13 +398,61 @@ while True:
             logger.debug(f'low safe_balance {safe_balance}')
         
         ### 9. Log and display info
+        refresh_status('Logging and displaying info...')
         # json.dump(data, open(datapath, 'w'))
         logger.debug(f'Total elements in data: {len(position_history)}')
 
-        ### 10. update time
-        currd += timedelta(minutes=1)
+       
         pbar.update(1)
-        pbar.set_description(f'{currd}')
+        pbar.set_description(f'│ {currd}')
+        fake_file.flush()
+        fake_file.seek(0)
+        progressbarwin.addstr(1, 2, fake_file.readline())
+
+        infowin.clear()
+        infowin.box()
+        infowin.addstr(1, 1, f'Current Balance {curr_balance:.2f}')
+        infowin.addstr(2, 1, f'Safe Balance {safe_balance:.2f}')
+        infowin.addstr(3, 1, f'Margin Balance {margin_balance:.2f}')
+        infowin.addstr(4, 1, f'Free Balance {free_balance:.2f}')
+        infowin.addstr(5, 1, f'Total Profit {tp:.2f}')
+
+        maxcheckvars = [curr_balance, safe_balance, margin_balance, free_balance, len(ap)]
+        for x in range(len(maxcheckvars)):
+            if maximum_var[x] < maxcheckvars[x]:
+                maximum_var[x] = maxcheckvars[x]
+
+        mincheckvars = [curr_balance, safe_balance, margin_balance, free_balance]
+        for x in range(len(mincheckvars)):
+            if minimum_var[x] > mincheckvars[x]:
+                minimum_var[x] = mincheckvars[x]
+
+        infowin.addstr(6, 1, f'Max Current Balance {maximum_var[0]:.2f}')
+        infowin.addstr(7, 1, f'Max Safe Balance {maximum_var[1]:.2f}')
+        infowin.addstr(8, 1, f'Max Margin Balance {maximum_var[2]:.2f}')
+        infowin.addstr(9, 1, f'Max Free Balance {maximum_var[3]:.2f}')
+        infowin.addstr(10, 1, f'Min Current Balance {minimum_var[0]:.2f}')
+        infowin.addstr(11, 1, f'Min Safe Balance {minimum_var[1]:.2f}')
+        infowin.addstr(12, 1, f'Min Margin Balance {minimum_var[2]:.2f}')
+        infowin.addstr(13, 1, f'Min Free Balance {minimum_var[3]:.2f}')
+        
+        infowin.addstr(15, 1, f'Active Positions {len(ap)}')
+        infowin.addstr(16, 1, f'Total Positions {len(position_history)}')
+        infowin.addstr(17, 1, f'AutoClosed {autoclosed}')
+        infowin.addstr(18, 1, f'MarginClosed {marginclosed}')
+        infowin.addstr(19, 1, f'CutoutClosed {cutoutclosed}')
+        infowin.addstr(20, 1, f'Total Closed {autoclosed + marginclosed + cutoutclosed}')
+        infowin.addstr(21, 1, f'Max Active Positions {maximum_var[4]}')
+
+        infowin.addstr(23, 1, f'Active Desk {len(actdesk)}')
+        infowin.addstr(24, 1, f'Possible Symbols {len(open_s)}')
+        infowin.addstr(25, 1, f'Cutout Index {cutoutindx}')
+        # pbar.write(f'Current Balance: {curr_balance}, Safe Balance: {safe_balance}, Total Profit: {tp}')
+        infowin.refresh()
+        progressbarwin.refresh()
+        ### 10. update time
+        refresh_status('Updating time...')
+        currd += timedelta(minutes=1)
         logger.debug(f'Current time: {currd}')
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
