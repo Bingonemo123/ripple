@@ -186,7 +186,8 @@ def close_positions(ap):
 #----------------------------------------------------------------------------#
 '''Inital Frame data'''
 for f in trdesk:
-    rates = timeout.datamine(connector, f=trdesk[0], frame=connector.TIMEFRAME_M1, t=strd, count=10080)
+    logger.info(f'Getting data for {f}')
+    rates = timeout.datamine(connector, f=f, frame=connector.TIMEFRAME_M1, t=strd, count=10080)
     rerates = np.zeros((len(rates), 8), dtype=float)
     for i in range(len(rates)):
         for x in range(8):
@@ -207,7 +208,7 @@ progressbarwin = curses.newwin(3, curses.COLS, 0, 0)
 progressbarwin.box()
 pbar = tqdm.tqdm(total=int((datetime.utcnow().replace(tzinfo=timezone) - strd).total_seconds()/60), file=fake_file, ncols = curses.COLS-2)
 pbar.set_description('│')
-infowin = curses.newwin(23, curses.COLS//2, 3, 0)
+infowin = curses.newwin(curses.LINES - 6, curses.COLS//4, 3, 0)
 statuswin = curses.newwin(3, curses.COLS, curses.LINES-3, 0)
 
 def refresh_status(text):
@@ -222,6 +223,7 @@ autoclosed = 0
 marginclosed = 0
 cutoutclosed = 0
 cutoutindx = 0
+lastmean = {}
 #----------------------------------------------------------------------------#
 while True:
     try:
@@ -231,9 +233,9 @@ while True:
         refresh_status('Getting data...')
         actdesk = [] # active desk: list of market which is active a.k.a. changed a.k.a. maybe not closed
         for f in trdesk:
-            rates = timeout.datamine(connector, f=trdesk[0], frame=connector.TIMEFRAME_M1, t=currd, count=1)
+            rates = timeout.datamine(connector, f=f, frame=connector.TIMEFRAME_M1, t=currd, count=1)
             if rates[0][0] != cd[f][-1][0]:
-                cd[f] = np.roll(cd[f], -1)
+                cd[f] = np.roll(cd[f], -1, axis=0)
                 for x in range(8):
                     cd[f][-1][x] = rates[0][x]
                 crp[f] = rates[-1][crpohlc] # current price : 0.time 1.open 2.high 3.low 4.close 5.tick_volume 6.spread 7.real_volume
@@ -348,7 +350,7 @@ while True:
             means_data[f][3] = s_1
 
 
-        logger.debug(f'Means: {means_data}')
+        logger.info(f'Means: {means_data}')
 
         ### 6. Run strategy: EZAquariiB
         refresh_status('Running strategy...')
@@ -447,6 +449,24 @@ while True:
         infowin.addstr(23, 1, f'Active Desk {len(actdesk)}')
         infowin.addstr(24, 1, f'Possible Symbols {len(open_s)}')
         infowin.addstr(25, 1, f'Cutout Index {cutoutindx}')
+
+        h = 0
+        for f in trdesk:
+            infowin.addstr(27 + h, 1, f'{f} {crp.get(f, "NaN")}')
+            h += 1
+        z = 1
+        for f in trdesk:
+            infowin.addstr(27 + h + z, 1, f'{f} ')
+            prmeans = means_data.get(f, lastmean.get(f, ["NaN"]))
+            if f in means_data:
+                lastmean[f] = means_data[f]
+            
+            if prmeans[0] == "NaN":
+                infowin.addstr(f'{prmeans[0]}')
+            else:
+                for x in prmeans:
+                    infowin.addstr(f'{x:10.4f} ')
+            z += 1
         # pbar.write(f'Current Balance: {curr_balance}, Safe Balance: {safe_balance}, Total Profit: {tp}')
         infowin.refresh()
         progressbarwin.refresh()
@@ -461,4 +481,5 @@ while True:
         logger.exception([exc_type, fname, exc_tb.tb_lineno])
         # client.send_message(exc_type, title=f'M{prc * "P"}{modeln}E {os.getcwd()}')
         logger.info(f'M{modeln} SE3 [Error hold]')
+        curses.endwin()
         time.sleep(60*3)

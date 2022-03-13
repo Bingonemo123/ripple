@@ -35,14 +35,34 @@ for i in range(len(rates)):
     for x in range(8):
         rerates[i][x] = rates[i][x]
 
+f = "EURUSD"
 cd = {}
 cd["EURUSD"] = rerates
 open_s = ["EURUSD"]
 means_data = {}
 period = 8
 ohlc = 4 # open high low close 0.time 1.open 2.high 3.low 4.close 5.tick_volume 6.spread 7.real_volume
+crpohlc = 1 # close real price
+crp = {}
 
 
+while True:
+
+    rates = mt5.copy_rates_from("EURUSD", mt5.TIMEFRAME_M1, utc_from, 1)
+    if rates[0][0] != cd[f][-1][0]:
+        print("1", cd[f])
+        cd[f] = np.roll(cd[f], -1, axis=0)
+        print("2", cd[f])
+        print("3", cd[f][-1])
+        for x in range(8):
+            cd[f][-1][x] = rates[0][x]
+        crp[f] = rates[-1][crpohlc] # current price : 0.time 1.open 2.high 3.low 4.close 5.tick_volume 6.spread 7.real_volume
+
+        print("4", rates)
+        print("5", statistics.mean([i[ohlc] for i in cd["EURUSD"]]))
+        input()
+
+    utc_from += timedelta(minutes=1)
 # print(type(rerates))
 # print(type(rerates[0]))
 # print(rerates.shape)
