@@ -2,10 +2,6 @@ import plotext as plt
 from contextlib import redirect_stdout
 import io
 import curses
-import locale
-locale.setlocale(locale.LC_ALL, '')
-code = locale.getpreferredencoding()
-
 PlotFile = io.StringIO()
 
 
@@ -13,7 +9,8 @@ with redirect_stdout(PlotFile):
     y = plt.sin() # sinusoidal signal 
     plt.scatter(y, marker='dot', )
     plt.title("Scatter Plot")
-    plt.plot_size(10, 10)
+    plt.plot_size(80, 30)
+    plt.colorless()
     plt.show()
 PlotFile.seek(0)
 w = PlotFile.readlines()
@@ -23,7 +20,6 @@ dechar = []
 bychar = []
 def main (stdscr):
     curses.start_color()
-    curses.use_default_colors()
     k = 0
     for i in w:
         for c in i:
@@ -32,7 +28,7 @@ def main (stdscr):
                 vischar.append(c)
                 dechar.append(c.encode('utf-8'))
                 bychar.append(bytes(dechar[-1]))
-            stdscr.addstr(chr(ord(c)).encode('utf-8'))
+            stdscr.addstr(c)
         print(i)
         k += 1
     stdscr.refresh()

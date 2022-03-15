@@ -4,23 +4,31 @@ from datetime import datetime, timedelta
 import statistics
 import time
 import numpy as np
+import pandas as pd
+import pytz
+import timeout
 # display data on the MetaTrader 5 package
 print("MetaTrader5 package author: ",mt5.__author__)
 print("MetaTrader5 package version: ",mt5.__version__)
  
 # import the 'pandas' module for displaying data obtained in the tabular form
-import pandas as pd
 pd.set_option('display.max_columns', 500) # number of columns to be displayed
 pd.set_option('display.width', 1500)      # max table width to display
 # import pytz module for working with time zone
-import pytz
+
  
 # establish connection to MetaTrader 5 terminal
 if not mt5.initialize():
     print("initialize() failed, error code =",mt5.last_error())
     quit()
+
+account = 5419164
+authorized = mt5.login(account, password="u2lgFSvc", server="FxPro-MT5")
+if not authorized:
+    print("failed to connect at account #{}, error code: {}".format(
+        account, mt5.last_error()))
  
-# set time zone to UTC
+'''# set time zone to UTC
 timezone = pytz.timezone("Etc/UTC")
 # create 'datetime' object in UTC time zone to avoid the implementation of a local time zone offset
 utc_from = datetime.strptime("01.01.2018", "%d.%m.%Y") # datetime(2020, 1, 10, tzinfo=timezone)
@@ -105,4 +113,6 @@ while True:
         for x in range(8):
             cd[f][-1][x] = rates[0][x]
         print(cd[f][-1])
-"""
+"""'''
+
+print(format(timeout.custom_prebuy(mt5, "EURUSD")[0], "f"))

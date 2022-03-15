@@ -1,12 +1,11 @@
-import numpy as np
 
-h = [
-    [1, 2, 3, 4, 5, 6, 7, 8],
-    [2, 2, 3, 4, 5, 6, 7, 8],
-    [3, 2, 3, 4, 5, 6, 7, 8],
+from datetime import datetime
 
-    [4, 2, 3, 4, 5, 6, 7, 8],
-    [5, 2, 3, 4, 5, 6, 7, 8],    
-]
+j =[ datetime.now(), "ERUSD", 18305.304]
 
-print(np.roll(h, -1, axis=0))
+for x in j:
+    if isinstance(x, float):
+        x = f'{x:,.2f}'
+    print(f"{f'{x}':^30}")
+
+

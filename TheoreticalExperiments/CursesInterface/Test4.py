@@ -9,7 +9,7 @@ def draw_plot(cols, lines):
         y = plt.sin() # sinusoidal signal 
         plt.plot(y )
         plt.title("Scatter Plot")
-        plt.plot_size(cols -1 , lines)
+        plt.plot_size(cols -1 , lines-1)
         plt.colorless()
         plt.show()
     PlotFile.seek(0)
@@ -19,13 +19,14 @@ def draw_plot(cols, lines):
 
 def main (stdscr):
     curses.start_color()
-    w = draw_plot(curses.COLS, curses.LINES)
+    winr = curses.newwin(30, 30, 30, 30)
+    w = draw_plot(30, 30)
     k = 0
     for i in w:
         for c in i:
-            stdscr.addstr(c)
+            winr.addstr(c)
         k += 1
-    stdscr.refresh()
+    winr.refresh()
     curses.napms(3000)
 
 curses.wrapper(main)

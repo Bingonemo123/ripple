@@ -1,22 +1,26 @@
-import MetaTrader5 as connector
-import logging.handlers
-import logging
-import time
-import sys
-import os
-import pathlib
-import json
-import pytz
-from datetime import datetime, timedelta
-import mathfc as mathf
-from pushover import Client
-import timeout
-import pandas as pd
-import numpy as np
-import statistics
-import tqdm
 import curses
 import io
+import json
+import logging
+import logging.handlers
+import os
+import pathlib
+import statistics
+import sys
+import time
+from contextlib import redirect_stdout
+from datetime import datetime, timedelta
+
+import MetaTrader5 as connector
+import numpy as np
+import pandas as pd
+import pytz
+import tqdm
+from pushover import Client
+
+import mathfc as mathf
+import timeout
+import plotext as plt
 
 prc = 'pract' in sys.argv
 
@@ -145,8 +149,7 @@ safe_balance = init_balance # curr_balance  - safe_margin - active_positions_los
 # margin_balance = curr_balance - Sum(am | if op > cp) : | am = bm + v | bm = cm - pm | cm = a * op
 # free_balance = curr_balance - Sum(am) : | am = bm + v | bm = cm - pm | cm = a * op
 leveg = 3000 # leverage
-position_history = []
-
+position_history = {}
 
 def calc_balance():
     global curr_balance, margin_balance, free_balance, safe_balance
@@ -166,9 +169,10 @@ def close_pos(ids):
     for i in ap:
         logger.debug(f'Closing position {i}')
         if i[0] == ids:
-            closing_profit = i[4] * i[6] * (crp[i[1]]/i[2] - 1) + i[4]
+            closing_profit = i[4] * i[6] * ((crp[i[1]]/i[2]) - 1) + i[4]
             tp += closing_profit
             curr_balance += closing_profit
+            position_history.get(ids).update({'Close Time': currd, 'Close Price': crp[i[1]], 'Profit': closing_profit, 'Closed by': 'Auto'})
             ap.remove(i)
             break
     calc_balance()
@@ -177,12 +181,32 @@ def close_positions(ap):
     global tp, curr_balance
     for i in ap:
         logger.debug(f'Closing position {i[0]}')
-        closing_profit = i[4] * i[6] * (crp[i[1]]/i[2] - 1) + i[4]
+        closing_profit = i[4] * i[6] * ((crp[i[1]]/i[2]) - 1) + i[4]
         tp += closing_profit
         curr_balance += closing_profit
+        position_history.get(i[0]).update({'Close Time': currd, 'Close Price': crp[i[1]], 'Profit': closing_profit, 'Closed by': 'Cluster'})
+
     ap.clear()
     calc_balance()
 
+plt.colorless()
+plt.xlabel('Time')
+last_graph_update = strd
+
+def draw_plot(cols, lines, f):
+    PlotFile = io.StringIO()
+    with redirect_stdout(PlotFile):
+        plt.clp()
+        plt.clc()
+        plt.cls()
+        plt.plot_size(lines -1 , cols -1)
+        y = [i[crpohlc] for i in cd[f][-100:]]
+        plt.plot(y)
+        plt.title(f)
+        plt.show()
+    PlotFile.seek(0)
+    w = PlotFile.readlines()
+    return w
 #----------------------------------------------------------------------------#
 '''Inital Frame data'''
 for f in trdesk:
@@ -210,6 +234,7 @@ pbar = tqdm.tqdm(total=int((datetime.utcnow().replace(tzinfo=timezone) - strd).t
 pbar.set_description('│')
 infowin = curses.newwin(curses.LINES - 6, curses.COLS//4, 3, 0)
 statuswin = curses.newwin(3, curses.COLS, curses.LINES-3, 0)
+graphwin = curses.newwin(curses.LINES - 6, curses.COLS - curses.COLS//4, 3, curses.COLS//4)
 
 def refresh_status(text):
     statuswin.clear()
@@ -248,7 +273,7 @@ while True:
         for pos in ap:
             if pos[1] in actdesk:
                 ### check if autoclose activated
-                if pos[5] >= crp[pos[1]]:
+                if pos[5] <= crp[pos[1]]: # close olhc = 1 a.k.a open
                     close_pos(pos[0])
                     autoclosed += 1
                 ### check if position is outoff margin
@@ -274,6 +299,7 @@ while True:
                 # json.dump(data, open(datapath, 'w'))
                 cutoutclosed += len(ap)
                 cutoutindx += 1
+                lct = currd
                 close_positions(ap)
            
         ### Open Assets 3.1 Check if market was open   
@@ -289,11 +315,10 @@ while True:
         for f in actdesk:
             if f in [i[1] for i in ap]:
                 continue
-            for d in position_history[::-1]:
-                if d.get('Name') == f:
-                    if (currd - d.get('Buying_time', 0)) > timedelta(hours=delay):
-                        Filter.append(f)
-                    break
+            for indx in position_history:
+                if position_history[indx].get('Name') == f:
+                    if (currd - position_history[indx].get('Buying_time', 0)) < timedelta(hours=delay):
+                        break
             else:
                 Filter.append(f)
 
@@ -326,7 +351,7 @@ while True:
 
         means_data = {}
         period = 8
-        ohlc = 4 # open high low close 0.time 1.open 2.high 3.low 4.close 5.tick_volume 6.spread 7.real_volume
+        ohlc = 4 # open high low close 0.time 1.open 2.high 3.low 4.close 5.tick_volume 6.spread 7.real_volume # mean ohlc
         
 
         for f in open_s:
@@ -350,7 +375,7 @@ while True:
             means_data[f][3] = s_1
 
 
-        logger.info(f'Means: {means_data}')
+        logger.debug(f'Means: {means_data}')
 
         ### 6. Run strategy: EZAquariiB
         refresh_status('Running strategy...')
@@ -373,7 +398,7 @@ while True:
                 else:
                     amount = safe_balance/ n
 
-                take_profit_value = int( 100 * m )
+                take_profit_value = ((m/leverage) + 1) * crp[name]
 
                 ### 8. Make theoretical buy and put info in active_positions
                 refresh_status('Making theoretical buy...')
@@ -385,14 +410,17 @@ while True:
                     else:
                         amount_tlots = amount * leverage / crp[name]# amount of theortical lots
                         ap.append([id_index, name, crp[name], currd, amount, take_profit_value, leverage, amount_tlots])
-                        position_history.append({'Name' : name,
-                                        'Id' : id_index,
+                        position_history[id_index] = {'Id' : id_index,
+                                        'Name' : name,
+                                        'Opening_price' : crp[name],
                                         'Buying_time': currd,
                                         'Amount': amount,
-                                        'Balance': curr_balance,
+                                        'TakeProfitValue': take_profit_value,
                                         'leverage': leverage,
-                                        'TakeProfitValue': take_profit_value
-                                    }) # add exam
+                                        'Amount_tlots': amount_tlots,
+                                        'Balance': curr_balance,
+                                        'SafeBalance': safe_balance,
+                                    } # add exam
                         logger.debug(f'Buying {name} with amount {amount}')
                         ### 8.1 Recalculate balance
                         calc_balance()
@@ -413,11 +441,11 @@ while True:
 
         infowin.clear()
         infowin.box()
-        infowin.addstr(1, 1, f'Current Balance {curr_balance:.2f}')
-        infowin.addstr(2, 1, f'Safe Balance {safe_balance:.2f}')
-        infowin.addstr(3, 1, f'Margin Balance {margin_balance:.2f}')
-        infowin.addstr(4, 1, f'Free Balance {free_balance:.2f}')
-        infowin.addstr(5, 1, f'Total Profit {tp:.2f}')
+        infowin.addstr(1, 1, f'Current Balance {curr_balance:,.2f}')
+        infowin.addstr(2, 1, f'Safe Balance {safe_balance:,.2f}')
+        infowin.addstr(3, 1, f'Margin Balance {margin_balance:,.2f}')
+        infowin.addstr(4, 1, f'Free Balance {free_balance:,.2f}')
+        infowin.addstr(5, 1, f'Total Profit {tp:,.2f}')
 
         maxcheckvars = [curr_balance, safe_balance, margin_balance, free_balance, len(ap)]
         for x in range(len(maxcheckvars)):
@@ -429,14 +457,14 @@ while True:
             if minimum_var[x] > mincheckvars[x]:
                 minimum_var[x] = mincheckvars[x]
 
-        infowin.addstr(6, 1, f'Max Current Balance {maximum_var[0]:.2f}')
-        infowin.addstr(7, 1, f'Max Safe Balance {maximum_var[1]:.2f}')
-        infowin.addstr(8, 1, f'Max Margin Balance {maximum_var[2]:.2f}')
-        infowin.addstr(9, 1, f'Max Free Balance {maximum_var[3]:.2f}')
-        infowin.addstr(10, 1, f'Min Current Balance {minimum_var[0]:.2f}')
-        infowin.addstr(11, 1, f'Min Safe Balance {minimum_var[1]:.2f}')
-        infowin.addstr(12, 1, f'Min Margin Balance {minimum_var[2]:.2f}')
-        infowin.addstr(13, 1, f'Min Free Balance {minimum_var[3]:.2f}')
+        infowin.addstr(6, 1, f'Max Current Balance {maximum_var[0]:,.2f}')
+        infowin.addstr(7, 1, f'Max Safe Balance {maximum_var[1]:,.2f}')
+        infowin.addstr(8, 1, f'Max Margin Balance {maximum_var[2]:,.2f}')
+        infowin.addstr(9, 1, f'Max Free Balance {maximum_var[3]:,.2f}')
+        infowin.addstr(10, 1, f'Min Current Balance {minimum_var[0]:,.2f}')
+        infowin.addstr(11, 1, f'Min Safe Balance {minimum_var[1]:,.2f}')
+        infowin.addstr(12, 1, f'Min Margin Balance {minimum_var[2]:,.2f}')
+        infowin.addstr(13, 1, f'Min Free Balance {minimum_var[3]:,.2f}')
         
         infowin.addstr(15, 1, f'Active Positions {len(ap)}')
         infowin.addstr(16, 1, f'Total Positions {len(position_history)}')
@@ -452,7 +480,9 @@ while True:
 
         h = 0
         for f in trdesk:
-            infowin.addstr(27 + h, 1, f'{f} {crp.get(f, "NaN")}')
+            infowin.addstr(27 + h, 1, f'{f} {crp.get(f, "NaN"):<20}') # prices
+            if f in [i[1] for i in ap]:
+                infowin.addstr('x')
             h += 1
         z = 1
         for f in trdesk:
@@ -467,9 +497,38 @@ while True:
                 for x in prmeans:
                     infowin.addstr(f'{x:10.4f} ')
             z += 1
+
+        if len(position_history) > 0:
+            selected_position = position_history.get(max([x for x in position_history if len(position_history[x]) > 10], default=None), False)
+            if selected_position:
+                z += 1
+                infowin.addstr(27 + h + z, 1, f'Latest Closed Position')
+                z += 1 
+                for d in selected_position:
+                    selected_data = selected_position[d]
+                    if isinstance(selected_data, float):
+                        selected_data = f'{selected_data:,}'
+                    infowin.addstr(27 + h + z, 1, f'{d:{(curses.COLS//8) -3 }}  {f"{selected_data}":<{(curses.COLS//8) -3}}')
+                    z += 1
+        
+        if foundmark:
+            infowin.addstr(27 + h + z, 1, f'Foundmark {foundmark[1][0]} {foundmark[0]}')
         # pbar.write(f'Current Balance: {curr_balance}, Safe Balance: {safe_balance}, Total Profit: {tp}')
         infowin.refresh()
         progressbarwin.refresh()
+        ### draw the graph
+        if currd - last_graph_update >= timedelta(minutes=15):
+            graphwin.clear()
+            w = draw_plot(curses.LINES - 6, curses.COLS - curses.COLS//4, 'EURUSD')
+            
+            k = 0
+            for i in w:
+                for c in i:
+                    graphwin.addstr(c)
+                k += 1
+            graphwin.refresh()
+            last_graph_update = currd
+
         ### 10. update time
         refresh_status('Updating time...')
         currd += timedelta(minutes=1)
