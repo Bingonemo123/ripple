@@ -115,4 +115,5 @@ while True:
         print(cd[f][-1])
 """'''
 
-print(format(timeout.custom_prebuy(mt5, "EURUSD")[0], "f"))
+# print(format(timeout.custom_prebuy(mt5, "EURUSD")[0], "f"))
+print(mt5.history_orders_get(position=49276867))

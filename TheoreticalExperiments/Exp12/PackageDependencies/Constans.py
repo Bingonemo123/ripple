@@ -67,3 +67,6 @@ last_graph_update = strd
 fake_file = io.StringIO()
 
 means_data = {}
+foundmark = None
+actdesk = []
+Filter = []
