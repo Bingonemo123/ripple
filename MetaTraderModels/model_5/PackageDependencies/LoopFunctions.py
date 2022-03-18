@@ -1,16 +1,16 @@
 import io
 import os
 import sys
-
 from datetime import datetime, timedelta
 
 import numpy as np
+import time
 
 from PackageDependencies import Timeout
 from PackageDependencies.Means.meanv2.MeanFunctions import mean
 from PackageDependencies.MetaTrader import connector
 from PackageDependencies.Strategies import mathfc
-
+from PackageDependencies.GuiFunctions import CursesUtilities
 
 class LoopUtilities():
     def __init__(self):
@@ -51,9 +51,18 @@ class LoopUtilities():
         self.foundmark = None
         self.actdesk = []
         self.Filter = []
+        self.iteration = 0
+        self.drawing_time = 0
+        self.last_foundmark_run = datetime.now()
+        self.last_foundmark_iter = 0
 
         for f in self.trdesk:
             self.get_rates(f)
+        
+        self.gui = CursesUtilities(self)
+        self.last_gui_update = datetime.now()
+        self.gui.flow(self)
+
            
     def get_rates(self, f):
         rates = Timeout.datamine(connector, f=f, frame=connector.TIMEFRAME_M1, t=self.strd, count=10080)
@@ -69,6 +78,7 @@ class LoopUtilities():
         for f in self.trdesk:
             rates = Timeout.datamine(connector, f=f, frame=connector.TIMEFRAME_M1, t=datetime.now(), count=1)
             if rates[0][0] != self.cd[f][-1][0]:
+                print('Getting new data')
                 self.cd[f] = np.roll(self.cd[f], -1, axis=0)
                 for x in range(8):
                     self.cd[f][-1][x] = rates[0][x]
@@ -97,7 +107,7 @@ class LoopUtilities():
 
     def check_cutout(self):
         cutout = 4
-        if datetime.now() - lct >= timedelta(hours=cutout):
+        if datetime.now() - self.lct >= timedelta(hours=cutout):
             pmm = Timeout.custom_profit(connector)
             if isinstance(pmm, (str, Exception)):
                 return pmm
@@ -106,7 +116,7 @@ class LoopUtilities():
             if total_profit > 0:
                 self.cutoutclosed += len(self.ap)
                 self.cutoutindx += 1
-                lct = datetime.now()
+                self.lct = datetime.now()
                 for position in msg:
                     clres = Timeout.custom_close(connector, position)
                     if clres is not True:
@@ -121,7 +131,7 @@ class LoopUtilities():
             return pmm
         total_profit, total_margin, msg = pmm
 
-        for f in self.actdesk:
+        for f in self.trdesk:
             if f in [pos.symbol for pos in msg]:
                 continue
             for indx in self.position_history:
@@ -145,14 +155,17 @@ class LoopUtilities():
             pricelist.append(price)
             leverages.append(fleverage)
 
-        foundmark = mathfc.EZAquariiB(self.Filter, pricelist, self.means_data, leverages, self.safe_balance)
-        if foundmark != None:
-            self.name = foundmark[1][0]
-            self.m = foundmark[1][1]
-            self.n = foundmark[1][2]
-            self.leverage = foundmark[1][3]
+        self.foundmark = mathfc.EZAquariiB(self.Filter, pricelist, self.means_data, leverages, self.safe_balance)
+        if self.foundmark != None:
+            self.name = self.foundmark[1][0]
+            self.m = self.foundmark[1][1]
+            self.n = self.foundmark[1][2]
+            self.leverage = self.foundmark[1][3]
             ### 7. get name, m, n and leverage if available
-            return foundmark[1] # name, m, n, leverage 
+            return self.foundmark[1] # name, m, n, leverage 
+
+        self.last_foundmark_iter = datetime.now()
+        self.last_foundmark_iter = self.iteration
 
     def demo_buy(self):
         if self.safe_balance/ self.n < 1:
@@ -251,16 +264,26 @@ class LoopUtilities():
     def flow(self):
         self.get_new_data()
         self.check_positions()
+        self.calc_balance()
         self.check_cutout()
+        self.calc_balance()
         self.main_filter()
         self.bundle_mean_strategy_buy()
+        self.calc_balance()
 
     def loop_flow(self):
-        while True:
             try:
-                self.flow()
+                while True:
+                    self.flow()
+                    if datetime.now() - self.last_gui_update > timedelta(seconds=2):
+                        self.iteration += 1
+                        self.last_gui_update = datetime.now()
+                        start_drawing_time = time.perf_counter()
+                        self.gui.flow(self)
+                        self.drawing_time = time.perf_counter() - start_drawing_time
             except Exception as e:
                 exc_type, exc_obj, exc_tb = sys.exc_info()
                 fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
                 print(str(e))
                 print([exc_type, fname, exc_tb.tb_lineno])
+                self.gui.curses.endwin()
