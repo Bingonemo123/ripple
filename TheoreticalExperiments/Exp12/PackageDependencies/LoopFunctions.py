@@ -1,141 +1,210 @@
 import curses
+import io
 import os
 import sys
-import threading
-from datetime import timedelta
+import time
+from datetime import datetime, timedelta
 
 import numpy as np
+import pytz
 
-from PackageDependencies import GlobalFunctions, Timeout
-from PackageDependencies.Constans import *
-from PackageDependencies.Means.meanv1.MeanFunctions import mean
+from PackageDependencies import Timeout
+from PackageDependencies.GuiFunctions import CursesUtilities
+from PackageDependencies.Means.meanv2.MeanFunctions import mean
 from PackageDependencies.MetaTrader import connector
 from PackageDependencies.Strategies import mathfc
 
 
 class LoopUtilities():
     def __init__(self):
-        for f in trdesk:
-            t = threading.Thread(target=self.get_rates, args=(f,))
-            t.start()
+        self.timezone = pytz.timezone("Etc/UTC")
+        self.strd =  datetime.strptime("01.01.2018", "%d.%m.%Y", )
+        self.strd = self.strd.replace(tzinfo=self.timezone)
+        self.currd = self.strd
+        self.cd = {} # candledata = list of one week data 0.time 1.open 2.high 3.low 4.close 5.tick_volume 6.spread 7.real_volume
+        self.trdesk = ["EURUSD", "GBPUSD", "USDJPY", "USDTHB", "USDZAR", "EURZAR", "GBPZAR", "GBPJPY"]
+        # 3. Cutout
+        self.lct = self.strd # last cutout time = time of last cutout
+        self.tp = 0 # total profit
+        self.id_index = 0 # id for positions
+        self.ap = [] # active positions position data 
+        '''(0.id, 1.name, 2.opening price, 3.open time, 4.amount(in money), 5.auto close, 6.leverage,7. amount(in lots), 8.mt_ticket)'''
+        self.crp = {} # current price
+        self.crpohlc = 1 # current price ohlc
+        self.init_balance = 100
+        self.curr_balance = self.init_balance # init_balance - active_position_buying_amount - closed_win_lose_amount (updated when new position is bought or active closed)
+        self.free_balance = self.init_balance # curr_balance - active_positions_win_lose_amount 
+        self.margin_balance = self.init_balance # curr_balance - active_positions_lose_amount
+        self.safe_balance = self.init_balance # curr_balance  - safe_margin - active_positions_lose_amount 
+        # safe-balance = curr_balance - Sum(loan) : | loan = pm - v | pm = v * l = a * op
+        # margin_balance = curr_balance - Sum(am | if op > cp) : | am = bm + v | bm = cm - pm | cm = a * op
+        # free_balance = curr_balance - Sum(am) : | am = bm + v | bm = cm - pm | cm = a * op
+        self.leveg = 3000 # leverage
+        self.position_history = {}
+
+        self.maximum_var = [self.curr_balance, self.safe_balance, self.margin_balance, self.free_balance, len(self.ap)]
+        self.minimum_var = [self.curr_balance, self.safe_balance, self.margin_balance, self.free_balance]
+        self.autoclosed = 0
+        self.marginclosed = 0
+        self.cutoutclosed = 0
+        self.cutoutindx = 0
+        self.lastmean = {}
+
+        self.last_graph_update = self.strd
+        self.fake_file = io.StringIO()
+
+        self.means_data = {}
+        self.foundmark = None
+        self.actdesk = []
+        self.Filter = []
+        self.iteration = 0
+        self.drawing_time = 0
+        self.last_foundmark_run = self.strd
+        self.last_foundmark_iter = 0
+
+        for f in self.trdesk:
+            self.get_rates(f)
+        
+        self.gui = CursesUtilities(self)
+        self.last_gui_update = datetime.now()
+        self.gui.flow(self)
            
     def get_rates(self, f):
-        rates = Timeout.datamine(connector, f=f, frame=connector.TIMEFRAME_M1, t=strd, count=10080)
+        rates = Timeout.datamine(connector, f=f, frame=connector.TIMEFRAME_M1, t=self.strd, count=10080)
         rerates = np.zeros((len(rates), 8), dtype=float)
         for i in range(len(rates)):
             for x in range(8):
                 rerates[i][x] = rates[i][x]
-        cd[f] = rerates
-        crp[f] = rates[-1][crpohlc] # current price : 0.time 1.open 2.high 3.low 4.close 5.tick_volume 6.spread 7.real_volume
+        self.cd[f] = rerates
+        self.crp[f] = rates[-1][self.crpohlc] # current price : 0.time 1.open 2.high 3.low 4.close 5.tick_volume 6.spread 7.real_volume
 
     def get_new_data(self):
-        global actdesk
-        actdesk = []
-        for f in trdesk:
-            t = threading.Thread(target=self.get_current_price, args=(f,))
-            t.start()
+        self.actdesk = []
+        for f in self.trdesk:
+            rates = Timeout.datamine(connector, f=f, frame=connector.TIMEFRAME_M1, t=self.currd, count=1)
+            if rates[0][0] != self.cd[f][-1][0]:
+                self.cd[f] = np.roll(self.cd[f], -1, axis=0)
+                for x in range(8):
+                    self.cd[f][-1][x] = rates[0][x]
+                self.crp[f] = rates[-1][self.crpohlc] # current price : 0.time 1.open 2.high 3.low 4.close 5.tick_volume 6.spread 7.real_volume
+                self.actdesk.append(f)
 
-    def get_current_price(self, f):
-        rates = Timeout.datamine(connector, f=f, frame=connector.TIMEFRAME_M1, t=currd, count=1)
-        if rates[0][0] != cd[f][-1][0]:
-            cd[f] = np.roll(cd[f], -1, axis=0)
-            for x in range(8):
-                cd[f][-1][x] = rates[0][x]
-            crp[f] = rates[-1][crpohlc] # current price : 0.time 1.open 2.high 3.low 4.close 5.tick_volume 6.spread 7.real_volume
-            actdesk.append(f)
+    def calc_balance(self):
+        self.free_balance = self.curr_balance - sum([i[4]*i[6]*((self.crp[i[1]]/i[2]) - 1) + i[4] for i in self.ap])  # v * l ( cp/op - 1) + v
+        self.margin_balance = self.curr_balance - sum([i[4]*i[6]*((self.crp[i[1]]/i[2]) - 1) + i[4] for i in self.ap if self.crp[i[1]] < i[2]])  # v * l ( cp/op - 1) + v
+        self.safe_balance = self.curr_balance - sum([i[4]*(i[6] - 1) for i in self.ap])  # loan = pm - v | pm = v * l = a * op
+
+    def close_pos(self, ids):
+        for i in self.ap:
+            if i[0] == ids:
+                closing_profit = i[4] * i[6] * ((self.crp[i[1]]/i[2]) - 1) + i[4]
+                self.tp += closing_profit
+                self.curr_balance += closing_profit
+                self.position_history.get(ids).update({'Close Time': self.currd, 'Close Price': self.crp[i[1]], 'Profit': closing_profit, 'Closed by': 'Auto'})
+                self.ap.remove(i)
+                break
+        self.calc_balance()
+
+    def close_positions(self):
+        for i in self.ap:
+            closing_profit = i[4] * i[6] * ((self.crp[i[1]]/i[2]) - 1) + i[4]
+            self.tp += closing_profit
+            self.curr_balance += closing_profit
+            self.position_history.get(i[0]).update({'Close Time': self.currd, 'Close Price': self.crp[i[1]], 'Profit': closing_profit, 'Closed by': 'Cluster'})
+
+        self.ap.clear()
+        self.calc_balance()
 
     def check_positions(self):
-        global autoclosed, marginclosed
-        for pos in ap:
-            if pos[1] in actdesk:
+        for pos in self.ap:
+            if pos[1] in self.actdesk:
                 ### check if autoclose activated
-                if pos[5] <= crp[pos[1]]: # close olhc = 1 a.k.a open
-                    GlobalFunctions.close_pos(pos[0])
-                    autoclosed += 1
+                if pos[5] <= self.crp[pos[1]]: # close olhc = 1 a.k.a open
+                    self.close_pos(pos[0])
+                    self.autoclosed += 1
                 ### check if position is outoff margin
-                if margin_balance <= 0:
-                    marginclosed += len(ap)
-                    GlobalFunctions.close_positions(ap)
+                if self.margin_balance <= 0:
+                    self.marginclosed += len(self.ap)
+                    self.close_positions(self.ap)
 
     def check_cutout(self):
-        global lct, cutoutindx, cutoutclosed
         cutout = 4
-        if currd - lct >= timedelta(hours=cutout):
-            total_profit = sum([i[4]*i[6]*((crp[i[1]]/i[2]) - 1) for i in ap])
+        if self.currd - self.lct >= timedelta(hours=cutout):
+            total_profit = sum([i[4]*i[6]*((self.crp[i[1]]/i[2]) - 1) for i in self.ap])
             if total_profit > 0:
-                cutoutclosed += len(ap)
-                cutoutindx += 1
-                lct = currd
-                GlobalFunctions.close_positions(ap)
+                self.cutoutclosed += len(self.ap)
+                self.cutoutindx += 1
+                self.lct = self.currd
+                self.close_positions()
 
     def main_filter (self):
-        global Filter
         delay = 8
-        Filter = []
-        for f in actdesk:
-            if f in [i[1] for i in ap]:
+        self.Filter = []
+        for f in self.actdesk:
+            if f in [i[1] for i in self.ap]:
                 continue
-            for indx in position_history:
-                if position_history[indx].get('Name') == f:
-                    if (currd - position_history[indx].get('Buying_time', 0)) < timedelta(hours=delay):
+            for indx in self.position_history:
+                if self.position_history[indx].get('Name') == f:
+                    if (self.currd - self.position_history[indx].get('Buying_time', 0)) < timedelta(hours=delay):
                         break
             else:
-                Filter.append(f)
-        return Filter
+                self.Filter.append(f)
+        return self.Filter
     
     def run_strategy(self):
-        global foundmark
         pricelist = []
         leverages = []
-        for f in Filter:
-            pricelist.append(crp[f])
-            leverages.append(leveg)
+        for f in self.Filter:
+            pricelist.append(self.crp[f])
+            leverages.append(self.leveg)
 
         
-        foundmark = mathfc.EZAquariiB(Filter, pricelist, means_data, leverages, safe_balance)
-        if foundmark != None:
-            self.name = foundmark[1][0]
-            self.m = foundmark[1][1]
-            self.n = foundmark[1][2]
-            self.leverage = foundmark[1][3]
+        self.foundmark = mathfc.EZAquariiB(self.Filter, pricelist, self.means_data, leverages, self.safe_balance)
+        if self.foundmark != None:
+            self.name = self.foundmark[1][0]
+            self.m = self.foundmark[1][1]
+            self.n = self.foundmark[1][2]
+            self.leverage = self.foundmark[1][3]
             ### 7. get name, m, n and leverage if available
-            return foundmark[1] # name, m, n, leverage 
+            return self.foundmark[1] # name, m, n, leverage 
+
+        self.last_foundmark_iter = self.currd
+        self.last_foundmark_iter = self.iteration
 
     def theoretical_buy(self):
-        global curr_balance, id_index
-        if safe_balance/ self.n < 1:
-            amount = 1
-        elif safe_balance/ self.n > 20000:
-            amount = 20000
+        if self.safe_balance/ self.n < 1:
+            self.amount = 1
+        elif self.safe_balance/ self.n > 20000:
+            self.amount = 20000
         else:
-            amount = safe_balance/ self.n
+            self.amount = self.safe_balance/ self.n
 
-        take_profit_value = ((self.m/self.leverage) + 1) * crp[self.name]
+        take_profit_value = ((self.m/self.leverage) + 1) * self.crp[self.name]
 
-        if amount <= safe_balance:
-            id_index += 1
-            curr_balance -= amount
-            if curr_balance < 0:
+        if self.amount <= self.safe_balance:
+            self.id_index += 1
+            self.curr_balance -= self.amount
+            if self.curr_balance < 0:
                 pass
             else:
-                amount_tlots = amount * self.leverage / crp[self.name]# amount of theortical lots
-                ap.append([id_index, self.name, crp[self.name], currd, amount, take_profit_value, self.leverage, amount_tlots])
-                position_history[id_index] = {'Id' : id_index,
+                amount_tlots = self.amount * self.leverage / self.crp[self.name]# amount of theortical lots
+                self.ap.append([self.id_index, self.name, self.crp[self.name], self.currd, self.amount, take_profit_value, self.leverage, amount_tlots])
+                self.position_history[self.id_index] = {'Id' : self.id_index,
                                 'Name' : self.name,
-                                'Opening_price' : crp[self.name],
-                                'Buying_time': currd,
-                                'Amount': amount,
+                                'Opening_price' : self.crp[self.name],
+                                'Buying_time': self.currd,
+                                'Amount': self.amount,
                                 'TakeProfitValue': take_profit_value,
                                 'leverage': self.leverage,
                                 'Amount_tlots': amount_tlots,
-                                'Balance': curr_balance,
-                                'SafeBalance': safe_balance,
+                                'Balance': self.curr_balance,
+                                'SafeBalance': self.safe_balance,
                             } # add exam
 
     def bundle_mean_strategy_buy(self):
-        if safe_balance > 0:
-            for f in Filter:
-                means_data[f] = mean(f)
+        if self.safe_balance > 0:
+            for f in self.Filter:
+                self.means_data[f] = mean(f, self.cd[f])
 
             if self.run_strategy() is not None:
                 self.theoretical_buy()
@@ -143,20 +212,27 @@ class LoopUtilities():
     def flow(self):
         self.get_new_data()
         self.check_positions()
+        self.calc_balance()
         self.check_cutout()
+        self.calc_balance()
         self.main_filter()
         self.bundle_mean_strategy_buy()
+        self.calc_balance()
 
     def loop_flow(self):
-        global currd
-        while True:
-            try:
-                currd += timedelta(minutes=1)
+        try:
+            while True:
+                self.currd += timedelta(minutes=1)
                 self.flow()
-            except Exception as e:
-                exc_type, exc_obj, exc_tb = sys.exc_info()
-                fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-                print(str(e))
-                print([exc_type, fname, exc_tb.tb_lineno])
-                # client.send_message(exc_type, title=f'M{prc * "P"}{modeln}E {os.getcwd()}')
-                curses.endwin()
+                if datetime.now() - self.last_gui_update > timedelta(seconds=2):
+                        self.iteration += 1
+                        self.last_gui_update = datetime.now()
+                        start_drawing_time = time.perf_counter()
+                        self.gui.flow(self)
+                        self.drawing_time = time.perf_counter() - start_drawing_time
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            print(str(e))
+            print([exc_type, fname, exc_tb.tb_lineno])
+            self.gui.curses.endwin()
