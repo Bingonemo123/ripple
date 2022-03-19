@@ -31,7 +31,7 @@ class LoopUtilities():
         '''(0.id, 1.name, 2.opening price, 3.open time, 4.amount(in money), 5.auto close, 6.leverage,7. amount(in lots), 8.mt_ticket)'''
         self.crp = {} # current price
         self.crpohlc = 1 # current price ohlc
-        self.init_balance = 100
+        self.init_balance = 10_000
         self.curr_balance = self.init_balance # init_balance - active_position_buying_amount - closed_win_lose_amount (updated when new position is bought or active closed)
         self.free_balance = self.init_balance # curr_balance - active_positions_win_lose_amount 
         self.margin_balance = self.init_balance # curr_balance - active_positions_lose_amount

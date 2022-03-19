@@ -1,3 +1,4 @@
+#cython: language_level=3
 import statistics
 from datetime import timedelta
 period = 8
