@@ -17,18 +17,12 @@ class CursesUtilities():
         self.progressbarwin = curses.newwin(3, curses.COLS, 0, 0)
         self.progressbarwin.box()
         self.infowin = curses.newwin(curses.LINES - 6, curses.COLS//4, 3, 0)
-        self.statuswin = curses.newwin(3, curses.COLS, curses.LINES-3, 0)
+        self.statuswin = curses.newwin(3, curses.COLS - curses.COLS//4, curses.LINES-3, curses.COLS//4)
         self.graphwin = curses.newwin(curses.LINES - 6, curses.COLS - curses.COLS//4, 3, curses.COLS//4)
 
         self.pbar = tqdm.tqdm(total=int((datetime.utcnow().replace(tzinfo=self.lu.timezone) - self.lu.strd).total_seconds()/60), file=self.lu.fake_file, ncols = curses.COLS-2)
         self.pbar.set_description('│')
         self.curses = curses
-
-    def refresh_status(self, status):
-        self.statuswin.clear()
-        self.statuswin.box()
-        self.statuswin.addstr(1, 1, status)
-        self.statuswin.refresh()
     
     def draw_plot(self, cols, lines, f):
         PlotFile = io.StringIO()
@@ -98,8 +92,10 @@ class CursesUtilities():
         self.z = 0
         for f in self.lu.trdesk:
             self.infowin.addstr(27 + self.z, 1, f'{f} {self.lu.crp.get(f, "NaN"):<20}') # prices
-            if f in [i[1] for i in self.lu.ap]:
-                self.infowin.addstr('x')
+            for i in self.lu.ap:
+                if i[1] == f:
+                    self.infowin.addstr(f'x {i[2]}') 
+                    break
             self.z += 1
 
         for f in self.lu.trdesk:
@@ -148,6 +144,13 @@ class CursesUtilities():
             k += 1
         self.graphwin.refresh()
         self.lu.last_graph_update = self.lu.currd
+
+        self.statuswin.clear()
+        self.statuswin.box()
+        self.statuswin.addstr(1, 1, 'Progress: ' + str(self.lu.iteration))
+        self.statuswin.addstr(' Drawing Time: ' + str(self.lu.drawing_time))
+        self.statuswin.addstr(f' Mean Time: {self.lu.last_mean_calc_time}')
+        self.statuswin.refresh()
 
 
     def flow(self, lu):

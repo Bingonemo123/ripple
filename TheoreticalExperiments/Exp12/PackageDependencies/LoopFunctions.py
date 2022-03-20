@@ -31,7 +31,7 @@ class LoopUtilities():
         '''(0.id, 1.name, 2.opening price, 3.open time, 4.amount(in money), 5.auto close, 6.leverage,7. amount(in lots), 8.mt_ticket)'''
         self.crp = {} # current price
         self.crpohlc = 1 # current price ohlc
-        self.init_balance = 10_000
+        self.init_balance = 100
         self.curr_balance = self.init_balance # init_balance - active_position_buying_amount - closed_win_lose_amount (updated when new position is bought or active closed)
         self.free_balance = self.init_balance # curr_balance - active_positions_win_lose_amount 
         self.margin_balance = self.init_balance # curr_balance - active_positions_lose_amount
@@ -61,6 +61,7 @@ class LoopUtilities():
         self.drawing_time = 0
         self.last_foundmark_run = self.strd
         self.last_foundmark_iter = 0
+        self.last_mean_calc_time = 0
 
         for f in self.trdesk:
             self.get_rates(f)
@@ -158,8 +159,11 @@ class LoopUtilities():
             pricelist.append(self.crp[f])
             leverages.append(self.leveg)
 
+        self.foundmark = mathfc.EZAquariiB(self.Filter, pricelist, self.means_data, leverages, self.curr_balance)
         
-        self.foundmark = mathfc.EZAquariiB(self.Filter, pricelist, self.means_data, leverages, self.safe_balance)
+        self.last_foundmark_run = self.currd
+        self.last_foundmark_iter = self.iteration
+        
         if self.foundmark != None:
             self.name = self.foundmark[1][0]
             self.m = self.foundmark[1][1]
@@ -168,25 +172,23 @@ class LoopUtilities():
             ### 7. get name, m, n and leverage if available
             return self.foundmark[1] # name, m, n, leverage 
 
-        self.last_foundmark_iter = self.currd
-        self.last_foundmark_iter = self.iteration
 
     def theoretical_buy(self):
-        if self.safe_balance/ self.n < 1:
+        if self.safe_balance/ (self.n * self.leverage)< 1:
             self.amount = 1
-        elif self.safe_balance/ self.n > 20000:
+        elif self.safe_balance/ (self.n * self.leverage) > 20000:
             self.amount = 20000
         else:
-            self.amount = self.safe_balance/ self.n
+            self.amount = self.safe_balance/ (self.n * self.leverage)
 
         take_profit_value = ((self.m/self.leverage) + 1) * self.crp[self.name]
 
-        if self.amount <= self.safe_balance:
-            self.id_index += 1
-            self.curr_balance -= self.amount
+        if self.amount <= self.curr_balance: # if self.amount <= self.safe_balance: !!! DON'T DELETE !!!
             if self.curr_balance < 0:
                 pass
             else:
+                self.id_index += 1
+                self.curr_balance -= self.amount
                 amount_tlots = self.amount * self.leverage / self.crp[self.name]# amount of theortical lots
                 self.ap.append([self.id_index, self.name, self.crp[self.name], self.currd, self.amount, take_profit_value, self.leverage, amount_tlots])
                 self.position_history[self.id_index] = {'Id' : self.id_index,
@@ -202,10 +204,11 @@ class LoopUtilities():
                             } # add exam
 
     def bundle_mean_strategy_buy(self):
-        if self.safe_balance > 0:
+        if self.curr_balance > 0: # !!! DON'T DELETE !!! if safe_balance < 0 no meaning to run strategy change strategy balance input
             for f in self.Filter:
+                mean_calc_start_time  = time.perf_counter()
                 self.means_data[f] = mean(f, self.cd[f])
-
+                self.last_mean_calc_time = time.perf_counter() - mean_calc_start_time
             if self.run_strategy() is not None:
                 self.theoretical_buy()
 
