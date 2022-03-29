@@ -10,9 +10,9 @@ import pytz
 
 from PackageDependencies import Timeout
 from PackageDependencies.GuiFunctions import CursesUtilities
-from PackageDependencies.Means.meanv2.MeanFunctions import mean
+from PackageDependencies.Means.meanv3.MeanFunctions import mean
 from PackageDependencies.MetaTrader import connector
-from PackageDependencies.Strategies import mathfc
+from PackageDependencies.Strategies.version2 import mathf
 
 
 class LoopUtilities():
@@ -39,7 +39,7 @@ class LoopUtilities():
         # safe-balance = curr_balance - Sum(loan) : | loan = pm - v | pm = v * l = a * op
         # margin_balance = curr_balance - Sum(am | if op > cp) : | am = bm + v | bm = cm - pm | cm = a * op
         # free_balance = curr_balance - Sum(am) : | am = bm + v | bm = cm - pm | cm = a * op
-        self.leveg = 3000 # leverage
+        self.leveg = 100 # leverage
         self.position_history = {}
 
         self.maximum_var = [self.curr_balance, self.safe_balance, self.margin_balance, self.free_balance, len(self.ap)]
@@ -120,13 +120,14 @@ class LoopUtilities():
         for pos in self.ap:
             if pos[1] in self.actdesk:
                 ### check if autoclose activated
-                if pos[5] <= self.crp[pos[1]]: # close olhc = 1 a.k.a open
-                    self.close_pos(pos[0])
-                    self.autoclosed += 1
+                if pos[5] is not None:
+                    if pos[5] <= self.crp[pos[1]]: # close olhc = 1 a.k.a open
+                        self.close_pos(pos[0])
+                        self.autoclosed += 1
                 ### check if position is outoff margin
                 if self.margin_balance <= 0:
                     self.marginclosed += len(self.ap)
-                    self.close_positions(self.ap)
+                    self.close_positions()
 
     def check_cutout(self):
         cutout = 4
@@ -159,7 +160,7 @@ class LoopUtilities():
             pricelist.append(self.crp[f])
             leverages.append(self.leveg)
 
-        self.foundmark = mathfc.EZAquariiB(self.Filter, pricelist, self.means_data, leverages, self.curr_balance)
+        self.foundmark = mathfc.EZAquariiB(self.Filter, pricelist, self.means_data, leverages, self.safe_balance)
         
         self.last_foundmark_run = self.currd
         self.last_foundmark_iter = self.iteration
@@ -176,12 +177,17 @@ class LoopUtilities():
     def theoretical_buy(self):
         if self.safe_balance/ (self.n * self.leverage)< 1:
             self.amount = 1
-        elif self.safe_balance/ (self.n * self.leverage) > 20000:
-            self.amount = 20000
+        elif self.safe_balance/ (self.n * self.leverage) > 200:
+            self.amount = 200
         else:
             self.amount = self.safe_balance/ (self.n * self.leverage)
 
-        take_profit_value = ((self.m/self.leverage) + 1) * self.crp[self.name]
+
+        if self.m == None:
+            take_profit_value = None
+        else:
+            take_profit_value = ((self.m/self.leverage) + 1) * self.crp[self.name]
+        
 
         if self.amount <= self.curr_balance: # if self.amount <= self.safe_balance: !!! DON'T DELETE !!!
             if self.curr_balance < 0:
@@ -204,7 +210,7 @@ class LoopUtilities():
                             } # add exam
 
     def bundle_mean_strategy_buy(self):
-        if self.curr_balance > 0: # !!! DON'T DELETE !!! if safe_balance < 0 no meaning to run strategy change strategy balance input
+        if self.safe_balance > 0: # !!! DON'T DELETE !!! if safe_balance < 0 no meaning to run strategy change strategy balance input
             for f in self.Filter:
                 mean_calc_start_time  = time.perf_counter()
                 self.means_data[f] = mean(f, self.cd[f])
@@ -239,3 +245,4 @@ class LoopUtilities():
             print(str(e))
             print([exc_type, fname, exc_tb.tb_lineno])
             self.gui.curses.endwin()
+            input('Press any key to continue')
