@@ -19,4 +19,7 @@ def EZAquariiB (names, prices, means_data, leverages, balance):
             n = math.ceil(math.log(LIMIT, (1- EI)))
             blackboard = [name, None, n, lev]
 
+    if blackboard == []:
+        return None
+        
     return [scoreboard, blackboard]

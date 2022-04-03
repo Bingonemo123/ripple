@@ -1,8 +1,8 @@
-import curses
 import io
 import os
 import sys
 import time
+import traceback
 from datetime import datetime, timedelta
 
 import numpy as np
@@ -94,7 +94,9 @@ class LoopUtilities():
         self.free_balance = self.curr_balance + sum([i[4]*i[6]*((self.crp[i[1]]/i[2]) - 1) + i[4] for i in self.ap])  # v * l ( cp/op - 1) + v
         self.margin_balance = self.curr_balance + sum([i[4]*i[6]*((self.crp[i[1]]/i[2]) - 1) + i[4] for i in self.ap if self.crp[i[1]] < i[2]])  # v * l ( cp/op - 1) + v
         self.safe_balance = self.curr_balance - sum([i[4]*(i[6] - 1) for i in self.ap])  # loan = pm - v | pm = v * l = a * op
-
+        # Sometimes margin_balance can be more than curr_balance, 
+        # because margin_balance also contains investment which is substracted from curr_balance,
+        #  and if price is not low enough,investment amount (v) will be added to margin balance and not currbalance
     def close_pos(self, ids):
         for i in self.ap:
             if i[0] == ids:
@@ -130,7 +132,7 @@ class LoopUtilities():
                     self.close_positions()
 
     def check_cutout(self):
-        cutout = 4
+        cutout = 1
         if self.currd - self.lct >= timedelta(hours=cutout):
             total_profit = sum([i[4]*i[6]*((self.crp[i[1]]/i[2]) - 1) for i in self.ap])
             if total_profit > 0:
@@ -160,7 +162,7 @@ class LoopUtilities():
             pricelist.append(self.crp[f])
             leverages.append(self.leveg)
 
-        self.foundmark = mathfc.EZAquariiB(self.Filter, pricelist, self.means_data, leverages, self.safe_balance)
+        self.foundmark = mathf.EZAquariiB(self.Filter, pricelist, self.means_data, leverages, self.safe_balance)
         
         self.last_foundmark_run = self.currd
         self.last_foundmark_iter = self.iteration
@@ -244,5 +246,6 @@ class LoopUtilities():
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
             print(str(e))
             print([exc_type, fname, exc_tb.tb_lineno])
+            print("".join(traceback.format_tb(e.__traceback__)))
             self.gui.curses.endwin()
             input('Press any key to continue')
