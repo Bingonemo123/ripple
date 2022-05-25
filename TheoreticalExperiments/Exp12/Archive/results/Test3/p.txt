@@ -1,0 +1,45 @@
+self.timezone = pytz.timezone("Etc/UTC")
+self.strd =  datetime.strptime("01.01.2018", "%d.%m.%Y", )
+self.strd = self.strd.replace(tzinfo=self.timezone)
+self.currd = self.strd
+self.cd = {} # candledata = list of one week data 0.time 1.open 2.high 3.low 4.close 5.tick_volume 6.spread 7.real_volume
+self.trdesk = ["EURUSD", "GBPUSD", "USDJPY", "USDTHB", "USDZAR", "EURZAR", "GBPZAR", "GBPJPY"]# [x.name for x in Timeout.custom_all_asets(connector)]
+# 3. Cutout
+self.lct = self.strd # last cutout time = time of last cutout
+self.tp = 0 # total profit
+self.id_index = 0 # id for positions
+self.ap = [] # active positions position data 
+'''(0.id, 1.name, 2.opening price, 3.open time, 4.amount(in money), 5.auto close, 6.leverage,7. amount(in lots), 8.mt_ticket)'''
+self.crp = {} # current price
+self.crpohlc = 1 # current price ohlc
+self.init_balance = 100
+self.curr_balance = self.init_balance # init_balance - active_position_buying_amount - closed_win_lose_amount (updated when new position is bought or active closed)
+self.free_balance = self.init_balance # curr_balance - active_positions_win_lose_amount 
+self.margin_balance = self.init_balance # curr_balance - active_positions_lose_amount
+self.safe_balance = self.init_balance # curr_balance  - safe_margin - active_positions_lose_amount 
+# safe-balance = curr_balance - Sum(loan) : | loan = pm - v | pm = v * l = a * op
+# margin_balance = curr_balance - Sum(am | if op > cp) : | am = bm + v | bm = cm - pm | cm = a * op
+# free_balance = curr_balance - Sum(am) : | am = bm + v | bm = cm - pm | cm = a * op
+self.leveg = 1000 # leverage
+self.position_history = {}
+
+self.maximum_var = [self.curr_balance, self.safe_balance, self.margin_balance, self.free_balance, len(self.ap)]
+self.minimum_var = [self.curr_balance, self.safe_balance, self.margin_balance, self.free_balance]
+self.autoclosed = 0
+self.marginclosed = 0
+self.cutoutclosed = 0
+self.cutoutindx = 0
+self.lastmean = {}
+
+self.last_graph_update = self.strd
+self.fake_file = io.StringIO()
+
+self.means_data = {}
+self.foundmark = None
+self.actdesk = []
+self.Filter = []
+self.iteration = 0
+self.drawing_time = 0
+self.last_foundmark_run = self.strd
+self.last_foundmark_iter = 0
+self.last_mean_calc_time = 0

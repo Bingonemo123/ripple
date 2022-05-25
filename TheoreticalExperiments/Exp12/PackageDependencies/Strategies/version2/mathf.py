@@ -16,10 +16,16 @@ def EZAquariiB (names, prices, means_data, leverages, balance):
         EI = EpsilonIndiBb(means_data[name][0], means_data[name][1], price)
         if EI > scoreboard:
             scoreboard = EI
-            n = math.ceil(math.log(LIMIT, (1- EI)))
+            if EI == 1:
+                n = 1
+            else:
+                n = math.ceil(math.log(LIMIT, (1- EI)))
             blackboard = [name, None, n, lev]
 
     if blackboard == []:
         return None
         
     return [scoreboard, blackboard]
+
+# print(EpsilonIndiBb(2, 0.01, 2.345))
+# print(EZAquariiB(['EURUSD', 'ESDMNB'], [1.345, 2.345], {'EURUSD': [2, 0.01], 'ESDMNB': [2, 0.01]}, [1, 1], 100))

@@ -3,10 +3,14 @@ import os
 import sys
 import time
 import traceback
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import numpy as np
 import pytz
+import logging
+import pickle
+
+logging.basicConfig(filename='2wp6.txt', format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO)
 
 from PackageDependencies import Timeout
 from PackageDependencies.GuiFunctions import CursesUtilities
@@ -22,7 +26,7 @@ class LoopUtilities():
         self.strd = self.strd.replace(tzinfo=self.timezone)
         self.currd = self.strd
         self.cd = {} # candledata = list of one week data 0.time 1.open 2.high 3.low 4.close 5.tick_volume 6.spread 7.real_volume
-        self.trdesk = ["EURUSD", "GBPUSD", "USDJPY", "USDTHB", "USDZAR", "EURZAR", "GBPZAR", "GBPJPY"]
+        self.trdesk = ["EURUSD", "GBPUSD", "USDJPY", "USDTHB", "USDZAR", "EURZAR", "GBPZAR", "GBPJPY"]# [x.name for x in Timeout.custom_all_asets(connector)]
         # 3. Cutout
         self.lct = self.strd # last cutout time = time of last cutout
         self.tp = 0 # total profit
@@ -39,7 +43,7 @@ class LoopUtilities():
         # safe-balance = curr_balance - Sum(loan) : | loan = pm - v | pm = v * l = a * op
         # margin_balance = curr_balance - Sum(am | if op > cp) : | am = bm + v | bm = cm - pm | cm = a * op
         # free_balance = curr_balance - Sum(am) : | am = bm + v | bm = cm - pm | cm = a * op
-        self.leveg = 100 # leverage
+        self.leveg = 200 # leverage
         self.position_history = {}
 
         self.maximum_var = [self.curr_balance, self.safe_balance, self.margin_balance, self.free_balance, len(self.ap)]
@@ -64,6 +68,7 @@ class LoopUtilities():
         self.last_mean_calc_time = 0
 
         for f in self.trdesk:
+            print(f)
             self.get_rates(f)
         
         self.gui = CursesUtilities(self)
@@ -71,7 +76,7 @@ class LoopUtilities():
         self.gui.flow(self)
            
     def get_rates(self, f):
-        rates = Timeout.datamine(connector, f=f, frame=connector.TIMEFRAME_M1, t=self.strd, count=10080)
+        rates = Timeout.datamine(connector, f=f, frame=connector.TIMEFRAME_H4, t=self.strd, count=42)
         rerates = np.zeros((len(rates), 8), dtype=float)
         for i in range(len(rates)):
             for x in range(8):
@@ -82,7 +87,7 @@ class LoopUtilities():
     def get_new_data(self):
         self.actdesk = []
         for f in self.trdesk:
-            rates = Timeout.datamine(connector, f=f, frame=connector.TIMEFRAME_M1, t=self.currd, count=1)
+            rates = Timeout.datamine(connector, f=f, frame=connector.TIMEFRAME_H4, t=self.currd, count=1)
             if rates[0][0] != self.cd[f][-1][0]:
                 self.cd[f] = np.roll(self.cd[f], -1, axis=0)
                 for x in range(8):
@@ -111,9 +116,10 @@ class LoopUtilities():
     def close_positions(self):
         for i in self.ap:
             closing_profit = i[4] * i[6] * ((self.crp[i[1]]/i[2]) - 1) + i[4]
-            self.tp += closing_profit
+            self.tp += closing_profit - i[4]
             self.curr_balance += closing_profit
-            self.position_history.get(i[0]).update({'Close Time': self.currd, 'Close Price': self.crp[i[1]], 'Profit': closing_profit, 'Closed by': 'Cluster'})
+            self.position_history.get(i[0]).update({'Close Time': self.currd, 'Close Price': self.crp[i[1]], 'Profit + Investment': closing_profit,
+             'Closed by': 'Cluster', 'Profit': closing_profit - i[4]})
 
         self.ap.clear()
         self.calc_balance()
@@ -212,7 +218,7 @@ class LoopUtilities():
                             } # add exam
 
     def bundle_mean_strategy_buy(self):
-        if self.safe_balance > 0: # !!! DON'T DELETE !!! if safe_balance < 0 no meaning to run strategy change strategy balance input
+        if self.margin_balance > 50: # !!! DON'T DELETE !!! if safe_balance < 0 no meaning to run strategy change strategy balance input
             for f in self.Filter:
                 mean_calc_start_time  = time.perf_counter()
                 self.means_data[f] = mean(f, self.cd[f])
@@ -241,6 +247,12 @@ class LoopUtilities():
                         start_drawing_time = time.perf_counter()
                         self.gui.flow(self)
                         self.drawing_time = time.perf_counter() - start_drawing_time
+
+                if self.currd >= datetime.now(timezone.utc) or self.curr_balance <= 0:
+                    pickle.dump(self.position_history, open('position_history.p', 'wb'))
+                    break
+                if (self.currd - self.strd) % timedelta(days=14) == timedelta(0): 
+                    logging.info(str(self.tp) +' |||  ' +  str((self.currd - self.strd)))
         except Exception as e:
             exc_type, exc_obj, exc_tb = sys.exc_info()
             fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
@@ -249,3 +261,5 @@ class LoopUtilities():
             print("".join(traceback.format_tb(e.__traceback__)))
             self.gui.curses.endwin()
             input('Press any key to continue')
+
+    
