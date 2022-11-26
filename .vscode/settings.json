@@ -1,4 +1,6 @@
 {
     "python.formatting.provider": "autopep8",
-    "notebook.showFoldingControls": "always"
+    "notebook.showFoldingControls": "always",
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true
 }
