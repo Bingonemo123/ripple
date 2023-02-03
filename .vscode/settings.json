@@ -1,6 +1,13 @@
 {
     "python.formatting.provider": "autopep8",
     "notebook.showFoldingControls": "always",
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true
+    "python.linting.flake8Enabled": false,
+    "python.linting.enabled": false,
+    "python.linting.pylintEnabled": true,
+    "cSpell.words": [
+        "Dpatterns",
+        "EURUSD",
+        "ipynb",
+        "perc"
+    ]
 }
