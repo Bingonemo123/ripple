@@ -1,8 +1,11 @@
-from Backtesting.staticdata.options.binary_patterns.context import BinaryController
+from Backtesting.staticdata.options.tertiary_patterns.context import TertiaryController
+from Backtesting.staticdata.options.tertiary_patterns.csv_writer import TertiaryCsvTrends
 
+import numpy as np
+np.set_printoptions(linewidth=np.inf)
 
-controller = BinaryController()
+tc = TertiaryController()
 
-controller.load_m1_csv('Data\EURUSD\DAT_MT_EURUSD_M1_2019.csv')
+tc.load_m1_csv('Data\EURUSD\DAT_MT_EURUSD_M1_2019.csv')
 
-controller.continuousSearch()
+tc.continuous_trend_search()
