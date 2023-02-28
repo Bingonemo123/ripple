@@ -35,6 +35,16 @@ class TertiaryRawData(NaryRawData):
         super().load_random(n)
         self.tertiary_m1 = self.into_tertiles(self.raw_m1_csv)
         return self.tertiary_m1
+    
+    def load_monte_carlo(self, n=100):
+        super().load_monte_carlo(n)
+        self.tertiary_m1 = self.into_tertiles(self.raw_m1_csv)
+        return self.tertiary_m1
+    
+    def load_gbm(self, n=100, s0=100, mu=0, sigma=0.05):
+        super().load_gbm(n, s0, mu, sigma)
+        self.tertiary_m1 = self.into_tertiles(self.raw_m1_csv)
+        return self.tertiary_m1
 
 class TertiaryController(TertiaryRawData):
 
@@ -119,16 +129,16 @@ class TertiaryController(TertiaryRawData):
         else:        
             return True
     
-    def search_setup(self):
+    def search_setup(self, filename):
         self.tertiary_patterns = self.tertiary_patterngen()
         self.same_length_lib = False
         self.lib_length = 0
 
-        self.csv_tw = TertiaryCsvTrends()
+        self.csv_tw = TertiaryCsvTrends(filename=filename)
 
-    def continuous_search(self):
+    def continuous_search(self, filename=None):
         # TODO: fast skip 0 summed patterns
-        self.search_setup()
+        self.search_setup(filename=filename)
 
         for pattern in self.tertiary_patterns:
             if len(pattern) > self.lib_length:
@@ -155,8 +165,8 @@ class TertiaryController(TertiaryRawData):
             return False, alt_hypo_perc
 
 
-    def continuous_trend_search(self, stdout=None):
-        self.search_setup()
+    def continuous_trend_search(self, filename=None, stdout=None):
+        self.search_setup(filename=filename)
 
         for pattern in self.tertiary_patterns:
             if len(pattern) > self.lib_length:

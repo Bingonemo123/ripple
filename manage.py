@@ -6,6 +6,9 @@ np.set_printoptions(linewidth=np.inf)
 
 tc = TertiaryController()
 
-tc.load_m1_csv('Data\EURUSD\DAT_MT_EURUSD_M1_2019.csv')
+# tc.load_m1_csv('Data\EURUSD\DAT_MT_EURUSD_M1_2019.csv')
+tc.load_gbm(20)
 
-tc.continuous_trend_search()
+np.savetxt('random_raw.csv', tc.raw_m1_csv)
+np.savetxt('random_tert.csv', tc.tertiary_m1)
+tc.continuous_trend_search(filename='gbm_20')

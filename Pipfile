@@ -24,6 +24,9 @@ wcwidth = "==0.2.6"
 xlsxwriter = "*"
 scipy = "*"
 numpy = "*"
+matplotlib = "*"
+ipykernel = "*"
+yfinance = "*"
 
 [dev-packages]
 
