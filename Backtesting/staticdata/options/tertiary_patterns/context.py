@@ -88,7 +88,7 @@ class TertiaryController(TertiaryRawData):
         if td is None:
             td = self.tertiary_m1
         trunc_raw_data = rd[len(f)-1:] # remove first unused bits of data from raw data
-        features_idx = np.where(  # find indecis of where features accure
+        features_idx = np.where(  # finds indicis of where features occur
                         self.sieve_library(
                             td, 
                             f)
@@ -96,7 +96,7 @@ class TertiaryController(TertiaryRawData):
         selector = self.time_stamps.reshape(
             self.time_stamps.size, 1) + features_idx 
         nanselector = np.where(selector < trunc_raw_data.size, True, np.nan)
-        raw_selected = np.take( trunc_raw_data, selector, mode='clip' ) # at most 32?
+        raw_selected = np.take( trunc_raw_data, selector, mode='clip' ) 
         raw_nan_selected = raw_selected * nanselector
         diff_selected = raw_nan_selected - raw_nan_selected[0]
         bin_nan_selected = ((diff_selected > 0) * nanselector) 
@@ -129,7 +129,7 @@ class TertiaryController(TertiaryRawData):
         else:        
             return True
     
-    def search_setup(self, filename):
+    def search_setup(self, filename=None):
         self.tertiary_patterns = self.tertiary_patterngen()
         self.same_length_lib = False
         self.lib_length = 0

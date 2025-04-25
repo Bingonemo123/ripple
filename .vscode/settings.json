@@ -10,5 +10,8 @@
         "ipynb",
         "parametergen",
         "perc"
+    ],
+    "rust-analyzer.linkedProjects": [
+        ".\\Cargo.toml"
     ]
 }
